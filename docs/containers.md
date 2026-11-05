@@ -4,9 +4,9 @@ Two Docker build targets serve the existing application: a CPU model API and a s
 
 ## Current verification status
 
-Docker Desktop 4.98.0 installed successfully; CLI 29.9.2 and Compose 5.6.1 are verified. Both required Windows features were enabled and reported a restart requirement. The Linux engine remained unavailable in this session. Compose passed the official JSON schema and installed CLI validation, and required model files are present. Image builds, Linux dependency resolution and container HTTP smoke tests are **not** verified yet. See `docs/project_status.md` for the Windows build compatibility limit and exact restart/resume steps.
+Windows was upgraded to build 26300. Docker Desktop 4.98.0, engine 29.9.2 and Compose 5.6.1 work with WSL 3.0.3. Both images built successfully, including CPU PyTorch installation. Container prediction, SQLite ticket/feedback storage, persistence across an API restart and dashboard health passed. See `reports/containers/runtime.json`. All 41 local tests passed.
 
-The official [CPU wheel index](https://download.pytorch.org/whl/cpu/torch/) lists Python 3.14 Linux wheels for the pinned PyTorch 2.15.0 release. That verifies availability, not installation inside the proposed image. Windows lockfiles are not used for Linux image installation. Direct package versions are pinned; transitive dependencies and the `python:3.14-slim` tag can change, so this is not a bit-for-bit reproducible release.
+Windows lockfiles are not used for Linux image installation. Direct package versions are pinned; transitive dependencies and the `python:3.14-slim` tag can change, so this is not a bit-for-bit reproducible release.
 
 ## Run when Docker is available
 

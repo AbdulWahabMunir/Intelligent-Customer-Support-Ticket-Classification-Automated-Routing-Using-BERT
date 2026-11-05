@@ -1,14 +1,18 @@
-﻿{
-    "compose":  "5.6.1",
-    "docker_desktop":  "4.98.0",
-    "installation":  "succeeded",
-    "engine_verified":  false,
-    "windows_features_enabled":  [
-                                     "Microsoft-Windows-Subsystem-Linux",
-                                     "VirtualMachinePlatform"
-                                 ],
-    "windows_build":  "21996",
-    "docker_cli":  "29.9.2",
-    "restart_required":  true,
-    "documented_windows_11_minimum":  "22631"
+{
+  "compose": "5.6.1",
+  "docker_desktop": "4.98.0",
+  "installation": "succeeded",
+  "engine_verified": true,
+  "windows_features_enabled": [
+    "Microsoft-Windows-Subsystem-Linux",
+    "VirtualMachinePlatform"
+  ],
+  "windows_build": "26300",
+  "docker_cli": "29.9.2",
+  "restart_required": false,
+  "documented_windows_11_minimum": "22631",
+  "hypervisor_present": true,
+  "wsl_version": "3.0.3.0",
+  "wsl_kernel": "6.18.54.1-1",
+  "engine_error": null
 }

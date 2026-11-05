@@ -4,7 +4,7 @@ A learning-focused NLP project: classify customer support intents, map them to c
 
 ## Current state
 
-The local application is implemented and tested. Docker Desktop is installed; Windows needs a restart to activate its prerequisites before container runtime testing. Public deployment still needs an accessible repository and model artifact URL. See the [project status](docs/project_status.md).
+The local application is implemented and tested. Windows was upgraded to build 26300 and Docker's Linux engine is running. Public deployment still needs an accessible repository and model artifact URL. See the [project status](docs/project_status.md).
 
 Implemented: reproducible Bitext download, EDA, duplicate removal, stratified train/validation/test splits, TF-IDF baselines, full three-epoch DistilBERT fine-tuning, saved models and local predictions.
 
@@ -103,7 +103,7 @@ A fixed **108-case robustness pilot** covers all 27 intents under paraphrasing, 
 .venv\Scripts\python.exe -m src.evaluate_robustness
 ```
 
-`Dockerfile` and `compose.yaml` define separate CPU API and dashboard containers, a read-only model mount and persistent SQLite volume. Docker Desktop 4.98.0, CLI 29.9.2 and Compose 5.6.1 are installed. Compose schema and CLI validation passed. Windows reports a restart pending after enabling WSL/Virtual Machine Platform; image builds and container runtime checks remain pending. After restarting and starting Docker Desktop:
+`Dockerfile` and `compose.yaml` define separate CPU API and dashboard containers, a read-only model mount and persistent SQLite volume. Docker Desktop 4.98.0, CLI 29.9.2 and Compose 5.6.1 are installed. Compose schema and CLI validation passed. Windows was upgraded to build 26300. Both images built and container prediction, feedback, restart persistence and dashboard health passed. With Docker Desktop running:
 
 ```powershell
 .venv\Scripts\python.exe scripts/verify_containers.py
@@ -149,6 +149,6 @@ Source: [Bitext customer support dataset](https://huggingface.co/datasets/bitext
 3. DistilBERT fine-tuning and held-out comparison (see experiment reports).
 4. Provisional score handling, priority rules and routing (implemented).
 5. FastAPI, Streamlit, SQLite and human feedback (implemented).
-6. Robustness pilot evaluated; human-reviewed challenge set, Docker runtime verification and public deployment remain pending.
+6. Robustness pilot evaluated; Docker runtime verification passed; human-reviewed challenge set and public deployment remain pending.
 
 We will document actual results as each stage is completed, including limitations and errors.

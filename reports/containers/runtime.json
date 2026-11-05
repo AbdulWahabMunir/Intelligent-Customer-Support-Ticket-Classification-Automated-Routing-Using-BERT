@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "verified_at": "2026-11-05T15:32:01.465235+00:00",
+  "model_version": "distilbert:130e8686af8b",
+  "ticket_id": "74354834-b9de-4a8e-a9a4-9b0a5f81ae30",
+  "checks": [
+    "container API prediction",
+    "SQLite persistence",
+    "feedback preservation",
+    "API restart persistence",
+    "dashboard health"
+  ]
+}

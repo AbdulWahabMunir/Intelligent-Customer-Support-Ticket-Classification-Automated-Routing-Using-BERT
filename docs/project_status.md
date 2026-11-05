@@ -2,16 +2,12 @@
 
 The local application is implemented: dataset/EDA pipeline, deduplicated splits, both traditional baselines, fully fine-tuned DistilBERT, evaluation/error/calibration diagnostics, routing/priority policy, FastAPI, SQLite, append-only feedback, Streamlit and a robustness pilot. The source also includes CI configuration, release packaging, a hosted process supervisor and optional shared-password access.
 
-**Docker installation succeeded:** Desktop 4.98.0, CLI 29.9.2, Compose 5.6.1. WSL and Virtual Machine Platform were enabled through administrator elevation; both reported a Windows restart requirement. The Linux engine was not usable in the current session, so no image build/container runtime pass is claimed. Compose validates with the installed CLI.
+Windows was upgraded from build 21996 to 26300. Docker Desktop 4.98.0, CLI/engine 29.9.2 and Compose 5.6.1 are working with WSL 3.0.3. The Linux VM starts successfully. Both Docker images build successfully. Container prediction, ticket/feedback storage, API restart persistence and dashboard health passed; see `reports/containers/runtime.json`. All 41 local tests also passed after the Windows upgrade.
 
-Windows reports build 21996, below Docker Desktop's current documented Windows 11 minimum 22631. A supported Windows update may also be required after restart. Firmware virtualization was reported enabled, while the current session had no active hypervisor.
+## Remaining publication work
 
-## Resume after restarting Windows
-
-1. Start Docker Desktop and finish any WSL update it requests. Update Windows if Desktop rejects the old build.
-2. Run `.venv\Scripts\python.exe scripts/verify_containers.py` from this folder. It builds both images, waits for health, tests ticket/feedback HTTP behavior and verifies persistence across an API container restart. It writes `reports/containers/runtime.json` only after success. Python helpers avoid this environment's restricted PowerShell script-file policy.
-3. Provide an accessible GitHub repository URL for publishing. Review the prepared Render configuration and current hosting charges before applying it.
+Provide an accessible GitHub repository URL and a model artifact URL for publishing. Review the prepared Render configuration and hosting charges before applying it. To repeat container verification, run `.venv\Scripts\python.exe scripts/verify_containers.py`.
 
 The Render Blueprint passes its official JSON schema but has not been deployed. No paid resources were created. The GitHub connector returned no accessible repositories. A model artifact URL is also needed; the release package supplies the bundle and checksum.
 
-Human review of challenge labels, production identity and cloud/runtime verification are not implied by software test success. See the model card and deployment guide for exact limits.
+Human review of challenge labels, production identity and cloud verification are not implied by software test success. See the model card and deployment guide for exact limits.
