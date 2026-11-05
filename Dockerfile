@@ -21,6 +21,10 @@ USER support
 EXPOSE 8000
 CMD ["python", "-m", "uvicorn", "app.api:app", "--host", "0.0.0.0", "--port", "8000"]
 
+FROM api AS hosted-api
+RUN python -m pip install --no-cache-dir --user 'psycopg[binary]==3.3.2'
+CMD ["python", "-m", "app.run_api"]
+
 FROM base AS dashboard
 COPY docker/requirements-ui.txt ./requirements-ui.txt
 RUN python -m pip install --no-cache-dir -r requirements-ui.txt

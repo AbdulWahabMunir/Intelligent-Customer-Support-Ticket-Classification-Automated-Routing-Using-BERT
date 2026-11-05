@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "checks": [
+    "PostgreSQL ticket storage",
+    "append-only feedback",
+    "analytics",
+    "review filtering",
+    "application restart persistence"
+  ],
+  "model": "fixture (storage-only verification)"
+}

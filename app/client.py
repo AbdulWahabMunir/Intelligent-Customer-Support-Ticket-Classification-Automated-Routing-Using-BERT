@@ -15,7 +15,8 @@ class SupportAPI:
 
     def request(self, method, path, **kwargs):
         try:
-            with httpx.Client(base_url=self.base_url, timeout=30, trust_env=False) as client:
+            headers = {"X-API-Key": os.environ["SUPPORT_API_KEY"]} if os.environ.get("SUPPORT_API_KEY") else {}
+            with httpx.Client(base_url=self.base_url, timeout=120, trust_env=False, headers=headers) as client:
                 response = client.request(method, path, **kwargs)
             response.raise_for_status()
             return response.json()

@@ -1,0 +1,30 @@
+# Free backend only. Frontend: Streamlit Community Cloud; database: Neon Free.
+services:
+  - type: web
+    name: intelligent-support-api
+    runtime: python
+    plan: free
+    region: singapore
+    buildCommand: python -m pip install --index-url https://download.pytorch.org/whl/cpu torch==2.15.0 && python -m pip install -r requirements-hosted-api.txt && python -m app.prepare_models
+    startCommand: python -m app.run_api
+    healthCheckPath: /health
+    autoDeployTrigger: "off"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.14.0
+      - key: SUPPORT_MODEL
+        value: distilbert
+      - key: HF_HUB_OFFLINE
+        value: "1"
+      - key: TOKENIZERS_PARALLELISM
+        value: "false"
+      - key: SUPPORT_MODELS_PATH
+        value: /opt/render/project/src/models
+      - key: MODEL_BUNDLE_URL
+        value: https://github.com/AbdulWahabMunir/Intelligent-Customer-Support-Ticket-Classification-Automated-Routing-Using-BERT/releases/download/v1.0.0/model-bundle.zip
+      - key: MODEL_BUNDLE_SHA256
+        value: 0e9a4050e81883d274dc3e9f25f0c65badaae62b4a8738af924e0f0846c55fcc
+      - key: SUPPORT_API_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        sync: false

@@ -6,8 +6,8 @@ Windows was upgraded from build 21996 to 26300. Docker Desktop 4.98.0, CLI/engin
 
 ## Remaining publication work
 
-Source is published at https://github.com/AbdulWahabMunir/Intelligent-Customer-Support-Ticket-Classification-Automated-Routing-Using-BERT. A model artifact URL and hosting selection remain required for public deployment. Review the prepared Render configuration and hosting charges before applying it. To repeat container verification, run `.venv\Scripts\python.exe scripts/verify_containers.py`.
+Source and the approved model bundle (`v1.0.0` Release) are published at https://github.com/AbdulWahabMunir/Intelligent-Customer-Support-Ticket-Classification-Automated-Routing-Using-BERT. The selected free path is Render Free FastAPI + DistilBERT, Streamlit Community Cloud, and Neon Free PostgreSQL. `render-free.yaml` passes schema validation. All 45 tests pass; actual DistilBERT, API-key access, long inputs, PostgreSQL feedback and restart persistence passed in a 512 MiB container with no extra swap. The Neon connection and Streamlit account configuration are still required before live cloud verification.
 
-The Render Blueprint passes its official JSON schema but has not been deployed. No paid resources were created. The source is pushed to the user-created GitHub repository. A model artifact URL is also needed; the release package supplies the bundle and checksum.
+No live Render or Streamlit deployment is claimed. No paid resources were created. The original `render.yaml` remains a separate paid proposal and must not be applied for this free deployment.
 
 Human review of challenge labels, production identity and cloud verification are not implied by software test success. See the model card and deployment guide for exact limits.

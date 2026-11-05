@@ -26,9 +26,10 @@ def main():
         for path in model_files:
             archive.write(path, path.relative_to(ROOT / "models").as_posix())
     source_files = []
-    for name in ["app", "src", "tests", "scripts", "config", "docs", "reports", "notebooks", ".streamlit", ".github", "docker", "data/robustness"]:
+    for name in ["app", "src", "tests", "scripts", "config", "docs", "reports", "notebooks", ".streamlit", ".github", "docker", "community", "data/robustness"]:
         source_files += [path for path in (ROOT / name).rglob("*") if path.is_file() and "__pycache__" not in path.parts and path.suffix != ".pyc"]
-    source_files += [path for path in ROOT.iterdir() if path.is_file() and (path.name.startswith("requirements") or path.name in {"README.md", ".gitignore", ".dockerignore", "Dockerfile", "compose.yaml", "render.yaml"})]
+    source_files += [path for path in ROOT.iterdir() if path.is_file() and (path.name.startswith("requirements") or path.name in {"README.md", ".gitignore", ".dockerignore", "Dockerfile", "compose.yaml", "render.yaml", "render-free.yaml"})]
+    source_files = [path for path in source_files if path.name != 'secrets.toml' and not path.name.startswith('.env')]
     source_files = [path for path in source_files if "installation" not in path.relative_to(ROOT).parts]
     source_zip = destination / "customer-support-source.zip"
     with ZipFile(source_zip, "w", compression=ZIP_DEFLATED) as archive:

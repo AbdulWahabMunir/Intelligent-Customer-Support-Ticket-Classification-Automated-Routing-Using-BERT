@@ -1,5 +1,7 @@
 # Deployment handoff
 
+The selected zero-cost deployment path is documented in [free deployment](free_deployment.md): Render Free API + Streamlit Community Cloud + Neon Free PostgreSQL. The configuration below is the separate paid alternative; do not apply it for the free deployment.
+
 `render.yaml` is a schema-validated proposal for one Render web service, not an applied deployment. It selects the documented `1c-2g` compute plan and a 2 GB persistent disk. Confirm current hosting charges and the intended workspace before provisioning it.
 
 Streamlit listens on the public service port; FastAPI listens only on loopback. Hosted mode requires a generated reviewer password. This is shared-password demo access, not multi-user production identity. The local default remains localhost-only without a password unless configured.
@@ -10,7 +12,7 @@ Run `python -m src.package_release` in the project environment to produce:
 - `artifacts/release/model-bundle.zip`: completed DistilBERT checkpoint/tokenizer, metadata and trusted Logistic Regression artifact.
 - `artifacts/release/manifest.json`: byte lengths and SHA-256 checksums.
 
-Raw datasets, ticket databases, caches, training checkpoints, virtual environments and installers are excluded. Review dataset and upstream model terms before distributing weights; no bundle has been uploaded publicly.
+Raw datasets, ticket databases, caches, training checkpoints, virtual environments and installers are excluded. The user approved public distribution of the trained model bundle; it is available as `model-bundle.zip` in the repository's `v1.0.0` GitHub Release. Dataset and upstream model terms remain applicable.
 
 ## Publish
 

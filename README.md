@@ -4,7 +4,7 @@ A learning-focused NLP project: classify customer support intents, map them to c
 
 ## Current state
 
-The local application is implemented and tested. Windows was upgraded to build 26300 and Docker's Linux engine is running. Public deployment still needs an accessible repository and model artifact URL. See the [project status](docs/project_status.md).
+The local application is implemented and tested. Source and the approved model bundle are published on GitHub. The free hosting path uses FastAPI + DistilBERT on Render Free, Streamlit Community Cloud, and external PostgreSQL; see [free deployment](docs/free_deployment.md). Live cloud deployment is pending database/account configuration. See the [project status](docs/project_status.md).
 
 Implemented: reproducible Bitext download, EDA, duplicate removal, stratified train/validation/test splits, TF-IDF baselines, full three-epoch DistilBERT fine-tuning, saved models and local predictions.
 
@@ -91,7 +91,7 @@ With the API running in one terminal, run these in a second terminal:
 
 Open http://127.0.0.1:8501. Use New ticket to submit a message, Ticket review to inspect/correct predictions, and Overview to monitor activity. See the [dashboard guide](docs/dashboard.md). This is a local single-user application.
 
-All **41 tests** passed, including challenge integrity, confidence metrics, archive extraction protections and hosted login behavior. The Streamlit widget flow was verified against the real DistilBERT API over HTTP. A real Edge overview capture was also inspected. See [dashboard verification](reports/dashboard/verification.md).
+All **45 tests** passed, including challenge integrity, confidence metrics, archive extraction protections, API authentication and hosted login behavior. Real DistilBERT + PostgreSQL also passed prediction, long-input and restart verification under a 512 MiB container limit. The Streamlit widget flow was verified against the real DistilBERT API over HTTP. A real Edge overview capture was also inspected. See [dashboard verification](reports/dashboard/verification.md).
 
 ![Local dashboard](reports/screenshots/overview.png)
 

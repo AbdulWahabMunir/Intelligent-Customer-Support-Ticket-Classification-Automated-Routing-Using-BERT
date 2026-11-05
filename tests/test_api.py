@@ -3,6 +3,7 @@ from pathlib import Path
 import sqlite3
 import tempfile
 import unittest
+from unittest.mock import patch
 from uuid import uuid4
 
 from fastapi.testclient import TestClient
@@ -21,6 +22,13 @@ class TestClassifier:
 
 
 class ApiTests(unittest.TestCase):
+    def test_api_key_protects_private_routes_and_keeps_health_public(self):
+        with patch.dict('os.environ', {'SUPPORT_API_KEY': 'verification-key'}):
+            self.assertEqual(self.client.get('/health').status_code, 200)
+            self.assertEqual(self.client.get('/analytics').status_code, 401)
+            self.assertEqual(self.client.get('/analytics', headers={'X-API-Key': 'wrong'}).status_code, 401)
+            self.assertEqual(self.client.get('/analytics', headers={'X-API-Key': 'verification-key'}).status_code, 200)
+
     def setUp(self):
         self.directory = tempfile.TemporaryDirectory()
         self.db_path = Path(self.directory.name) / "support.sqlite3"

@@ -2,6 +2,7 @@
 
 from contextlib import asynccontextmanager
 import os
+import hmac
 from pathlib import Path
 from threading import Lock
 from uuid import UUID
@@ -22,12 +23,25 @@ def create_app(db_path=None, service=None):
     async def lifespan(application):
         application.state.service = service if service is not None else TicketService(TicketClassifier(os.environ.get("SUPPORT_MODEL", "distilbert")))
         application.state.inference_lock = Lock()
-        application.state.store = TicketStore(db_path or Path(os.environ.get("SUPPORT_DB_PATH", str(ROOT / "data/runtime/support.sqlite3"))))
+        if db_path is None and os.environ.get("DATABASE_URL"):
+            from app.postgres_storage import PostgresTicketStore
+            application.state.store = PostgresTicketStore(os.environ["DATABASE_URL"])
+        else:
+            application.state.store = TicketStore(db_path or Path(os.environ.get("SUPPORT_DB_PATH", str(ROOT / "data/runtime/support.sqlite3"))))
         application.state.store.initialize()
         yield
 
     application = FastAPI(title="Intelligent Customer Support API", version="0.1.0", lifespan=lifespan,
                           description="Local ticket classification, business-rule routing and append-only human feedback.")
+
+    @application.middleware("http")
+    async def api_access(request, call_next):
+        expected = os.environ.get("SUPPORT_API_KEY", "")
+        if expected and request.url.path != "/health":
+            provided = request.headers.get("X-API-Key", "")
+            if not hmac.compare_digest(expected.encode(), provided.encode()):
+                return JSONResponse(status_code=401, content={"detail": "API key required"})
+        return await call_next(request)
 
     @application.exception_handler(RequestValidationError)
     async def validation_error(request, error):

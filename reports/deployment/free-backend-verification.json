@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "verified_at": "2026-11-05T16:00:32.676189+00:00",
+  "memory_limit_bytes": 536870912,
+  "swap_extra_bytes": 0,
+  "model": "actual fine-tuned DistilBERT",
+  "storage": "isolated local PostgreSQL",
+  "cloud_deployment": "not yet performed",
+  "checks": [
+    "API authentication",
+    "DistilBERT prediction",
+    "long ticket truncation",
+    "PostgreSQL feedback",
+    "container restart persistence"
+  ]
+}

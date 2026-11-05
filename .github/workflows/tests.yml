@@ -16,4 +16,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: docker build --target api -t support-api:ci .
+      - run: docker build --target hosted-api -t support-hosted-api:ci .
       - run: docker build --target dashboard -t support-dashboard:ci .
