@@ -6,8 +6,8 @@ Windows was upgraded from build 21996 to 26300. Docker Desktop 4.98.0, CLI/engin
 
 ## Remaining publication work
 
-Provide an accessible GitHub repository URL and a model artifact URL for publishing. Review the prepared Render configuration and hosting charges before applying it. To repeat container verification, run `.venv\Scripts\python.exe scripts/verify_containers.py`.
+Source is published at https://github.com/AbdulWahabMunir/Intelligent-Customer-Support-Ticket-Classification-Automated-Routing-Using-BERT. A model artifact URL and hosting selection remain required for public deployment. Review the prepared Render configuration and hosting charges before applying it. To repeat container verification, run `.venv\Scripts\python.exe scripts/verify_containers.py`.
 
-The Render Blueprint passes its official JSON schema but has not been deployed. No paid resources were created. The GitHub connector returned no accessible repositories. A model artifact URL is also needed; the release package supplies the bundle and checksum.
+The Render Blueprint passes its official JSON schema but has not been deployed. No paid resources were created. The source is pushed to the user-created GitHub repository. A model artifact URL is also needed; the release package supplies the bundle and checksum.
 
 Human review of challenge labels, production identity and cloud verification are not implied by software test success. See the model card and deployment guide for exact limits.

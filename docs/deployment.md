@@ -14,7 +14,7 @@ Raw datasets, ticket databases, caches, training checkpoints, virtual environmen
 
 ## Publish
 
-1. Supply an accessible GitHub repository and push the source. The connected account returned no accessible repositories, and the connector cannot create one. A local Git repository is initialized.
+1. Source is pushed to [the GitHub repository](https://github.com/AbdulWahabMunir/Intelligent-Customer-Support-Ticket-Classification-Automated-Routing-Using-BERT). GitHub Actions runs tests and image builds.
 2. Host `model-bundle.zip` at a downloadable HTTPS artifact URL you control. Use its exact checksum from the release manifest. Keep credentials and signed private URLs out of source.
 3. Review the proposed Render resources, current cost and target workspace. No paid resource has been created.
 4. Create a Blueprint from the repository. Provide `MODEL_BUNDLE_URL` and `MODEL_BUNDLE_SHA256` when prompted. Retrieve the generated dashboard password through Render's Environment page.
@@ -22,6 +22,6 @@ Raw datasets, ticket databases, caches, training checkpoints, virtual environmen
 
 The bootstrap verifies the bundle checksum, rejects unsafe archive paths/symlinks, and checks for a completed checkpoint before starting services. Model files and SQLite data live under `/var/data`. A disk is available at runtime, not during builds. This single-instance disk design has deployment interruptions.
 
-The proposed supervisor is verified locally with an isolated database. Schema validation does not establish a successful Render build. Linux dependency resolution, remote bundle download and cloud runtime behavior remain unverified.
+The proposed supervisor is verified locally with an isolated database. Schema validation does not establish a successful Render build. Linux Docker dependency installation and local container runtime tests passed. Remote bundle download and cloud runtime behavior remain unverified.
 
 References: [compute plans](https://render.com/docs/compute-plans), [persistent disks](https://render.com/docs/disks), [Blueprint specification](https://render.com/docs/blueprint-spec).
