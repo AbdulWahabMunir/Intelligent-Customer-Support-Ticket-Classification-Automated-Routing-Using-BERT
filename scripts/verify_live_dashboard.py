@@ -72,7 +72,7 @@ def main():
             wait_text('API connected')
             if args.updated:
                 evaluate("Array.from(document.querySelectorAll('summary')).find(b=>b.innerText.includes('Workspace details')).click()")
-                wait_text('Application: 1.1.0')
+                wait_text('Application: 1.1.1')
             time.sleep(2)
             prefix = 'live-updated' if args.updated else 'live'
             screenshots = ROOT / 'reports/screenshots'
@@ -96,7 +96,7 @@ def main():
             capture = command('Page.captureScreenshot', {'format': 'png', 'captureBeyondViewport': False})
             (screenshots / (prefix + '-review.png')).write_bytes(base64.b64decode(capture['data']))
             report = {'url': URL, 'verified_at': datetime.now(timezone.utc).isoformat(), 'status': 'passed',
-                      'application_version': '1.1.0' if args.updated else '1.0.0',
+                      'application_version': '1.1.1' if args.updated else 'observed before update',
                       'checks': ['public Streamlit login', 'API connected', 'overview renders',
                                  'previous cloud ticket a623e207 retained', 'reviewed status retained'],
                       'method': 'isolated headless Edge DOM observations and screenshots'}

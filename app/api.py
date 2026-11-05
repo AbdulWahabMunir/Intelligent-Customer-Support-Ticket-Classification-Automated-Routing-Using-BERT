@@ -53,7 +53,7 @@ def create_app(db_path=None, service=None):
     def health():
         with application.state.store.connection() as connection:
             connection.execute("SELECT 1")
-        return {"status": "ok", "application_version": "1.1.0", "model_version": application.state.service.classifier.version,
+        return {"status": "ok", "application_version": "1.1.1", "model_version": application.state.service.classifier.version,
                 "policy_version": application.state.service.policy.config["version"]}
 
     @application.get("/taxonomy")

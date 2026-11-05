@@ -10,6 +10,7 @@ import httpx
 import psutil
 
 ROOT = Path(__file__).resolve().parents[1]
+APPLICATION_RELEASE = '1.1.1'
 
 
 def stop_backend(process):

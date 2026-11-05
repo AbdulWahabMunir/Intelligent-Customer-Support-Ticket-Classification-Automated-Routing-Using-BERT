@@ -4,6 +4,8 @@ import os
 
 import httpx
 
+APPLICATION_RELEASE = '1.1.1'
+
 
 class APIError(RuntimeError):
     pass

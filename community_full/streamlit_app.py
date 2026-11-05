@@ -3,11 +3,20 @@ import os
 from pathlib import Path
 import runpy
 import sys
+import importlib
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 import streamlit as st
+import app.client as client_module
+import app.community_backend as backend_module
+
+# Community Cloud can refresh source without replacing the Streamlit process.
+# Reload changed adapters before constructing the current UI or API child.
+for module in (client_module, backend_module):
+    if getattr(module, 'APPLICATION_RELEASE', None) != '1.1.1':
+        importlib.reload(module)
 from app.community_backend import start_backend
 from app.dashboard import require_access
 
@@ -39,7 +48,7 @@ def backend(release):
 
 try:
     with st.spinner('Starting the support API and DistilBERT. The first launch downloads model weights.'):
-        backend('1.1.0')
+        backend('1.1.1')
 except RuntimeError as error:
     st.error(str(error))
     st.stop()

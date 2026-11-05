@@ -1,0 +1,73 @@
+{
+  "verified_at": "2026-11-05T17:36:37.863955+00:00",
+  "model": "actual fine-tuned DistilBERT",
+  "transport": "local ASGI TestClient; excludes internet and cold-start latency",
+  "warm_requests": 35,
+  "mean_ms": 54.69554285705921,
+  "p95_ms": 136.65120000041497,
+  "unexpected_error_rate": 0,
+  "cases": [
+    {
+      "case": "normal",
+      "http_status": 200,
+      "predicted_intent": "track_refund",
+      "requires_review": false,
+      "truncated": false
+    },
+    {
+      "case": "short",
+      "http_status": 200,
+      "predicted_intent": "contact_human_agent",
+      "requires_review": true,
+      "truncated": false
+    },
+    {
+      "case": "long",
+      "http_status": 200,
+      "predicted_intent": "get_refund",
+      "requires_review": true,
+      "truncated": true
+    },
+    {
+      "case": "misspelling",
+      "http_status": 200,
+      "predicted_intent": "get_refund",
+      "requires_review": false,
+      "truncated": false
+    },
+    {
+      "case": "ambiguous",
+      "http_status": 200,
+      "predicted_intent": "payment_issue",
+      "requires_review": false,
+      "truncated": false
+    },
+    {
+      "case": "multiple_issues",
+      "http_status": 200,
+      "predicted_intent": "change_shipping_address",
+      "requires_review": false,
+      "truncated": false
+    },
+    {
+      "case": "unseen",
+      "http_status": 200,
+      "predicted_intent": "recover_password",
+      "requires_review": true,
+      "truncated": false
+    },
+    {
+      "case": "empty",
+      "http_status": 422
+    },
+    {
+      "case": "whitespace",
+      "http_status": 422
+    },
+    {
+      "case": "oversized",
+      "http_status": 422
+    }
+  ],
+  "limitation": "A closed-set classifier can confidently misclassify unseen or multi-issue messages. Review thresholds are provisional, not an OOD detector."
+}
