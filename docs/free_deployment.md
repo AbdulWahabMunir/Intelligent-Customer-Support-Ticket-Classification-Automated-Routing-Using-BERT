@@ -12,7 +12,7 @@ Configure `DATABASE_URL` with a Neon Free PostgreSQL URL using TLS (`sslmode=req
 
 ## Dashboard
 
-In https://share.streamlit.io sign in with GitHub, create an app from this repository, branch `main`, entrypoint `community/streamlit_app.py`. Select Python 3.14. The requirements file beside that entrypoint installs only the UI dependencies.
+In https://share.streamlit.io sign in with GitHub, create an app from this repository, branch `free-hosting`, entrypoint `community/streamlit_app.py`. Select Python 3.14. The requirements file beside that entrypoint installs only the UI dependencies. The verified hosting changes are on `free-hosting`; GitHub returned server errors when updating `main`.
 
 Set these Streamlit secrets in the deployment UI (never commit their values):
 
