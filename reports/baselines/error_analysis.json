@@ -1,0 +1,204 @@
+{
+  "validation": {
+    "rows": 3641,
+    "errors": 50,
+    "pairs": [
+      {
+        "actual": "get_invoice",
+        "predicted": "check_invoice",
+        "count": 7
+      },
+      {
+        "actual": "cancel_order",
+        "predicted": "change_order",
+        "count": 6
+      },
+      {
+        "actual": "edit_account",
+        "predicted": "delete_account",
+        "count": 6
+      },
+      {
+        "actual": "get_refund",
+        "predicted": "track_refund",
+        "count": 5
+      },
+      {
+        "actual": "registration_problems",
+        "predicted": "create_account",
+        "count": 4
+      },
+      {
+        "actual": "create_account",
+        "predicted": "delete_account",
+        "count": 3
+      },
+      {
+        "actual": "change_order",
+        "predicted": "place_order",
+        "count": 3
+      },
+      {
+        "actual": "cancel_order",
+        "predicted": "delete_account",
+        "count": 3
+      },
+      {
+        "actual": "cancel_order",
+        "predicted": "place_order",
+        "count": 2
+      },
+      {
+        "actual": "track_order",
+        "predicted": "change_order",
+        "count": 2
+      },
+      {
+        "actual": "payment_issue",
+        "predicted": "check_payment_methods",
+        "count": 1
+      },
+      {
+        "actual": "check_refund_policy",
+        "predicted": "get_refund",
+        "count": 1
+      },
+      {
+        "actual": "newsletter_subscription",
+        "predicted": "get_refund",
+        "count": 1
+      },
+      {
+        "actual": "change_order",
+        "predicted": "edit_account",
+        "count": 1
+      },
+      {
+        "actual": "track_refund",
+        "predicted": "get_refund",
+        "count": 1
+      },
+      {
+        "actual": "payment_issue",
+        "predicted": "registration_problems",
+        "count": 1
+      },
+      {
+        "actual": "check_refund_policy",
+        "predicted": "check_cancellation_fee",
+        "count": 1
+      },
+      {
+        "actual": "set_up_shipping_address",
+        "predicted": "registration_problems",
+        "count": 1
+      },
+      {
+        "actual": "set_up_shipping_address",
+        "predicted": "delivery_options",
+        "count": 1
+      }
+    ]
+  },
+  "test": {
+    "rows": 3642,
+    "errors": 38,
+    "pairs": [
+      {
+        "actual": "get_invoice",
+        "predicted": "check_invoice",
+        "count": 6
+      },
+      {
+        "actual": "cancel_order",
+        "predicted": "change_order",
+        "count": 5
+      },
+      {
+        "actual": "payment_issue",
+        "predicted": "registration_problems",
+        "count": 3
+      },
+      {
+        "actual": "contact_customer_service",
+        "predicted": "contact_human_agent",
+        "count": 3
+      },
+      {
+        "actual": "change_order",
+        "predicted": "edit_account",
+        "count": 3
+      },
+      {
+        "actual": "get_refund",
+        "predicted": "track_refund",
+        "count": 2
+      },
+      {
+        "actual": "create_account",
+        "predicted": "delete_account",
+        "count": 2
+      },
+      {
+        "actual": "edit_account",
+        "predicted": "delete_account",
+        "count": 2
+      },
+      {
+        "actual": "track_order",
+        "predicted": "change_order",
+        "count": 2
+      },
+      {
+        "actual": "cancel_order",
+        "predicted": "place_order",
+        "count": 1
+      },
+      {
+        "actual": "payment_issue",
+        "predicted": "recover_password",
+        "count": 1
+      },
+      {
+        "actual": "get_refund",
+        "predicted": "check_refund_policy",
+        "count": 1
+      },
+      {
+        "actual": "track_order",
+        "predicted": "track_refund",
+        "count": 1
+      },
+      {
+        "actual": "change_order",
+        "predicted": "place_order",
+        "count": 1
+      },
+      {
+        "actual": "contact_human_agent",
+        "predicted": "place_order",
+        "count": 1
+      },
+      {
+        "actual": "change_order",
+        "predicted": "change_shipping_address",
+        "count": 1
+      },
+      {
+        "actual": "get_refund",
+        "predicted": "delivery_period",
+        "count": 1
+      },
+      {
+        "actual": "set_up_shipping_address",
+        "predicted": "change_shipping_address",
+        "count": 1
+      },
+      {
+        "actual": "check_payment_methods",
+        "predicted": "payment_issue",
+        "count": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,154 @@
+# Intelligent Customer Support Classifier
+
+A learning-focused NLP project: classify customer support intents, map them to categories, and route tickets using separate business rules.
+
+## Current state
+
+The local application is implemented and tested. Docker Desktop is installed; Windows needs a restart to activate its prerequisites before container runtime testing. Public deployment still needs an accessible repository and model artifact URL. See the [project status](docs/project_status.md).
+
+Implemented: reproducible Bitext download, EDA, duplicate removal, stratified train/validation/test splits, TF-IDF baselines, full three-epoch DistilBERT fine-tuning, saved models and local predictions.
+
+The FastAPI backend now serves predictions, stores tickets in SQLite, and collects append-only human corrections. Original model decisions are preserved; feedback remains pending and does not trigger retraining.
+
+The Streamlit dashboard adds ticket submission, a human review workspace, original-versus-correction history, live counts and routing/priority charts.
+
+The download and inspection use Python's standard library. Baselines and Transformers use the tested project virtual environment on Python 3.14.
+
+From PowerShell in this folder:
+
+```powershell
+python -m src.data.download
+python -m src.data.inspect
+Start-Process reports/eda_report.html
+python -m unittest discover -s tests -v
+```
+
+For baseline training (no environment activation required):
+
+```powershell
+python -m venv .venv
+.venv\Scripts\python.exe -m pip install -r requirements.txt
+.venv\Scripts\python.exe -m src.data.prepare
+.venv\Scripts\python.exe -m src.train_baselines
+.venv\Scripts\python.exe -m src.predict "I need to track my refund"
+.venv\Scripts\python.exe -m unittest discover -s tests -v
+```
+
+Use `requirements-lock.txt` in place of `requirements.txt` to reproduce the tested dependency versions. See `reports/baselines/comparison.md` for measured results and `reports/baselines/metrics.json` for per-class metrics. Processed splits, model files and error messages stay in ignored local directories. Only load joblib model files you trust.
+
+The selected model is chosen by validation macro F1. Test scores are calculated after selection, and must not guide tuning. Probabilities printed by the prediction command are uncalibrated scores, not established reliability estimates.
+
+## Error analysis and DistilBERT experiment
+
+See [baseline error analysis](reports/baselines/error_analysis.md) and the [DistilBERT experiment guide](docs/distilbert_experiment.md). The transformer uses the existing splits and a pinned pretrained model revision. Full three-epoch training completed locally on CPU in approximately 55 minutes, with validation macro F1 of 0.9971. The exported checkpoint passed a reload/inference check.
+
+Held-out results: **99.86% accuracy, 0.9983 macro F1**, with 5 errors among 3,642 test tickets. Logistic Regression scored 98.96% accuracy and 0.9885 macro F1. DistilBERT averaged 35.62 ms per message versus 1.53 ms for Logistic Regression in the same CPU evaluation process. See the [full comparison](reports/distilbert/comparison.md). These results describe synthetic Bitext data; real-ticket robustness and confidence calibration remain untested.
+
+```powershell
+.venv\Scripts\python.exe -m pip install -r requirements-transformers.txt
+.venv\Scripts\python.exe -m src.analyze_errors
+.venv\Scripts\python.exe -m src.train_distilbert --smoke --cpu
+.venv\Scripts\python.exe -m src.package_colab
+```
+
+Use the completed local checkpoint:
+
+```powershell
+.venv\Scripts\python.exe -m src.predict_distilbert "I need to track my refund"
+```
+
+The optional `notebooks/02_distilbert_colab.ipynb` supports repeating the experiment on a Colab GPU. It accepts the generated private archive and downloads the final model and reports. Colab itself has not been launched.
+
+The downloader needs internet access. The inspector can also read an existing CSV with `--input path/to/file.csv`. Reports use only aggregate values, not customer messages.
+
+## Route a ticket
+
+```powershell
+.venv\Scripts\python.exe -m src.route_ticket "I need to track my refund"
+```
+
+The default model is the completed DistilBERT checkpoint; add `--model logistic_regression` to use the baseline. The response includes department, rule-based priority, review reasons, model/policy versions and latency. All 27 intents have configured routes; uncertain predictions go to human review. See the [routing policy](docs/routing_policy.md) for provisional score thresholds and incident/security overrides.
+
+## Run the API
+
+```powershell
+.venv\Scripts\python.exe -m pip install -r requirements-api.txt
+.venv\Scripts\python.exe -m uvicorn app.api:app --host 127.0.0.1 --port 8000
+```
+
+Open http://127.0.0.1:8000/docs. Submit `{"text": "I need to track my refund"}` to `POST /tickets`, then use its ID with `POST /tickets/{id}/feedback` to record a correction. SQLite data stays in the ignored `data/runtime` directory. The API also supports prediction without persistence, ticket retrieval, pagination, a review queue and aggregate analytics. See the [API guide](docs/api.md) for request bodies and review semantics.
+
+The backend's real HTTP flow with DistilBERT confirmed ticket persistence, review handling, append-only feedback and original-prediction preservation. See [API verification evidence](reports/api/verification.md).
+
+## Open the dashboard
+
+With the API running in one terminal, run these in a second terminal:
+
+```powershell
+.venv\Scripts\python.exe -m pip install -r requirements-dashboard.txt
+.venv\Scripts\python.exe -m streamlit run app/dashboard.py
+```
+
+Open http://127.0.0.1:8501. Use New ticket to submit a message, Ticket review to inspect/correct predictions, and Overview to monitor activity. See the [dashboard guide](docs/dashboard.md). This is a local single-user application.
+
+All **41 tests** passed, including challenge integrity, confidence metrics, archive extraction protections and hosted login behavior. The Streamlit widget flow was verified against the real DistilBERT API over HTTP. A real Edge overview capture was also inspected. See [dashboard verification](reports/dashboard/verification.md).
+
+![Local dashboard](reports/screenshots/overview.png)
+
+## Robustness and containers
+
+A fixed **108-case robustness pilot** covers all 27 intents under paraphrasing, spelling swaps and polite wrappers. Both models were evaluated without retraining. DistilBERT scored 88.9% on draft anchor examples and 77.8% on draft paraphrases; these labels await human review and are not an independent benchmark. Read the [pilot report](reports/robustness-pilot/report.md) and [review protocol](docs/robustness.md).
+
+```powershell
+.venv\Scripts\python.exe -m src.evaluate_robustness
+```
+
+`Dockerfile` and `compose.yaml` define separate CPU API and dashboard containers, a read-only model mount and persistent SQLite volume. Docker Desktop 4.98.0, CLI 29.9.2 and Compose 5.6.1 are installed. Compose schema and CLI validation passed. Windows reports a restart pending after enabling WSL/Virtual Machine Platform; image builds and container runtime checks remain pending. After restarting and starting Docker Desktop:
+
+```powershell
+.venv\Scripts\python.exe scripts/verify_containers.py
+```
+
+The container dashboard uses http://127.0.0.1:8502 and API docs use http://127.0.0.1:8002/docs, preserving the local Python ports. See the [container guide](docs/containers.md) for requirements and verification limits. Public deployment remains incomplete.
+
+## Release and deployment
+
+Start the local app with `.venv\Scripts\python.exe scripts/start_project.py`. Create the source/model ZIP archives and checksum manifest with `.venv\Scripts\python.exe -m src.package_release`. See [deployment instructions](docs/deployment.md), [project status](docs/project_status.md), and the [model card](docs/model_card.md).
+
+`render.yaml` is schema-validated and proposes one password-protected service with persistent SQLite storage. It is not deployed, and no paid resources were created. An accessible GitHub repository and model artifact HTTPS URL/checksum are required. The hosted supervisor and login gate were verified locally against an isolated database.
+
+Raw confidence diagnostics are in the [confidence report](reports/confidence/report.md). No calibrator was fitted; the measured raw-score ECE depends on the synthetic test distribution and does not imply real-world confidence reliability.
+
+```mermaid
+flowchart LR
+  Customer --> Streamlit
+  Streamlit --> FastAPI
+  FastAPI --> DistilBERT
+  DistilBERT --> Routing[Priority and routing rules]
+  Routing --> SQLite
+  SQLite --> Review[Human review]
+  Review --> Feedback[Append-only feedback]
+```
+
+## Data and methodology
+
+Source: [Bitext customer support dataset](https://huggingface.co/datasets/bitext/Bitext-customer-support-llm-chatbot-training-dataset). The download is pinned to revision `430d1a89bd93bd1fa23c16f29dd53e73f0087443`. The downloaded dataset card and SHA-256 manifest live beside the raw CSV. The dataset card identifies the license as CDLA-Sharing-1.0; consult its terms before sharing raw or derived data. Raw data is excluded from version control.
+
+- Model input: `instruction` only. `response` is excluded to prevent answer leakage.
+- Supervised targets: the dataset's original `intent` and `category` labels.
+- Normalize case and whitespace only for duplicate auditing; preserve the raw text.
+- Report missing values in all columns; label distributions use valid input/target rows.
+- Remove normalized duplicate messages, reject conflicting labels, and stratify 70/15/15 by intent with seed 42. Check for normalized text overlap. Fit TF-IDF on training data only. Preserve punctuation and stopwords (including negation).
+- The data contains generated linguistic variations. A random split can overstate generalization through template overlap; a separate manually reviewed robustness set will be needed.
+- Priority and department are explicit business-rule outputs, not dataset ground truth.
+
+## Roadmap
+
+1. Dataset download and EDA (implemented; see reports).
+2. Cleaning, duplicate-disjoint splits, TF-IDF + Naive Bayes and Logistic Regression (implemented).
+3. DistilBERT fine-tuning and held-out comparison (see experiment reports).
+4. Provisional score handling, priority rules and routing (implemented).
+5. FastAPI, Streamlit, SQLite and human feedback (implemented).
+6. Robustness pilot evaluated; human-reviewed challenge set, Docker runtime verification and public deployment remain pending.
+
+We will document actual results as each stage is completed, including limitations and errors.

@@ -1,0 +1,59 @@
+{
+  "version": "routing-v1",
+  "minimum_score": 0.8,
+  "minimum_margin": 0.15,
+  "minimum_words": 3,
+  "review_department": "Manual Triage",
+  "intents": {
+    "cancel_order": ["ORDER", "Order Operations"],
+    "change_order": ["ORDER", "Order Operations"],
+    "change_shipping_address": ["SHIPPING", "Logistics"],
+    "check_cancellation_fee": ["CANCEL", "Finance"],
+    "check_invoice": ["INVOICE", "Finance"],
+    "check_payment_methods": ["PAYMENT", "Finance"],
+    "check_refund_policy": ["REFUND", "Finance"],
+    "complaint": ["FEEDBACK", "Customer Care"],
+    "contact_customer_service": ["CONTACT", "Customer Care"],
+    "contact_human_agent": ["CONTACT", "Customer Care"],
+    "create_account": ["ACCOUNT", "Account Support"],
+    "delete_account": ["ACCOUNT", "Account Support"],
+    "delivery_options": ["DELIVERY", "Logistics"],
+    "delivery_period": ["DELIVERY", "Logistics"],
+    "edit_account": ["ACCOUNT", "Account Support"],
+    "get_invoice": ["INVOICE", "Finance"],
+    "get_refund": ["REFUND", "Finance"],
+    "newsletter_subscription": ["SUBSCRIPTION", "Customer Care"],
+    "payment_issue": ["PAYMENT", "Finance"],
+    "place_order": ["ORDER", "Order Operations"],
+    "recover_password": ["ACCOUNT", "Account Security"],
+    "registration_problems": ["ACCOUNT", "Account Support"],
+    "review": ["FEEDBACK", "Customer Care"],
+    "set_up_shipping_address": ["SHIPPING", "Logistics"],
+    "switch_account": ["ACCOUNT", "Account Support"],
+    "track_order": ["ORDER", "Logistics"],
+    "track_refund": ["REFUND", "Finance"]
+  },
+  "low_priority_intents": ["check_payment_methods", "check_refund_policy", "delivery_options", "newsletter_subscription", "review"],
+  "priority_rules": [
+    {
+      "id": "reported_service_outage",
+      "priority": "Critical",
+      "pattern": "\\b(?:service|system|website|application) (?:is |has been )?(?:completely )?down\\b|\\ball users (?:cannot|can't) (?:log in|sign in|access)\\b",
+      "department": "Incident Response",
+      "requires_review": true
+    },
+    {
+      "id": "reported_account_compromise",
+      "priority": "High",
+      "pattern": "\\b(?:my|our) account (?:was |is |has been )?hacked\\b|\\bunauthori[sz]ed (?:charge|payment|access)\\b",
+      "department": "Account Security",
+      "requires_review": true
+    },
+    {
+      "id": "explicit_urgency",
+      "priority": "High",
+      "pattern": "\\b(?:urgent|asap)\\b",
+      "requires_review": false
+    }
+  ]
+}

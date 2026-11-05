@@ -1,0 +1,159 @@
+{
+  "rows": 26872,
+  "columns": [
+    "flags",
+    "instruction",
+    "category",
+    "intent",
+    "response"
+  ],
+  "valid_rows": 26872,
+  "missing_by_column": {
+    "flags": 0,
+    "instruction": 0,
+    "category": 0,
+    "intent": 0,
+    "response": 0
+  },
+  "exact_duplicate_rows": 0,
+  "duplicate_texts_exact": 2237,
+  "duplicate_texts_normalized": 2598,
+  "conflicting_normalized_text_groups": 0,
+  "category_counts": {
+    "ACCOUNT": 5986,
+    "CANCEL": 950,
+    "CONTACT": 1999,
+    "DELIVERY": 1994,
+    "FEEDBACK": 1997,
+    "INVOICE": 1999,
+    "ORDER": 3988,
+    "PAYMENT": 1998,
+    "REFUND": 2992,
+    "SHIPPING": 1970,
+    "SUBSCRIPTION": 999
+  },
+  "intent_counts": {
+    "cancel_order": 998,
+    "change_order": 997,
+    "change_shipping_address": 973,
+    "check_cancellation_fee": 950,
+    "check_invoice": 1000,
+    "check_payment_methods": 999,
+    "check_refund_policy": 997,
+    "complaint": 1000,
+    "contact_customer_service": 1000,
+    "contact_human_agent": 999,
+    "create_account": 997,
+    "delete_account": 995,
+    "delivery_options": 995,
+    "delivery_period": 999,
+    "edit_account": 1000,
+    "get_invoice": 999,
+    "get_refund": 997,
+    "newsletter_subscription": 999,
+    "payment_issue": 999,
+    "place_order": 998,
+    "recover_password": 995,
+    "registration_problems": 999,
+    "review": 997,
+    "set_up_shipping_address": 997,
+    "switch_account": 1000,
+    "track_order": 995,
+    "track_refund": 998
+  },
+  "intent_to_categories": {
+    "cancel_order": [
+      "ORDER"
+    ],
+    "change_order": [
+      "ORDER"
+    ],
+    "change_shipping_address": [
+      "SHIPPING"
+    ],
+    "check_cancellation_fee": [
+      "CANCEL"
+    ],
+    "check_invoice": [
+      "INVOICE"
+    ],
+    "check_payment_methods": [
+      "PAYMENT"
+    ],
+    "check_refund_policy": [
+      "REFUND"
+    ],
+    "complaint": [
+      "FEEDBACK"
+    ],
+    "contact_customer_service": [
+      "CONTACT"
+    ],
+    "contact_human_agent": [
+      "CONTACT"
+    ],
+    "create_account": [
+      "ACCOUNT"
+    ],
+    "delete_account": [
+      "ACCOUNT"
+    ],
+    "delivery_options": [
+      "DELIVERY"
+    ],
+    "delivery_period": [
+      "DELIVERY"
+    ],
+    "edit_account": [
+      "ACCOUNT"
+    ],
+    "get_invoice": [
+      "INVOICE"
+    ],
+    "get_refund": [
+      "REFUND"
+    ],
+    "newsletter_subscription": [
+      "SUBSCRIPTION"
+    ],
+    "payment_issue": [
+      "PAYMENT"
+    ],
+    "place_order": [
+      "ORDER"
+    ],
+    "recover_password": [
+      "ACCOUNT"
+    ],
+    "registration_problems": [
+      "ACCOUNT"
+    ],
+    "review": [
+      "FEEDBACK"
+    ],
+    "set_up_shipping_address": [
+      "SHIPPING"
+    ],
+    "switch_account": [
+      "ACCOUNT"
+    ],
+    "track_order": [
+      "ORDER"
+    ],
+    "track_refund": [
+      "REFUND"
+    ]
+  },
+  "word_count": {
+    "min": 1,
+    "median": 9.0,
+    "mean": 8.69,
+    "max": 16
+  },
+  "word_count_buckets": {
+    "1–5": 2993,
+    "6–10": 16984,
+    "11–20": 6895,
+    "21+": 0
+  }
+}

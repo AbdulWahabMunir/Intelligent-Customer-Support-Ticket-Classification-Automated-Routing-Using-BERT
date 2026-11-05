@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "dashboard_url": "http://127.0.0.1:8501",
+  "verification_api": "http://127.0.0.1:8001",
+  "model_version": "distilbert:130e8686af8b",
+  "verification_ticket_id": "e9fc65fe-d2b9-432c-8341-06b7ff3f4d21",
+  "checks": [
+    "Streamlit widget submission",
+    "real HTTP request to DistilBERT API",
+    "SQLite persistence",
+    "feedback form submission",
+    "original prediction preserved",
+    "pending training status",
+    "review queue refreshed",
+    "overview charts rendered",
+    "dashboard HTML and health endpoints",
+    "main database remains empty"
+  ],
+  "browser_visual_review": false
+}

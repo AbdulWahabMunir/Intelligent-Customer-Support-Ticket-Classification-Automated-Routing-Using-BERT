@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bitext exploratory analysis</title><style>body{font:16px system-ui;max-width:1000px;margin:40px auto;padding:0 20px;color:#182334}td{padding:5px 12px}meter{width:260px}pre{white-space:pre-wrap;background:#f1f4f8;padding:20px}</style>
+<h1>Bitext exploratory analysis</h1><p>Raw dataset audit. Distribution counts use rows with nonempty instruction, category and intent. Lengths are whitespace word counts, not transformer tokens.</p><pre>{
+  &quot;rows&quot;: 26872,
+  &quot;columns&quot;: [
+    &quot;flags&quot;,
+    &quot;instruction&quot;,
+    &quot;category&quot;,
+    &quot;intent&quot;,
+    &quot;response&quot;
+  ],
+  &quot;valid_rows&quot;: 26872,
+  &quot;missing_by_column&quot;: {
+    &quot;flags&quot;: 0,
+    &quot;instruction&quot;: 0,
+    &quot;category&quot;: 0,
+    &quot;intent&quot;: 0,
+    &quot;response&quot;: 0
+  },
+  &quot;exact_duplicate_rows&quot;: 0,
+  &quot;duplicate_texts_exact&quot;: 2237,
+  &quot;duplicate_texts_normalized&quot;: 2598,
+  &quot;conflicting_normalized_text_groups&quot;: 0,
+  &quot;word_count&quot;: {
+    &quot;min&quot;: 1,
+    &quot;median&quot;: 9.0,
+    &quot;mean&quot;: 8.69,
+    &quot;max&quot;: 16
+  }
+}</pre><h2>Categories</h2><table><tr><td>ACCOUNT</td><td><meter min="0" max="5986" value="5986"></meter></td><td>5,986</td></tr><tr><td>CANCEL</td><td><meter min="0" max="5986" value="950"></meter></td><td>950</td></tr><tr><td>CONTACT</td><td><meter min="0" max="5986" value="1999"></meter></td><td>1,999</td></tr><tr><td>DELIVERY</td><td><meter min="0" max="5986" value="1994"></meter></td><td>1,994</td></tr><tr><td>FEEDBACK</td><td><meter min="0" max="5986" value="1997"></meter></td><td>1,997</td></tr><tr><td>INVOICE</td><td><meter min="0" max="5986" value="1999"></meter></td><td>1,999</td></tr><tr><td>ORDER</td><td><meter min="0" max="5986" value="3988"></meter></td><td>3,988</td></tr><tr><td>PAYMENT</td><td><meter min="0" max="5986" value="1998"></meter></td><td>1,998</td></tr><tr><td>REFUND</td><td><meter min="0" max="5986" value="2992"></meter></td><td>2,992</td></tr><tr><td>SHIPPING</td><td><meter min="0" max="5986" value="1970"></meter></td><td>1,970</td></tr><tr><td>SUBSCRIPTION</td><td><meter min="0" max="5986" value="999"></meter></td><td>999</td></tr></table><h2>Intents</h2><table><tr><td>cancel_order</td><td><meter min="0" max="1000" value="998"></meter></td><td>998</td></tr><tr><td>change_order</td><td><meter min="0" max="1000" value="997"></meter></td><td>997</td></tr><tr><td>change_shipping_address</td><td><meter min="0" max="1000" value="973"></meter></td><td>973</td></tr><tr><td>check_cancellation_fee</td><td><meter min="0" max="1000" value="950"></meter></td><td>950</td></tr><tr><td>check_invoice</td><td><meter min="0" max="1000" value="1000"></meter></td><td>1,000</td></tr><tr><td>check_payment_methods</td><td><meter min="0" max="1000" value="999"></meter></td><td>999</td></tr><tr><td>check_refund_policy</td><td><meter min="0" max="1000" value="997"></meter></td><td>997</td></tr><tr><td>complaint</td><td><meter min="0" max="1000" value="1000"></meter></td><td>1,000</td></tr><tr><td>contact_customer_service</td><td><meter min="0" max="1000" value="1000"></meter></td><td>1,000</td></tr><tr><td>contact_human_agent</td><td><meter min="0" max="1000" value="999"></meter></td><td>999</td></tr><tr><td>create_account</td><td><meter min="0" max="1000" value="997"></meter></td><td>997</td></tr><tr><td>delete_account</td><td><meter min="0" max="1000" value="995"></meter></td><td>995</td></tr><tr><td>delivery_options</td><td><meter min="0" max="1000" value="995"></meter></td><td>995</td></tr><tr><td>delivery_period</td><td><meter min="0" max="1000" value="999"></meter></td><td>999</td></tr><tr><td>edit_account</td><td><meter min="0" max="1000" value="1000"></meter></td><td>1,000</td></tr><tr><td>get_invoice</td><td><meter min="0" max="1000" value="999"></meter></td><td>999</td></tr><tr><td>get_refund</td><td><meter min="0" max="1000" value="997"></meter></td><td>997</td></tr><tr><td>newsletter_subscription</td><td><meter min="0" max="1000" value="999"></meter></td><td>999</td></tr><tr><td>payment_issue</td><td><meter min="0" max="1000" value="999"></meter></td><td>999</td></tr><tr><td>place_order</td><td><meter min="0" max="1000" value="998"></meter></td><td>998</td></tr><tr><td>recover_password</td><td><meter min="0" max="1000" value="995"></meter></td><td>995</td></tr><tr><td>registration_problems</td><td><meter min="0" max="1000" value="999"></meter></td><td>999</td></tr><tr><td>review</td><td><meter min="0" max="1000" value="997"></meter></td><td>997</td></tr><tr><td>set_up_shipping_address</td><td><meter min="0" max="1000" value="997"></meter></td><td>997</td></tr><tr><td>switch_account</td><td><meter min="0" max="1000" value="1000"></meter></td><td>1,000</td></tr><tr><td>track_order</td><td><meter min="0" max="1000" value="995"></meter></td><td>995</td></tr><tr><td>track_refund</td><td><meter min="0" max="1000" value="998"></meter></td><td>998</td></tr></table><h2>Message lengths (words)</h2><table><tr><td>1–5</td><td><meter min="0" max="16984" value="2993"></meter></td><td>2,993</td></tr><tr><td>6–10</td><td><meter min="0" max="16984" value="16984"></meter></td><td>16,984</td></tr><tr><td>11–20</td><td><meter min="0" max="16984" value="6895"></meter></td><td>6,895</td></tr><tr><td>21+</td><td><meter min="0" max="16984" value="0"></meter></td><td>0</td></tr></table><h2>Before training</h2><p>Resolve conflicting labels and deduplicate before splitting. Keep normalized duplicate groups in one split. Near duplicates and synthetic template overlap require further review. Never use response, category or intent as input features.</p></html>

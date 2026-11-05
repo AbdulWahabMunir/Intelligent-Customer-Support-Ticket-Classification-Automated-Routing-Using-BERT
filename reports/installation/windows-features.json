@@ -1,0 +1,10 @@
+﻿[
+    {
+        "Feature":  "Microsoft-Windows-Subsystem-Linux",
+        "RestartNeeded":  true
+    },
+    {
+        "Feature":  "VirtualMachinePlatform",
+        "RestartNeeded":  true
+    }
+]

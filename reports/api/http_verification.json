@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "model_version": "distilbert:130e8686af8b",
+  "database": "data/runtime/verification.sqlite3",
+  "ticket_id": "1f6e60bd-e42a-411f-aa9d-b85bee817ab8",
+  "vague_ticket_id": "d717aa56-b802-48a6-9a49-f3484490ac14",
+  "checks": [
+    "health",
+    "docs HTML and OpenAPI schema",
+    "27-intent taxonomy",
+    "nonpersistent prediction",
+    "ticket persistence",
+    "vague-ticket review",
+    "append-only feedback",
+    "original prediction preservation",
+    "SQLite readback",
+    "invalid input and label rejection",
+    "missing ticket 404"
+  ],
+  "analytics": {
+    "tickets": 2,
+    "reviewed_tickets": 2,
+    "pending_review": 0,
+    "feedback_entries": 3,
+    "original_departments": {
+      "Finance": 1,
+      "Manual Triage": 1
+    },
+    "original_priorities": {
+      "Medium": 2
+    }
+  }
+}

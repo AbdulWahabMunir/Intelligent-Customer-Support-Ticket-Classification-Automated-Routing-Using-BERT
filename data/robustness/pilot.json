@@ -1,0 +1,871 @@
+{
+  "name": "Customer support robustness pilot v1",
+  "source": "Agent-authored synthetic examples; not copied from dataset rows",
+  "status": "Pending human linguistic/label review; diagnostic only, not an independent benchmark",
+  "cases": [
+    {
+      "id": "cancel_order:anchor",
+      "group": "cancel_order",
+      "intent": "cancel_order",
+      "condition": "anchor",
+      "text": "Please cancel my order",
+      "review_status": "draft"
+    },
+    {
+      "id": "cancel_order:paraphrase",
+      "group": "cancel_order",
+      "intent": "cancel_order",
+      "condition": "paraphrase",
+      "text": "I no longer want my purchase; can you cancel it?",
+      "review_status": "draft"
+    },
+    {
+      "id": "cancel_order:spelling_swap",
+      "group": "cancel_order",
+      "intent": "cancel_order",
+      "condition": "spelling_swap",
+      "text": "Pelase cancel my order",
+      "review_status": "draft"
+    },
+    {
+      "id": "cancel_order:polite_wrapper",
+      "group": "cancel_order",
+      "intent": "cancel_order",
+      "condition": "polite_wrapper",
+      "text": "Could you help me with this? Please cancel my order",
+      "review_status": "draft"
+    },
+    {
+      "id": "change_order:anchor",
+      "group": "change_order",
+      "intent": "change_order",
+      "condition": "anchor",
+      "text": "I need to change the items in my order",
+      "review_status": "draft"
+    },
+    {
+      "id": "change_order:paraphrase",
+      "group": "change_order",
+      "intent": "change_order",
+      "condition": "paraphrase",
+      "text": "Can you add another item to the order I already placed?",
+      "review_status": "draft"
+    },
+    {
+      "id": "change_order:spelling_swap",
+      "group": "change_order",
+      "intent": "change_order",
+      "condition": "spelling_swap",
+      "text": "I need to cahnge the items in my order",
+      "review_status": "draft"
+    },
+    {
+      "id": "change_order:polite_wrapper",
+      "group": "change_order",
+      "intent": "change_order",
+      "condition": "polite_wrapper",
+      "text": "Could you help me with this? I need to change the items in my order",
+      "review_status": "draft"
+    },
+    {
+      "id": "change_shipping_address:anchor",
+      "group": "change_shipping_address",
+      "intent": "change_shipping_address",
+      "condition": "anchor",
+      "text": "Change the shipping address for my order",
+      "review_status": "draft"
+    },
+    {
+      "id": "change_shipping_address:paraphrase",
+      "group": "change_shipping_address",
+      "intent": "change_shipping_address",
+      "condition": "paraphrase",
+      "text": "My order has the wrong destination; please update the delivery address",
+      "review_status": "draft"
+    },
+    {
+      "id": "change_shipping_address:spelling_swap",
+      "group": "change_shipping_address",
+      "intent": "change_shipping_address",
+      "condition": "spelling_swap",
+      "text": "Cahnge the shipping address for my order",
+      "review_status": "draft"
+    },
+    {
+      "id": "change_shipping_address:polite_wrapper",
+      "group": "change_shipping_address",
+      "intent": "change_shipping_address",
+      "condition": "polite_wrapper",
+      "text": "Could you help me with this? Change the shipping address for my order",
+      "review_status": "draft"
+    },
+    {
+      "id": "check_cancellation_fee:anchor",
+      "group": "check_cancellation_fee",
+      "intent": "check_cancellation_fee",
+      "condition": "anchor",
+      "text": "Is there a fee for cancelling my order?",
+      "review_status": "draft"
+    },
+    {
+      "id": "check_cancellation_fee:paraphrase",
+      "group": "check_cancellation_fee",
+      "intent": "check_cancellation_fee",
+      "condition": "paraphrase",
+      "text": "How much will you charge me if I cancel my purchase?",
+      "review_status": "draft"
+    },
+    {
+      "id": "check_cancellation_fee:spelling_swap",
+      "group": "check_cancellation_fee",
+      "intent": "check_cancellation_fee",
+      "condition": "spelling_swap",
+      "text": "Is tehre a fee for cancelling my order?",
+      "review_status": "draft"
+    },
+    {
+      "id": "check_cancellation_fee:polite_wrapper",
+      "group": "check_cancellation_fee",
+      "intent": "check_cancellation_fee",
+      "condition": "polite_wrapper",
+      "text": "Could you help me with this? Is there a fee for cancelling my order?",
+      "review_status": "draft"
+    },
+    {
+      "id": "check_invoice:anchor",
+      "group": "check_invoice",
+      "intent": "check_invoice",
+      "condition": "anchor",
+      "text": "I think the total on my invoice is incorrect",
+      "review_status": "draft"
+    },
+    {
+      "id": "check_invoice:paraphrase",
+      "group": "check_invoice",
+      "intent": "check_invoice",
+      "condition": "paraphrase",
+      "text": "Could you check whether the charges on my bill are right?",
+      "review_status": "draft"
+    },
+    {
+      "id": "check_invoice:spelling_swap",
+      "group": "check_invoice",
+      "intent": "check_invoice",
+      "condition": "spelling_swap",
+      "text": "I tihnk the total on my invoice is incorrect",
+      "review_status": "draft"
+    },
+    {
+      "id": "check_invoice:polite_wrapper",
+      "group": "check_invoice",
+      "intent": "check_invoice",
+      "condition": "polite_wrapper",
+      "text": "Could you help me with this? I think the total on my invoice is incorrect",
+      "review_status": "draft"
+    },
+    {
+      "id": "check_payment_methods:anchor",
+      "group": "check_payment_methods",
+      "intent": "check_payment_methods",
+      "condition": "anchor",
+      "text": "What payment methods do you accept?",
+      "review_status": "draft"
+    },
+    {
+      "id": "check_payment_methods:paraphrase",
+      "group": "check_payment_methods",
+      "intent": "check_payment_methods",
+      "condition": "paraphrase",
+      "text": "Can I pay for my order with a credit card?",
+      "review_status": "draft"
+    },
+    {
+      "id": "check_payment_methods:spelling_swap",
+      "group": "check_payment_methods",
+      "intent": "check_payment_methods",
+      "condition": "spelling_swap",
+      "text": "What pyament methods do you accept?",
+      "review_status": "draft"
+    },
+    {
+      "id": "check_payment_methods:polite_wrapper",
+      "group": "check_payment_methods",
+      "intent": "check_payment_methods",
+      "condition": "polite_wrapper",
+      "text": "Could you help me with this? What payment methods do you accept?",
+      "review_status": "draft"
+    },
+    {
+      "id": "check_refund_policy:anchor",
+      "group": "check_refund_policy",
+      "intent": "check_refund_policy",
+      "condition": "anchor",
+      "text": "What is your refund policy?",
+      "review_status": "draft"
+    },
+    {
+      "id": "check_refund_policy:paraphrase",
+      "group": "check_refund_policy",
+      "intent": "check_refund_policy",
+      "condition": "paraphrase",
+      "text": "Under what conditions am I eligible for a refund?",
+      "review_status": "draft"
+    },
+    {
+      "id": "check_refund_policy:spelling_swap",
+      "group": "check_refund_policy",
+      "intent": "check_refund_policy",
+      "condition": "spelling_swap",
+      "text": "What is your rfeund policy?",
+      "review_status": "draft"
+    },
+    {
+      "id": "check_refund_policy:polite_wrapper",
+      "group": "check_refund_policy",
+      "intent": "check_refund_policy",
+      "condition": "polite_wrapper",
+      "text": "Could you help me with this? What is your refund policy?",
+      "review_status": "draft"
+    },
+    {
+      "id": "complaint:anchor",
+      "group": "complaint",
+      "intent": "complaint",
+      "condition": "anchor",
+      "text": "I want to make a complaint about your service",
+      "review_status": "draft"
+    },
+    {
+      "id": "complaint:paraphrase",
+      "group": "complaint",
+      "intent": "complaint",
+      "condition": "paraphrase",
+      "text": "Your customer service was disappointing and I want to complain",
+      "review_status": "draft"
+    },
+    {
+      "id": "complaint:spelling_swap",
+      "group": "complaint",
+      "intent": "complaint",
+      "condition": "spelling_swap",
+      "text": "I want to make a cmoplaint about your service",
+      "review_status": "draft"
+    },
+    {
+      "id": "complaint:polite_wrapper",
+      "group": "complaint",
+      "intent": "complaint",
+      "condition": "polite_wrapper",
+      "text": "Could you help me with this? I want to make a complaint about your service",
+      "review_status": "draft"
+    },
+    {
+      "id": "contact_customer_service:anchor",
+      "group": "contact_customer_service",
+      "intent": "contact_customer_service",
+      "condition": "anchor",
+      "text": "How do I contact customer service?",
+      "review_status": "draft"
+    },
+    {
+      "id": "contact_customer_service:paraphrase",
+      "group": "contact_customer_service",
+      "intent": "contact_customer_service",
+      "condition": "paraphrase",
+      "text": "Where can I find the customer support phone number?",
+      "review_status": "draft"
+    },
+    {
+      "id": "contact_customer_service:spelling_swap",
+      "group": "contact_customer_service",
+      "intent": "contact_customer_service",
+      "condition": "spelling_swap",
+      "text": "How do I cnotact customer service?",
+      "review_status": "draft"
+    },
+    {
+      "id": "contact_customer_service:polite_wrapper",
+      "group": "contact_customer_service",
+      "intent": "contact_customer_service",
+      "condition": "polite_wrapper",
+      "text": "Could you help me with this? How do I contact customer service?",
+      "review_status": "draft"
+    },
+    {
+      "id": "contact_human_agent:anchor",
+      "group": "contact_human_agent",
+      "intent": "contact_human_agent",
+      "condition": "anchor",
+      "text": "I want to speak to a human agent",
+      "review_status": "draft"
+    },
+    {
+      "id": "contact_human_agent:paraphrase",
+      "group": "contact_human_agent",
+      "intent": "contact_human_agent",
+      "condition": "paraphrase",
+      "text": "Please connect me to a real person rather than a chatbot",
+      "review_status": "draft"
+    },
+    {
+      "id": "contact_human_agent:spelling_swap",
+      "group": "contact_human_agent",
+      "intent": "contact_human_agent",
+      "condition": "spelling_swap",
+      "text": "I want to sepak to a human agent",
+      "review_status": "draft"
+    },
+    {
+      "id": "contact_human_agent:polite_wrapper",
+      "group": "contact_human_agent",
+      "intent": "contact_human_agent",
+      "condition": "polite_wrapper",
+      "text": "Could you help me with this? I want to speak to a human agent",
+      "review_status": "draft"
+    },
+    {
+      "id": "create_account:anchor",
+      "group": "create_account",
+      "intent": "create_account",
+      "condition": "anchor",
+      "text": "I want to create a new account",
+      "review_status": "draft"
+    },
+    {
+      "id": "create_account:paraphrase",
+      "group": "create_account",
+      "intent": "create_account",
+      "condition": "paraphrase",
+      "text": "How can I sign up for an account?",
+      "review_status": "draft"
+    },
+    {
+      "id": "create_account:spelling_swap",
+      "group": "create_account",
+      "intent": "create_account",
+      "condition": "spelling_swap",
+      "text": "I want to cerate a new account",
+      "review_status": "draft"
+    },
+    {
+      "id": "create_account:polite_wrapper",
+      "group": "create_account",
+      "intent": "create_account",
+      "condition": "polite_wrapper",
+      "text": "Could you help me with this? I want to create a new account",
+      "review_status": "draft"
+    },
+    {
+      "id": "delete_account:anchor",
+      "group": "delete_account",
+      "intent": "delete_account",
+      "condition": "anchor",
+      "text": "Please delete my account permanently",
+      "review_status": "draft"
+    },
+    {
+      "id": "delete_account:paraphrase",
+      "group": "delete_account",
+      "intent": "delete_account",
+      "condition": "paraphrase",
+      "text": "I would like to close my account and remove it",
+      "review_status": "draft"
+    },
+    {
+      "id": "delete_account:spelling_swap",
+      "group": "delete_account",
+      "intent": "delete_account",
+      "condition": "spelling_swap",
+      "text": "Pelase delete my account permanently",
+      "review_status": "draft"
+    },
+    {
+      "id": "delete_account:polite_wrapper",
+      "group": "delete_account",
+      "intent": "delete_account",
+      "condition": "polite_wrapper",
+      "text": "Could you help me with this? Please delete my account permanently",
+      "review_status": "draft"
+    },
+    {
+      "id": "delivery_options:anchor",
+      "group": "delivery_options",
+      "intent": "delivery_options",
+      "condition": "anchor",
+      "text": "What delivery options are available?",
+      "review_status": "draft"
+    },
+    {
+      "id": "delivery_options:paraphrase",
+      "group": "delivery_options",
+      "intent": "delivery_options",
+      "condition": "paraphrase",
+      "text": "Do you offer express delivery or only standard delivery?",
+      "review_status": "draft"
+    },
+    {
+      "id": "delivery_options:spelling_swap",
+      "group": "delivery_options",
+      "intent": "delivery_options",
+      "condition": "spelling_swap",
+      "text": "What dleivery options are available?",
+      "review_status": "draft"
+    },
+    {
+      "id": "delivery_options:polite_wrapper",
+      "group": "delivery_options",
+      "intent": "delivery_options",
+      "condition": "polite_wrapper",
+      "text": "Could you help me with this? What delivery options are available?",
+      "review_status": "draft"
+    },
+    {
+      "id": "delivery_period:anchor",
+      "group": "delivery_period",
+      "intent": "delivery_period",
+      "condition": "anchor",
+      "text": "How long does delivery usually take?",
+      "review_status": "draft"
+    },
+    {
+      "id": "delivery_period:paraphrase",
+      "group": "delivery_period",
+      "intent": "delivery_period",
+      "condition": "paraphrase",
+      "text": "What is the usual delivery time after placing an order?",
+      "review_status": "draft"
+    },
+    {
+      "id": "delivery_period:spelling_swap",
+      "group": "delivery_period",
+      "intent": "delivery_period",
+      "condition": "spelling_swap",
+      "text": "How long does dleivery usually take?",
+      "review_status": "draft"
+    },
+    {
+      "id": "delivery_period:polite_wrapper",
+      "group": "delivery_period",
+      "intent": "delivery_period",
+      "condition": "polite_wrapper",
+      "text": "Could you help me with this? How long does delivery usually take?",
+      "review_status": "draft"
+    },
+    {
+      "id": "edit_account:anchor",
+      "group": "edit_account",
+      "intent": "edit_account",
+      "condition": "anchor",
+      "text": "I need to update my account details",
+      "review_status": "draft"
+    },
+    {
+      "id": "edit_account:paraphrase",
+      "group": "edit_account",
+      "intent": "edit_account",
+      "condition": "paraphrase",
+      "text": "Where can I change the personal details on my profile?",
+      "review_status": "draft"
+    },
+    {
+      "id": "edit_account:spelling_swap",
+      "group": "edit_account",
+      "intent": "edit_account",
+      "condition": "spelling_swap",
+      "text": "I need to udpate my account details",
+      "review_status": "draft"
+    },
+    {
+      "id": "edit_account:polite_wrapper",
+      "group": "edit_account",
+      "intent": "edit_account",
+      "condition": "polite_wrapper",
+      "text": "Could you help me with this? I need to update my account details",
+      "review_status": "draft"
+    },
+    {
+      "id": "get_invoice:anchor",
+      "group": "get_invoice",
+      "intent": "get_invoice",
+      "condition": "anchor",
+      "text": "Please send me a copy of my invoice",
+      "review_status": "draft"
+    },
+    {
+      "id": "get_invoice:paraphrase",
+      "group": "get_invoice",
+      "intent": "get_invoice",
+      "condition": "paraphrase",
+      "text": "How can I download the invoice for my purchase?",
+      "review_status": "draft"
+    },
+    {
+      "id": "get_invoice:spelling_swap",
+      "group": "get_invoice",
+      "intent": "get_invoice",
+      "condition": "spelling_swap",
+      "text": "Pelase send me a copy of my invoice",
+      "review_status": "draft"
+    },
+    {
+      "id": "get_invoice:polite_wrapper",
+      "group": "get_invoice",
+      "intent": "get_invoice",
+      "condition": "polite_wrapper",
+      "text": "Could you help me with this? Please send me a copy of my invoice",
+      "review_status": "draft"
+    },
+    {
+      "id": "get_refund:anchor",
+      "group": "get_refund",
+      "intent": "get_refund",
+      "condition": "anchor",
+      "text": "I would like to request a refund",
+      "review_status": "draft"
+    },
+    {
+      "id": "get_refund:paraphrase",
+      "group": "get_refund",
+      "intent": "get_refund",
+      "condition": "paraphrase",
+      "text": "Please return the money I paid for this purchase",
+      "review_status": "draft"
+    },
+    {
+      "id": "get_refund:spelling_swap",
+      "group": "get_refund",
+      "intent": "get_refund",
+      "condition": "spelling_swap",
+      "text": "I wuold like to request a refund",
+      "review_status": "draft"
+    },
+    {
+      "id": "get_refund:polite_wrapper",
+      "group": "get_refund",
+      "intent": "get_refund",
+      "condition": "polite_wrapper",
+      "text": "Could you help me with this? I would like to request a refund",
+      "review_status": "draft"
+    },
+    {
+      "id": "newsletter_subscription:anchor",
+      "group": "newsletter_subscription",
+      "intent": "newsletter_subscription",
+      "condition": "anchor",
+      "text": "I want to subscribe to your newsletter",
+      "review_status": "draft"
+    },
+    {
+      "id": "newsletter_subscription:paraphrase",
+      "group": "newsletter_subscription",
+      "intent": "newsletter_subscription",
+      "condition": "paraphrase",
+      "text": "How do I sign up to receive your email newsletter?",
+      "review_status": "draft"
+    },
+    {
+      "id": "newsletter_subscription:spelling_swap",
+      "group": "newsletter_subscription",
+      "intent": "newsletter_subscription",
+      "condition": "spelling_swap",
+      "text": "I want to sbuscribe to your newsletter",
+      "review_status": "draft"
+    },
+    {
+      "id": "newsletter_subscription:polite_wrapper",
+      "group": "newsletter_subscription",
+      "intent": "newsletter_subscription",
+      "condition": "polite_wrapper",
+      "text": "Could you help me with this? I want to subscribe to your newsletter",
+      "review_status": "draft"
+    },
+    {
+      "id": "payment_issue:anchor",
+      "group": "payment_issue",
+      "intent": "payment_issue",
+      "condition": "anchor",
+      "text": "My payment failed when I tried to pay",
+      "review_status": "draft"
+    },
+    {
+      "id": "payment_issue:paraphrase",
+      "group": "payment_issue",
+      "intent": "payment_issue",
+      "condition": "paraphrase",
+      "text": "The checkout rejected my payment and I need help",
+      "review_status": "draft"
+    },
+    {
+      "id": "payment_issue:spelling_swap",
+      "group": "payment_issue",
+      "intent": "payment_issue",
+      "condition": "spelling_swap",
+      "text": "My pyament failed when I tried to pay",
+      "review_status": "draft"
+    },
+    {
+      "id": "payment_issue:polite_wrapper",
+      "group": "payment_issue",
+      "intent": "payment_issue",
+      "condition": "polite_wrapper",
+      "text": "Could you help me with this? My payment failed when I tried to pay",
+      "review_status": "draft"
+    },
+    {
+      "id": "place_order:anchor",
+      "group": "place_order",
+      "intent": "place_order",
+      "condition": "anchor",
+      "text": "I would like to place a new order",
+      "review_status": "draft"
+    },
+    {
+      "id": "place_order:paraphrase",
+      "group": "place_order",
+      "intent": "place_order",
+      "condition": "paraphrase",
+      "text": "How can I buy a product from your store?",
+      "review_status": "draft"
+    },
+    {
+      "id": "place_order:spelling_swap",
+      "group": "place_order",
+      "intent": "place_order",
+      "condition": "spelling_swap",
+      "text": "I wuold like to place a new order",
+      "review_status": "draft"
+    },
+    {
+      "id": "place_order:polite_wrapper",
+      "group": "place_order",
+      "intent": "place_order",
+      "condition": "polite_wrapper",
+      "text": "Could you help me with this? I would like to place a new order",
+      "review_status": "draft"
+    },
+    {
+      "id": "recover_password:anchor",
+      "group": "recover_password",
+      "intent": "recover_password",
+      "condition": "anchor",
+      "text": "I forgot my password and need to reset it",
+      "review_status": "draft"
+    },
+    {
+      "id": "recover_password:paraphrase",
+      "group": "recover_password",
+      "intent": "recover_password",
+      "condition": "paraphrase",
+      "text": "How can I recover access after losing my password?",
+      "review_status": "draft"
+    },
+    {
+      "id": "recover_password:spelling_swap",
+      "group": "recover_password",
+      "intent": "recover_password",
+      "condition": "spelling_swap",
+      "text": "I frogot my password and need to reset it",
+      "review_status": "draft"
+    },
+    {
+      "id": "recover_password:polite_wrapper",
+      "group": "recover_password",
+      "intent": "recover_password",
+      "condition": "polite_wrapper",
+      "text": "Could you help me with this? I forgot my password and need to reset it",
+      "review_status": "draft"
+    },
+    {
+      "id": "registration_problems:anchor",
+      "group": "registration_problems",
+      "intent": "registration_problems",
+      "condition": "anchor",
+      "text": "I get an error when I try to register",
+      "review_status": "draft"
+    },
+    {
+      "id": "registration_problems:paraphrase",
+      "group": "registration_problems",
+      "intent": "registration_problems",
+      "condition": "paraphrase",
+      "text": "Your sign-up form will not let me create an account",
+      "review_status": "draft"
+    },
+    {
+      "id": "registration_problems:spelling_swap",
+      "group": "registration_problems",
+      "intent": "registration_problems",
+      "condition": "spelling_swap",
+      "text": "I get an error when I try to rgeister",
+      "review_status": "draft"
+    },
+    {
+      "id": "registration_problems:polite_wrapper",
+      "group": "registration_problems",
+      "intent": "registration_problems",
+      "condition": "polite_wrapper",
+      "text": "Could you help me with this? I get an error when I try to register",
+      "review_status": "draft"
+    },
+    {
+      "id": "review:anchor",
+      "group": "review",
+      "intent": "review",
+      "condition": "anchor",
+      "text": "Where can I leave a product review?",
+      "review_status": "draft"
+    },
+    {
+      "id": "review:paraphrase",
+      "group": "review",
+      "intent": "review",
+      "condition": "paraphrase",
+      "text": "I would like to post a review of the item I bought",
+      "review_status": "draft"
+    },
+    {
+      "id": "review:spelling_swap",
+      "group": "review",
+      "intent": "review",
+      "condition": "spelling_swap",
+      "text": "Wehre can I leave a product review?",
+      "review_status": "draft"
+    },
+    {
+      "id": "review:polite_wrapper",
+      "group": "review",
+      "intent": "review",
+      "condition": "polite_wrapper",
+      "text": "Could you help me with this? Where can I leave a product review?",
+      "review_status": "draft"
+    },
+    {
+      "id": "set_up_shipping_address:anchor",
+      "group": "set_up_shipping_address",
+      "intent": "set_up_shipping_address",
+      "condition": "anchor",
+      "text": "I want to add a shipping address to my profile",
+      "review_status": "draft"
+    },
+    {
+      "id": "set_up_shipping_address:paraphrase",
+      "group": "set_up_shipping_address",
+      "intent": "set_up_shipping_address",
+      "condition": "paraphrase",
+      "text": "How do I save my first delivery address in my account?",
+      "review_status": "draft"
+    },
+    {
+      "id": "set_up_shipping_address:spelling_swap",
+      "group": "set_up_shipping_address",
+      "intent": "set_up_shipping_address",
+      "condition": "spelling_swap",
+      "text": "I want to add a sihpping address to my profile",
+      "review_status": "draft"
+    },
+    {
+      "id": "set_up_shipping_address:polite_wrapper",
+      "group": "set_up_shipping_address",
+      "intent": "set_up_shipping_address",
+      "condition": "polite_wrapper",
+      "text": "Could you help me with this? I want to add a shipping address to my profile",
+      "review_status": "draft"
+    },
+    {
+      "id": "switch_account:anchor",
+      "group": "switch_account",
+      "intent": "switch_account",
+      "condition": "anchor",
+      "text": "How do I switch to my other account?",
+      "review_status": "draft"
+    },
+    {
+      "id": "switch_account:paraphrase",
+      "group": "switch_account",
+      "intent": "switch_account",
+      "condition": "paraphrase",
+      "text": "I want to sign out of this account and use another one",
+      "review_status": "draft"
+    },
+    {
+      "id": "switch_account:spelling_swap",
+      "group": "switch_account",
+      "intent": "switch_account",
+      "condition": "spelling_swap",
+      "text": "How do I siwtch to my other account?",
+      "review_status": "draft"
+    },
+    {
+      "id": "switch_account:polite_wrapper",
+      "group": "switch_account",
+      "intent": "switch_account",
+      "condition": "polite_wrapper",
+      "text": "Could you help me with this? How do I switch to my other account?",
+      "review_status": "draft"
+    },
+    {
+      "id": "track_order:anchor",
+      "group": "track_order",
+      "intent": "track_order",
+      "condition": "anchor",
+      "text": "Where is the order I already placed?",
+      "review_status": "draft"
+    },
+    {
+      "id": "track_order:paraphrase",
+      "group": "track_order",
+      "intent": "track_order",
+      "condition": "paraphrase",
+      "text": "Can you check the current status of my package?",
+      "review_status": "draft"
+    },
+    {
+      "id": "track_order:spelling_swap",
+      "group": "track_order",
+      "intent": "track_order",
+      "condition": "spelling_swap",
+      "text": "Wehre is the order I already placed?",
+      "review_status": "draft"
+    },
+    {
+      "id": "track_order:polite_wrapper",
+      "group": "track_order",
+      "intent": "track_order",
+      "condition": "polite_wrapper",
+      "text": "Could you help me with this? Where is the order I already placed?",
+      "review_status": "draft"
+    },
+    {
+      "id": "track_refund:anchor",
+      "group": "track_refund",
+      "intent": "track_refund",
+      "condition": "anchor",
+      "text": "What is the status of my existing refund?",
+      "review_status": "draft"
+    },
+    {
+      "id": "track_refund:paraphrase",
+      "group": "track_refund",
+      "intent": "track_refund",
+      "condition": "paraphrase",
+      "text": "I already requested a refund; when will it arrive?",
+      "review_status": "draft"
+    },
+    {
+      "id": "track_refund:spelling_swap",
+      "group": "track_refund",
+      "intent": "track_refund",
+      "condition": "spelling_swap",
+      "text": "What is the sattus of my existing refund?",
+      "review_status": "draft"
+    },
+    {
+      "id": "track_refund:polite_wrapper",
+      "group": "track_refund",
+      "intent": "track_refund",
+      "condition": "polite_wrapper",
+      "text": "Could you help me with this? What is the status of my existing refund?",
+      "review_status": "draft"
+    }
+  ]
+}

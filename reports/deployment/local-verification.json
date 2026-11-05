@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "mode": "local hosted supervisor with isolated SQLite database",
+  "checks": [
+    "loopback API readiness",
+    "Streamlit readiness",
+    "password gate hides metrics",
+    "successful login renders overview"
+  ],
+  "cloud_deployment": "not_run"
+}

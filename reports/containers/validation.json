@@ -1,0 +1,16 @@
+{
+  "compose_schema_validation": "passed",
+  "schema_source": "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json",
+  "schema_sha256": "d549057ebc2925f39f62799eab0db7b9e2c18b35b6c00595199116da3ed10e64",
+  "required_model_files": "present",
+  "docker_cli": "29.9.2",
+  "image_build": "not_run",
+  "container_smoke_test": "not_run",
+  "public_deployment": "not_run",
+  "docker_desktop": "4.98.0",
+  "docker_compose": "5.6.1",
+  "compose_cli_validation": "passed",
+  "windows_restart_required": true,
+  "engine": "unavailable in current Windows session",
+  "windows_build": "21996"
+}

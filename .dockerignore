@@ -1,0 +1,17 @@
+**
+!Dockerfile
+!requirements.txt
+!requirements-transformers.txt
+!requirements-api.txt
+!app/
+!app/**
+!src/
+!src/**
+!config/
+!config/**
+!.streamlit/
+!.streamlit/config.toml
+!docker/
+!docker/requirements-ui.txt
+**/__pycache__/
+**/*.pyc

@@ -1,0 +1,1730 @@
+[
+  {
+    "case_id": "cancel_order:anchor",
+    "model": "logistic_regression",
+    "expected": "cancel_order",
+    "predicted": "cancel_order",
+    "score_uncalibrated": 0.42833838356979864,
+    "correct": true
+  },
+  {
+    "case_id": "cancel_order:paraphrase",
+    "model": "logistic_regression",
+    "expected": "cancel_order",
+    "predicted": "cancel_order",
+    "score_uncalibrated": 0.2347006207909212,
+    "correct": true
+  },
+  {
+    "case_id": "cancel_order:spelling_swap",
+    "model": "logistic_regression",
+    "expected": "cancel_order",
+    "predicted": "cancel_order",
+    "score_uncalibrated": 0.42833838356979864,
+    "correct": true
+  },
+  {
+    "case_id": "cancel_order:polite_wrapper",
+    "model": "logistic_regression",
+    "expected": "cancel_order",
+    "predicted": "cancel_order",
+    "score_uncalibrated": 0.24585418689735442,
+    "correct": true
+  },
+  {
+    "case_id": "change_order:anchor",
+    "model": "logistic_regression",
+    "expected": "change_order",
+    "predicted": "change_shipping_address",
+    "score_uncalibrated": 0.19010408809208093,
+    "correct": false
+  },
+  {
+    "case_id": "change_order:paraphrase",
+    "model": "logistic_regression",
+    "expected": "change_order",
+    "predicted": "change_order",
+    "score_uncalibrated": 0.19966187483249012,
+    "correct": true
+  },
+  {
+    "case_id": "change_order:spelling_swap",
+    "model": "logistic_regression",
+    "expected": "change_order",
+    "predicted": "place_order",
+    "score_uncalibrated": 0.1372606793295732,
+    "correct": false
+  },
+  {
+    "case_id": "change_order:polite_wrapper",
+    "model": "logistic_regression",
+    "expected": "change_order",
+    "predicted": "change_shipping_address",
+    "score_uncalibrated": 0.12770770494117875,
+    "correct": false
+  },
+  {
+    "case_id": "change_shipping_address:anchor",
+    "model": "logistic_regression",
+    "expected": "change_shipping_address",
+    "predicted": "change_shipping_address",
+    "score_uncalibrated": 0.8735001527845069,
+    "correct": true
+  },
+  {
+    "case_id": "change_shipping_address:paraphrase",
+    "model": "logistic_regression",
+    "expected": "change_shipping_address",
+    "predicted": "change_shipping_address",
+    "score_uncalibrated": 0.9322485724111149,
+    "correct": true
+  },
+  {
+    "case_id": "change_shipping_address:spelling_swap",
+    "model": "logistic_regression",
+    "expected": "change_shipping_address",
+    "predicted": "change_shipping_address",
+    "score_uncalibrated": 0.6646983503897128,
+    "correct": true
+  },
+  {
+    "case_id": "change_shipping_address:polite_wrapper",
+    "model": "logistic_regression",
+    "expected": "change_shipping_address",
+    "predicted": "change_shipping_address",
+    "score_uncalibrated": 0.7103236856702833,
+    "correct": true
+  },
+  {
+    "case_id": "check_cancellation_fee:anchor",
+    "model": "logistic_regression",
+    "expected": "check_cancellation_fee",
+    "predicted": "cancel_order",
+    "score_uncalibrated": 0.10790025312359353,
+    "correct": false
+  },
+  {
+    "case_id": "check_cancellation_fee:paraphrase",
+    "model": "logistic_regression",
+    "expected": "check_cancellation_fee",
+    "predicted": "check_cancellation_fee",
+    "score_uncalibrated": 0.10898008215835159,
+    "correct": true
+  },
+  {
+    "case_id": "check_cancellation_fee:spelling_swap",
+    "model": "logistic_regression",
+    "expected": "check_cancellation_fee",
+    "predicted": "cancel_order",
+    "score_uncalibrated": 0.13463908014333828,
+    "correct": false
+  },
+  {
+    "case_id": "check_cancellation_fee:polite_wrapper",
+    "model": "logistic_regression",
+    "expected": "check_cancellation_fee",
+    "predicted": "cancel_order",
+    "score_uncalibrated": 0.10293631298540995,
+    "correct": false
+  },
+  {
+    "case_id": "check_invoice:anchor",
+    "model": "logistic_regression",
+    "expected": "check_invoice",
+    "predicted": "edit_account",
+    "score_uncalibrated": 0.42312671269591845,
+    "correct": false
+  },
+  {
+    "case_id": "check_invoice:paraphrase",
+    "model": "logistic_regression",
+    "expected": "check_invoice",
+    "predicted": "edit_account",
+    "score_uncalibrated": 0.21235704884399836,
+    "correct": false
+  },
+  {
+    "case_id": "check_invoice:spelling_swap",
+    "model": "logistic_regression",
+    "expected": "check_invoice",
+    "predicted": "edit_account",
+    "score_uncalibrated": 0.42312671269591845,
+    "correct": false
+  },
+  {
+    "case_id": "check_invoice:polite_wrapper",
+    "model": "logistic_regression",
+    "expected": "check_invoice",
+    "predicted": "edit_account",
+    "score_uncalibrated": 0.21412693085081314,
+    "correct": false
+  },
+  {
+    "case_id": "check_payment_methods:anchor",
+    "model": "logistic_regression",
+    "expected": "check_payment_methods",
+    "predicted": "check_payment_methods",
+    "score_uncalibrated": 0.9426985563152566,
+    "correct": true
+  },
+  {
+    "case_id": "check_payment_methods:paraphrase",
+    "model": "logistic_regression",
+    "expected": "check_payment_methods",
+    "predicted": "cancel_order",
+    "score_uncalibrated": 0.11218981523670109,
+    "correct": false
+  },
+  {
+    "case_id": "check_payment_methods:spelling_swap",
+    "model": "logistic_regression",
+    "expected": "check_payment_methods",
+    "predicted": "check_payment_methods",
+    "score_uncalibrated": 0.24357516656411154,
+    "correct": true
+  },
+  {
+    "case_id": "check_payment_methods:polite_wrapper",
+    "model": "logistic_regression",
+    "expected": "check_payment_methods",
+    "predicted": "check_payment_methods",
+    "score_uncalibrated": 0.7913523729753805,
+    "correct": true
+  },
+  {
+    "case_id": "check_refund_policy:anchor",
+    "model": "logistic_regression",
+    "expected": "check_refund_policy",
+    "predicted": "check_refund_policy",
+    "score_uncalibrated": 0.7342222631377239,
+    "correct": true
+  },
+  {
+    "case_id": "check_refund_policy:paraphrase",
+    "model": "logistic_regression",
+    "expected": "check_refund_policy",
+    "predicted": "check_refund_policy",
+    "score_uncalibrated": 0.29910968582776476,
+    "correct": true
+  },
+  {
+    "case_id": "check_refund_policy:spelling_swap",
+    "model": "logistic_regression",
+    "expected": "check_refund_policy",
+    "predicted": "check_refund_policy",
+    "score_uncalibrated": 0.3807236142172031,
+    "correct": true
+  },
+  {
+    "case_id": "check_refund_policy:polite_wrapper",
+    "model": "logistic_regression",
+    "expected": "check_refund_policy",
+    "predicted": "check_refund_policy",
+    "score_uncalibrated": 0.4843268095819692,
+    "correct": true
+  },
+  {
+    "case_id": "complaint:anchor",
+    "model": "logistic_regression",
+    "expected": "complaint",
+    "predicted": "complaint",
+    "score_uncalibrated": 0.7307617874956138,
+    "correct": true
+  },
+  {
+    "case_id": "complaint:paraphrase",
+    "model": "logistic_regression",
+    "expected": "complaint",
+    "predicted": "contact_customer_service",
+    "score_uncalibrated": 0.8021179405782924,
+    "correct": false
+  },
+  {
+    "case_id": "complaint:spelling_swap",
+    "model": "logistic_regression",
+    "expected": "complaint",
+    "predicted": "complaint",
+    "score_uncalibrated": 0.31359594020840004,
+    "correct": true
+  },
+  {
+    "case_id": "complaint:polite_wrapper",
+    "model": "logistic_regression",
+    "expected": "complaint",
+    "predicted": "complaint",
+    "score_uncalibrated": 0.6435487939706809,
+    "correct": true
+  },
+  {
+    "case_id": "contact_customer_service:anchor",
+    "model": "logistic_regression",
+    "expected": "contact_customer_service",
+    "predicted": "contact_customer_service",
+    "score_uncalibrated": 0.9809252165359588,
+    "correct": true
+  },
+  {
+    "case_id": "contact_customer_service:paraphrase",
+    "model": "logistic_regression",
+    "expected": "contact_customer_service",
+    "predicted": "contact_customer_service",
+    "score_uncalibrated": 0.637400118304297,
+    "correct": true
+  },
+  {
+    "case_id": "contact_customer_service:spelling_swap",
+    "model": "logistic_regression",
+    "expected": "contact_customer_service",
+    "predicted": "contact_customer_service",
+    "score_uncalibrated": 0.9807842205777707,
+    "correct": true
+  },
+  {
+    "case_id": "contact_customer_service:polite_wrapper",
+    "model": "logistic_regression",
+    "expected": "contact_customer_service",
+    "predicted": "contact_customer_service",
+    "score_uncalibrated": 0.8967092993616442,
+    "correct": true
+  },
+  {
+    "case_id": "contact_human_agent:anchor",
+    "model": "logistic_regression",
+    "expected": "contact_human_agent",
+    "predicted": "contact_human_agent",
+    "score_uncalibrated": 0.9651099714109326,
+    "correct": true
+  },
+  {
+    "case_id": "contact_human_agent:paraphrase",
+    "model": "logistic_regression",
+    "expected": "contact_human_agent",
+    "predicted": "contact_human_agent",
+    "score_uncalibrated": 0.5256238451455325,
+    "correct": true
+  },
+  {
+    "case_id": "contact_human_agent:spelling_swap",
+    "model": "logistic_regression",
+    "expected": "contact_human_agent",
+    "predicted": "contact_human_agent",
+    "score_uncalibrated": 0.8116561457832462,
+    "correct": true
+  },
+  {
+    "case_id": "contact_human_agent:polite_wrapper",
+    "model": "logistic_regression",
+    "expected": "contact_human_agent",
+    "predicted": "contact_human_agent",
+    "score_uncalibrated": 0.9403797637180487,
+    "correct": true
+  },
+  {
+    "case_id": "create_account:anchor",
+    "model": "logistic_regression",
+    "expected": "create_account",
+    "predicted": "create_account",
+    "score_uncalibrated": 0.938566487330936,
+    "correct": true
+  },
+  {
+    "case_id": "create_account:paraphrase",
+    "model": "logistic_regression",
+    "expected": "create_account",
+    "predicted": "registration_problems",
+    "score_uncalibrated": 0.4763522670453842,
+    "correct": false
+  },
+  {
+    "case_id": "create_account:spelling_swap",
+    "model": "logistic_regression",
+    "expected": "create_account",
+    "predicted": "create_account",
+    "score_uncalibrated": 0.5608158440248577,
+    "correct": true
+  },
+  {
+    "case_id": "create_account:polite_wrapper",
+    "model": "logistic_regression",
+    "expected": "create_account",
+    "predicted": "create_account",
+    "score_uncalibrated": 0.8302882192412481,
+    "correct": true
+  },
+  {
+    "case_id": "delete_account:anchor",
+    "model": "logistic_regression",
+    "expected": "delete_account",
+    "predicted": "delete_account",
+    "score_uncalibrated": 0.8962919834133513,
+    "correct": true
+  },
+  {
+    "case_id": "delete_account:paraphrase",
+    "model": "logistic_regression",
+    "expected": "delete_account",
+    "predicted": "delete_account",
+    "score_uncalibrated": 0.9331299500646572,
+    "correct": true
+  },
+  {
+    "case_id": "delete_account:spelling_swap",
+    "model": "logistic_regression",
+    "expected": "delete_account",
+    "predicted": "delete_account",
+    "score_uncalibrated": 0.8962919834133513,
+    "correct": true
+  },
+  {
+    "case_id": "delete_account:polite_wrapper",
+    "model": "logistic_regression",
+    "expected": "delete_account",
+    "predicted": "delete_account",
+    "score_uncalibrated": 0.6025162828776571,
+    "correct": true
+  },
+  {
+    "case_id": "delivery_options:anchor",
+    "model": "logistic_regression",
+    "expected": "delivery_options",
+    "predicted": "delivery_options",
+    "score_uncalibrated": 0.9169338837191404,
+    "correct": true
+  },
+  {
+    "case_id": "delivery_options:paraphrase",
+    "model": "logistic_regression",
+    "expected": "delivery_options",
+    "predicted": "delivery_options",
+    "score_uncalibrated": 0.44316876663631455,
+    "correct": true
+  },
+  {
+    "case_id": "delivery_options:spelling_swap",
+    "model": "logistic_regression",
+    "expected": "delivery_options",
+    "predicted": "delivery_options",
+    "score_uncalibrated": 0.5308568564460823,
+    "correct": true
+  },
+  {
+    "case_id": "delivery_options:polite_wrapper",
+    "model": "logistic_regression",
+    "expected": "delivery_options",
+    "predicted": "delivery_options",
+    "score_uncalibrated": 0.7861989814752396,
+    "correct": true
+  },
+  {
+    "case_id": "delivery_period:anchor",
+    "model": "logistic_regression",
+    "expected": "delivery_period",
+    "predicted": "check_refund_policy",
+    "score_uncalibrated": 0.4127150918264052,
+    "correct": false
+  },
+  {
+    "case_id": "delivery_period:paraphrase",
+    "model": "logistic_regression",
+    "expected": "delivery_period",
+    "predicted": "delivery_options",
+    "score_uncalibrated": 0.15829544303468862,
+    "correct": false
+  },
+  {
+    "case_id": "delivery_period:spelling_swap",
+    "model": "logistic_regression",
+    "expected": "delivery_period",
+    "predicted": "check_refund_policy",
+    "score_uncalibrated": 0.47882598426776174,
+    "correct": false
+  },
+  {
+    "case_id": "delivery_period:polite_wrapper",
+    "model": "logistic_regression",
+    "expected": "delivery_period",
+    "predicted": "check_refund_policy",
+    "score_uncalibrated": 0.26561994241717307,
+    "correct": false
+  },
+  {
+    "case_id": "edit_account:anchor",
+    "model": "logistic_regression",
+    "expected": "edit_account",
+    "predicted": "edit_account",
+    "score_uncalibrated": 0.8715455865638877,
+    "correct": true
+  },
+  {
+    "case_id": "edit_account:paraphrase",
+    "model": "logistic_regression",
+    "expected": "edit_account",
+    "predicted": "edit_account",
+    "score_uncalibrated": 0.9313372805942407,
+    "correct": true
+  },
+  {
+    "case_id": "edit_account:spelling_swap",
+    "model": "logistic_regression",
+    "expected": "edit_account",
+    "predicted": "edit_account",
+    "score_uncalibrated": 0.6110836840259066,
+    "correct": true
+  },
+  {
+    "case_id": "edit_account:polite_wrapper",
+    "model": "logistic_regression",
+    "expected": "edit_account",
+    "predicted": "edit_account",
+    "score_uncalibrated": 0.6041728010417459,
+    "correct": true
+  },
+  {
+    "case_id": "get_invoice:anchor",
+    "model": "logistic_regression",
+    "expected": "get_invoice",
+    "predicted": "get_invoice",
+    "score_uncalibrated": 0.5546288071073127,
+    "correct": true
+  },
+  {
+    "case_id": "get_invoice:paraphrase",
+    "model": "logistic_regression",
+    "expected": "get_invoice",
+    "predicted": "get_invoice",
+    "score_uncalibrated": 0.6327479376622142,
+    "correct": true
+  },
+  {
+    "case_id": "get_invoice:spelling_swap",
+    "model": "logistic_regression",
+    "expected": "get_invoice",
+    "predicted": "get_invoice",
+    "score_uncalibrated": 0.5546288071073127,
+    "correct": true
+  },
+  {
+    "case_id": "get_invoice:polite_wrapper",
+    "model": "logistic_regression",
+    "expected": "get_invoice",
+    "predicted": "get_invoice",
+    "score_uncalibrated": 0.2579889021705176,
+    "correct": true
+  },
+  {
+    "case_id": "get_refund:anchor",
+    "model": "logistic_regression",
+    "expected": "get_refund",
+    "predicted": "get_refund",
+    "score_uncalibrated": 0.5480425158252256,
+    "correct": true
+  },
+  {
+    "case_id": "get_refund:paraphrase",
+    "model": "logistic_regression",
+    "expected": "get_refund",
+    "predicted": "get_refund",
+    "score_uncalibrated": 0.5312700579918526,
+    "correct": true
+  },
+  {
+    "case_id": "get_refund:spelling_swap",
+    "model": "logistic_regression",
+    "expected": "get_refund",
+    "predicted": "get_refund",
+    "score_uncalibrated": 0.6487848557478025,
+    "correct": true
+  },
+  {
+    "case_id": "get_refund:polite_wrapper",
+    "model": "logistic_regression",
+    "expected": "get_refund",
+    "predicted": "get_refund",
+    "score_uncalibrated": 0.43099838256998263,
+    "correct": true
+  },
+  {
+    "case_id": "newsletter_subscription:anchor",
+    "model": "logistic_regression",
+    "expected": "newsletter_subscription",
+    "predicted": "newsletter_subscription",
+    "score_uncalibrated": 0.9779414919842644,
+    "correct": true
+  },
+  {
+    "case_id": "newsletter_subscription:paraphrase",
+    "model": "logistic_regression",
+    "expected": "newsletter_subscription",
+    "predicted": "newsletter_subscription",
+    "score_uncalibrated": 0.9378901354087086,
+    "correct": true
+  },
+  {
+    "case_id": "newsletter_subscription:spelling_swap",
+    "model": "logistic_regression",
+    "expected": "newsletter_subscription",
+    "predicted": "newsletter_subscription",
+    "score_uncalibrated": 0.983256646498347,
+    "correct": true
+  },
+  {
+    "case_id": "newsletter_subscription:polite_wrapper",
+    "model": "logistic_regression",
+    "expected": "newsletter_subscription",
+    "predicted": "newsletter_subscription",
+    "score_uncalibrated": 0.8946345888836711,
+    "correct": true
+  },
+  {
+    "case_id": "payment_issue:anchor",
+    "model": "logistic_regression",
+    "expected": "payment_issue",
+    "predicted": "payment_issue",
+    "score_uncalibrated": 0.3021439732968772,
+    "correct": true
+  },
+  {
+    "case_id": "payment_issue:paraphrase",
+    "model": "logistic_regression",
+    "expected": "payment_issue",
+    "predicted": "check_payment_methods",
+    "score_uncalibrated": 0.5015462109446427,
+    "correct": false
+  },
+  {
+    "case_id": "payment_issue:spelling_swap",
+    "model": "logistic_regression",
+    "expected": "payment_issue",
+    "predicted": "delivery_period",
+    "score_uncalibrated": 0.19550154055916516,
+    "correct": false
+  },
+  {
+    "case_id": "payment_issue:polite_wrapper",
+    "model": "logistic_regression",
+    "expected": "payment_issue",
+    "predicted": "payment_issue",
+    "score_uncalibrated": 0.3409185915101434,
+    "correct": true
+  },
+  {
+    "case_id": "place_order:anchor",
+    "model": "logistic_regression",
+    "expected": "place_order",
+    "predicted": "place_order",
+    "score_uncalibrated": 0.1563211772829212,
+    "correct": true
+  },
+  {
+    "case_id": "place_order:paraphrase",
+    "model": "logistic_regression",
+    "expected": "place_order",
+    "predicted": "place_order",
+    "score_uncalibrated": 0.519792983672254,
+    "correct": true
+  },
+  {
+    "case_id": "place_order:spelling_swap",
+    "model": "logistic_regression",
+    "expected": "place_order",
+    "predicted": "place_order",
+    "score_uncalibrated": 0.14437650938672333,
+    "correct": true
+  },
+  {
+    "case_id": "place_order:polite_wrapper",
+    "model": "logistic_regression",
+    "expected": "place_order",
+    "predicted": "place_order",
+    "score_uncalibrated": 0.13476526864227015,
+    "correct": true
+  },
+  {
+    "case_id": "recover_password:anchor",
+    "model": "logistic_regression",
+    "expected": "recover_password",
+    "predicted": "recover_password",
+    "score_uncalibrated": 0.8055325468232942,
+    "correct": true
+  },
+  {
+    "case_id": "recover_password:paraphrase",
+    "model": "logistic_regression",
+    "expected": "recover_password",
+    "predicted": "recover_password",
+    "score_uncalibrated": 0.8099008904290103,
+    "correct": true
+  },
+  {
+    "case_id": "recover_password:spelling_swap",
+    "model": "logistic_regression",
+    "expected": "recover_password",
+    "predicted": "recover_password",
+    "score_uncalibrated": 0.8668905798176961,
+    "correct": true
+  },
+  {
+    "case_id": "recover_password:polite_wrapper",
+    "model": "logistic_regression",
+    "expected": "recover_password",
+    "predicted": "recover_password",
+    "score_uncalibrated": 0.6352477235891663,
+    "correct": true
+  },
+  {
+    "case_id": "registration_problems:anchor",
+    "model": "logistic_regression",
+    "expected": "registration_problems",
+    "predicted": "payment_issue",
+    "score_uncalibrated": 0.14216613041661294,
+    "correct": false
+  },
+  {
+    "case_id": "registration_problems:paraphrase",
+    "model": "logistic_regression",
+    "expected": "registration_problems",
+    "predicted": "registration_problems",
+    "score_uncalibrated": 0.35383595580111865,
+    "correct": true
+  },
+  {
+    "case_id": "registration_problems:spelling_swap",
+    "model": "logistic_regression",
+    "expected": "registration_problems",
+    "predicted": "payment_issue",
+    "score_uncalibrated": 0.187777238857225,
+    "correct": false
+  },
+  {
+    "case_id": "registration_problems:polite_wrapper",
+    "model": "logistic_regression",
+    "expected": "registration_problems",
+    "predicted": "payment_issue",
+    "score_uncalibrated": 0.1846244626597853,
+    "correct": false
+  },
+  {
+    "case_id": "review:anchor",
+    "model": "logistic_regression",
+    "expected": "review",
+    "predicted": "review",
+    "score_uncalibrated": 0.7432119019730112,
+    "correct": true
+  },
+  {
+    "case_id": "review:paraphrase",
+    "model": "logistic_regression",
+    "expected": "review",
+    "predicted": "place_order",
+    "score_uncalibrated": 0.1347877391239813,
+    "correct": false
+  },
+  {
+    "case_id": "review:spelling_swap",
+    "model": "logistic_regression",
+    "expected": "review",
+    "predicted": "review",
+    "score_uncalibrated": 0.8340968834185336,
+    "correct": true
+  },
+  {
+    "case_id": "review:polite_wrapper",
+    "model": "logistic_regression",
+    "expected": "review",
+    "predicted": "review",
+    "score_uncalibrated": 0.5281869921632799,
+    "correct": true
+  },
+  {
+    "case_id": "set_up_shipping_address:anchor",
+    "model": "logistic_regression",
+    "expected": "set_up_shipping_address",
+    "predicted": "change_shipping_address",
+    "score_uncalibrated": 0.4143487928057643,
+    "correct": false
+  },
+  {
+    "case_id": "set_up_shipping_address:paraphrase",
+    "model": "logistic_regression",
+    "expected": "set_up_shipping_address",
+    "predicted": "set_up_shipping_address",
+    "score_uncalibrated": 0.4141369246826431,
+    "correct": true
+  },
+  {
+    "case_id": "set_up_shipping_address:spelling_swap",
+    "model": "logistic_regression",
+    "expected": "set_up_shipping_address",
+    "predicted": "change_shipping_address",
+    "score_uncalibrated": 0.2632896248772141,
+    "correct": false
+  },
+  {
+    "case_id": "set_up_shipping_address:polite_wrapper",
+    "model": "logistic_regression",
+    "expected": "set_up_shipping_address",
+    "predicted": "change_shipping_address",
+    "score_uncalibrated": 0.2959976906189061,
+    "correct": false
+  },
+  {
+    "case_id": "switch_account:anchor",
+    "model": "logistic_regression",
+    "expected": "switch_account",
+    "predicted": "switch_account",
+    "score_uncalibrated": 0.5442301340717258,
+    "correct": true
+  },
+  {
+    "case_id": "switch_account:paraphrase",
+    "model": "logistic_regression",
+    "expected": "switch_account",
+    "predicted": "switch_account",
+    "score_uncalibrated": 0.26217046278514555,
+    "correct": true
+  },
+  {
+    "case_id": "switch_account:spelling_swap",
+    "model": "logistic_regression",
+    "expected": "switch_account",
+    "predicted": "delete_account",
+    "score_uncalibrated": 0.30359081951199796,
+    "correct": false
+  },
+  {
+    "case_id": "switch_account:polite_wrapper",
+    "model": "logistic_regression",
+    "expected": "switch_account",
+    "predicted": "switch_account",
+    "score_uncalibrated": 0.25758744179779736,
+    "correct": true
+  },
+  {
+    "case_id": "track_order:anchor",
+    "model": "logistic_regression",
+    "expected": "track_order",
+    "predicted": "track_order",
+    "score_uncalibrated": 0.13044235205390445,
+    "correct": true
+  },
+  {
+    "case_id": "track_order:paraphrase",
+    "model": "logistic_regression",
+    "expected": "track_order",
+    "predicted": "track_refund",
+    "score_uncalibrated": 0.767310360449715,
+    "correct": false
+  },
+  {
+    "case_id": "track_order:spelling_swap",
+    "model": "logistic_regression",
+    "expected": "track_order",
+    "predicted": "track_order",
+    "score_uncalibrated": 0.09024163055380623,
+    "correct": true
+  },
+  {
+    "case_id": "track_order:polite_wrapper",
+    "model": "logistic_regression",
+    "expected": "track_order",
+    "predicted": "place_order",
+    "score_uncalibrated": 0.07719380803473351,
+    "correct": false
+  },
+  {
+    "case_id": "track_refund:anchor",
+    "model": "logistic_regression",
+    "expected": "track_refund",
+    "predicted": "track_refund",
+    "score_uncalibrated": 0.7320404094367297,
+    "correct": true
+  },
+  {
+    "case_id": "track_refund:paraphrase",
+    "model": "logistic_regression",
+    "expected": "track_refund",
+    "predicted": "delivery_period",
+    "score_uncalibrated": 0.8021861370521887,
+    "correct": false
+  },
+  {
+    "case_id": "track_refund:spelling_swap",
+    "model": "logistic_regression",
+    "expected": "track_refund",
+    "predicted": "track_refund",
+    "score_uncalibrated": 0.22329997744586053,
+    "correct": true
+  },
+  {
+    "case_id": "track_refund:polite_wrapper",
+    "model": "logistic_regression",
+    "expected": "track_refund",
+    "predicted": "track_refund",
+    "score_uncalibrated": 0.5313367824701849,
+    "correct": true
+  },
+  {
+    "case_id": "cancel_order:anchor",
+    "model": "distilbert",
+    "expected": "cancel_order",
+    "predicted": "cancel_order",
+    "score_uncalibrated": 0.9943339824676514,
+    "correct": true
+  },
+  {
+    "case_id": "cancel_order:paraphrase",
+    "model": "distilbert",
+    "expected": "cancel_order",
+    "predicted": "cancel_order",
+    "score_uncalibrated": 0.9767917990684509,
+    "correct": true
+  },
+  {
+    "case_id": "cancel_order:spelling_swap",
+    "model": "distilbert",
+    "expected": "cancel_order",
+    "predicted": "cancel_order",
+    "score_uncalibrated": 0.9926064014434814,
+    "correct": true
+  },
+  {
+    "case_id": "cancel_order:polite_wrapper",
+    "model": "distilbert",
+    "expected": "cancel_order",
+    "predicted": "cancel_order",
+    "score_uncalibrated": 0.9899245500564575,
+    "correct": true
+  },
+  {
+    "case_id": "change_order:anchor",
+    "model": "distilbert",
+    "expected": "change_order",
+    "predicted": "change_order",
+    "score_uncalibrated": 0.9909215569496155,
+    "correct": true
+  },
+  {
+    "case_id": "change_order:paraphrase",
+    "model": "distilbert",
+    "expected": "change_order",
+    "predicted": "change_order",
+    "score_uncalibrated": 0.9858137965202332,
+    "correct": true
+  },
+  {
+    "case_id": "change_order:spelling_swap",
+    "model": "distilbert",
+    "expected": "change_order",
+    "predicted": "place_order",
+    "score_uncalibrated": 0.843296229839325,
+    "correct": false
+  },
+  {
+    "case_id": "change_order:polite_wrapper",
+    "model": "distilbert",
+    "expected": "change_order",
+    "predicted": "change_order",
+    "score_uncalibrated": 0.9722132682800293,
+    "correct": true
+  },
+  {
+    "case_id": "change_shipping_address:anchor",
+    "model": "distilbert",
+    "expected": "change_shipping_address",
+    "predicted": "change_shipping_address",
+    "score_uncalibrated": 0.9987121820449829,
+    "correct": true
+  },
+  {
+    "case_id": "change_shipping_address:paraphrase",
+    "model": "distilbert",
+    "expected": "change_shipping_address",
+    "predicted": "change_shipping_address",
+    "score_uncalibrated": 0.9986147880554199,
+    "correct": true
+  },
+  {
+    "case_id": "change_shipping_address:spelling_swap",
+    "model": "distilbert",
+    "expected": "change_shipping_address",
+    "predicted": "change_shipping_address",
+    "score_uncalibrated": 0.7584178447723389,
+    "correct": true
+  },
+  {
+    "case_id": "change_shipping_address:polite_wrapper",
+    "model": "distilbert",
+    "expected": "change_shipping_address",
+    "predicted": "change_shipping_address",
+    "score_uncalibrated": 0.998645007610321,
+    "correct": true
+  },
+  {
+    "case_id": "check_cancellation_fee:anchor",
+    "model": "distilbert",
+    "expected": "check_cancellation_fee",
+    "predicted": "cancel_order",
+    "score_uncalibrated": 0.6739133596420288,
+    "correct": false
+  },
+  {
+    "case_id": "check_cancellation_fee:paraphrase",
+    "model": "distilbert",
+    "expected": "check_cancellation_fee",
+    "predicted": "cancel_order",
+    "score_uncalibrated": 0.9558264017105103,
+    "correct": false
+  },
+  {
+    "case_id": "check_cancellation_fee:spelling_swap",
+    "model": "distilbert",
+    "expected": "check_cancellation_fee",
+    "predicted": "check_cancellation_fee",
+    "score_uncalibrated": 0.5605316758155823,
+    "correct": true
+  },
+  {
+    "case_id": "check_cancellation_fee:polite_wrapper",
+    "model": "distilbert",
+    "expected": "check_cancellation_fee",
+    "predicted": "check_cancellation_fee",
+    "score_uncalibrated": 0.5006902813911438,
+    "correct": true
+  },
+  {
+    "case_id": "check_invoice:anchor",
+    "model": "distilbert",
+    "expected": "check_invoice",
+    "predicted": "check_invoice",
+    "score_uncalibrated": 0.9545988440513611,
+    "correct": true
+  },
+  {
+    "case_id": "check_invoice:paraphrase",
+    "model": "distilbert",
+    "expected": "check_invoice",
+    "predicted": "check_cancellation_fee",
+    "score_uncalibrated": 0.9600995779037476,
+    "correct": false
+  },
+  {
+    "case_id": "check_invoice:spelling_swap",
+    "model": "distilbert",
+    "expected": "check_invoice",
+    "predicted": "check_invoice",
+    "score_uncalibrated": 0.914257287979126,
+    "correct": true
+  },
+  {
+    "case_id": "check_invoice:polite_wrapper",
+    "model": "distilbert",
+    "expected": "check_invoice",
+    "predicted": "check_invoice",
+    "score_uncalibrated": 0.912844181060791,
+    "correct": true
+  },
+  {
+    "case_id": "check_payment_methods:anchor",
+    "model": "distilbert",
+    "expected": "check_payment_methods",
+    "predicted": "check_payment_methods",
+    "score_uncalibrated": 0.9983747005462646,
+    "correct": true
+  },
+  {
+    "case_id": "check_payment_methods:paraphrase",
+    "model": "distilbert",
+    "expected": "check_payment_methods",
+    "predicted": "check_payment_methods",
+    "score_uncalibrated": 0.6622108817100525,
+    "correct": true
+  },
+  {
+    "case_id": "check_payment_methods:spelling_swap",
+    "model": "distilbert",
+    "expected": "check_payment_methods",
+    "predicted": "check_payment_methods",
+    "score_uncalibrated": 0.5254361033439636,
+    "correct": true
+  },
+  {
+    "case_id": "check_payment_methods:polite_wrapper",
+    "model": "distilbert",
+    "expected": "check_payment_methods",
+    "predicted": "check_payment_methods",
+    "score_uncalibrated": 0.9983972907066345,
+    "correct": true
+  },
+  {
+    "case_id": "check_refund_policy:anchor",
+    "model": "distilbert",
+    "expected": "check_refund_policy",
+    "predicted": "check_refund_policy",
+    "score_uncalibrated": 0.998627781867981,
+    "correct": true
+  },
+  {
+    "case_id": "check_refund_policy:paraphrase",
+    "model": "distilbert",
+    "expected": "check_refund_policy",
+    "predicted": "check_refund_policy",
+    "score_uncalibrated": 0.7844269275665283,
+    "correct": true
+  },
+  {
+    "case_id": "check_refund_policy:spelling_swap",
+    "model": "distilbert",
+    "expected": "check_refund_policy",
+    "predicted": "check_refund_policy",
+    "score_uncalibrated": 0.9333373308181763,
+    "correct": true
+  },
+  {
+    "case_id": "check_refund_policy:polite_wrapper",
+    "model": "distilbert",
+    "expected": "check_refund_policy",
+    "predicted": "check_refund_policy",
+    "score_uncalibrated": 0.9985939860343933,
+    "correct": true
+  },
+  {
+    "case_id": "complaint:anchor",
+    "model": "distilbert",
+    "expected": "complaint",
+    "predicted": "complaint",
+    "score_uncalibrated": 0.9982559084892273,
+    "correct": true
+  },
+  {
+    "case_id": "complaint:paraphrase",
+    "model": "distilbert",
+    "expected": "complaint",
+    "predicted": "contact_customer_service",
+    "score_uncalibrated": 0.9302498698234558,
+    "correct": false
+  },
+  {
+    "case_id": "complaint:spelling_swap",
+    "model": "distilbert",
+    "expected": "complaint",
+    "predicted": "review",
+    "score_uncalibrated": 0.9975437521934509,
+    "correct": false
+  },
+  {
+    "case_id": "complaint:polite_wrapper",
+    "model": "distilbert",
+    "expected": "complaint",
+    "predicted": "complaint",
+    "score_uncalibrated": 0.9982374906539917,
+    "correct": true
+  },
+  {
+    "case_id": "contact_customer_service:anchor",
+    "model": "distilbert",
+    "expected": "contact_customer_service",
+    "predicted": "contact_customer_service",
+    "score_uncalibrated": 0.9988478422164917,
+    "correct": true
+  },
+  {
+    "case_id": "contact_customer_service:paraphrase",
+    "model": "distilbert",
+    "expected": "contact_customer_service",
+    "predicted": "contact_customer_service",
+    "score_uncalibrated": 0.9985535740852356,
+    "correct": true
+  },
+  {
+    "case_id": "contact_customer_service:spelling_swap",
+    "model": "distilbert",
+    "expected": "contact_customer_service",
+    "predicted": "contact_customer_service",
+    "score_uncalibrated": 0.998444139957428,
+    "correct": true
+  },
+  {
+    "case_id": "contact_customer_service:polite_wrapper",
+    "model": "distilbert",
+    "expected": "contact_customer_service",
+    "predicted": "contact_customer_service",
+    "score_uncalibrated": 0.9988319277763367,
+    "correct": true
+  },
+  {
+    "case_id": "contact_human_agent:anchor",
+    "model": "distilbert",
+    "expected": "contact_human_agent",
+    "predicted": "contact_human_agent",
+    "score_uncalibrated": 0.998900294303894,
+    "correct": true
+  },
+  {
+    "case_id": "contact_human_agent:paraphrase",
+    "model": "distilbert",
+    "expected": "contact_human_agent",
+    "predicted": "contact_human_agent",
+    "score_uncalibrated": 0.986847460269928,
+    "correct": true
+  },
+  {
+    "case_id": "contact_human_agent:spelling_swap",
+    "model": "distilbert",
+    "expected": "contact_human_agent",
+    "predicted": "contact_human_agent",
+    "score_uncalibrated": 0.9982636570930481,
+    "correct": true
+  },
+  {
+    "case_id": "contact_human_agent:polite_wrapper",
+    "model": "distilbert",
+    "expected": "contact_human_agent",
+    "predicted": "contact_human_agent",
+    "score_uncalibrated": 0.9989181756973267,
+    "correct": true
+  },
+  {
+    "case_id": "create_account:anchor",
+    "model": "distilbert",
+    "expected": "create_account",
+    "predicted": "create_account",
+    "score_uncalibrated": 0.9986423850059509,
+    "correct": true
+  },
+  {
+    "case_id": "create_account:paraphrase",
+    "model": "distilbert",
+    "expected": "create_account",
+    "predicted": "create_account",
+    "score_uncalibrated": 0.9975274205207825,
+    "correct": true
+  },
+  {
+    "case_id": "create_account:spelling_swap",
+    "model": "distilbert",
+    "expected": "create_account",
+    "predicted": "delete_account",
+    "score_uncalibrated": 0.9850725531578064,
+    "correct": false
+  },
+  {
+    "case_id": "create_account:polite_wrapper",
+    "model": "distilbert",
+    "expected": "create_account",
+    "predicted": "create_account",
+    "score_uncalibrated": 0.9986677169799805,
+    "correct": true
+  },
+  {
+    "case_id": "delete_account:anchor",
+    "model": "distilbert",
+    "expected": "delete_account",
+    "predicted": "delete_account",
+    "score_uncalibrated": 0.9981087446212769,
+    "correct": true
+  },
+  {
+    "case_id": "delete_account:paraphrase",
+    "model": "distilbert",
+    "expected": "delete_account",
+    "predicted": "delete_account",
+    "score_uncalibrated": 0.998330295085907,
+    "correct": true
+  },
+  {
+    "case_id": "delete_account:spelling_swap",
+    "model": "distilbert",
+    "expected": "delete_account",
+    "predicted": "delete_account",
+    "score_uncalibrated": 0.9982399940490723,
+    "correct": true
+  },
+  {
+    "case_id": "delete_account:polite_wrapper",
+    "model": "distilbert",
+    "expected": "delete_account",
+    "predicted": "delete_account",
+    "score_uncalibrated": 0.9981920123100281,
+    "correct": true
+  },
+  {
+    "case_id": "delivery_options:anchor",
+    "model": "distilbert",
+    "expected": "delivery_options",
+    "predicted": "delivery_options",
+    "score_uncalibrated": 0.9979832172393799,
+    "correct": true
+  },
+  {
+    "case_id": "delivery_options:paraphrase",
+    "model": "distilbert",
+    "expected": "delivery_options",
+    "predicted": "delivery_options",
+    "score_uncalibrated": 0.972985029220581,
+    "correct": true
+  },
+  {
+    "case_id": "delivery_options:spelling_swap",
+    "model": "distilbert",
+    "expected": "delivery_options",
+    "predicted": "delivery_options",
+    "score_uncalibrated": 0.9391800761222839,
+    "correct": true
+  },
+  {
+    "case_id": "delivery_options:polite_wrapper",
+    "model": "distilbert",
+    "expected": "delivery_options",
+    "predicted": "delivery_options",
+    "score_uncalibrated": 0.9980623126029968,
+    "correct": true
+  },
+  {
+    "case_id": "delivery_period:anchor",
+    "model": "distilbert",
+    "expected": "delivery_period",
+    "predicted": "delivery_period",
+    "score_uncalibrated": 0.9983469247817993,
+    "correct": true
+  },
+  {
+    "case_id": "delivery_period:paraphrase",
+    "model": "distilbert",
+    "expected": "delivery_period",
+    "predicted": "delivery_period",
+    "score_uncalibrated": 0.979580819606781,
+    "correct": true
+  },
+  {
+    "case_id": "delivery_period:spelling_swap",
+    "model": "distilbert",
+    "expected": "delivery_period",
+    "predicted": "delivery_period",
+    "score_uncalibrated": 0.9963372945785522,
+    "correct": true
+  },
+  {
+    "case_id": "delivery_period:polite_wrapper",
+    "model": "distilbert",
+    "expected": "delivery_period",
+    "predicted": "delivery_period",
+    "score_uncalibrated": 0.9983214735984802,
+    "correct": true
+  },
+  {
+    "case_id": "edit_account:anchor",
+    "model": "distilbert",
+    "expected": "edit_account",
+    "predicted": "edit_account",
+    "score_uncalibrated": 0.9983029365539551,
+    "correct": true
+  },
+  {
+    "case_id": "edit_account:paraphrase",
+    "model": "distilbert",
+    "expected": "edit_account",
+    "predicted": "edit_account",
+    "score_uncalibrated": 0.9984419941902161,
+    "correct": true
+  },
+  {
+    "case_id": "edit_account:spelling_swap",
+    "model": "distilbert",
+    "expected": "edit_account",
+    "predicted": "edit_account",
+    "score_uncalibrated": 0.9849783182144165,
+    "correct": true
+  },
+  {
+    "case_id": "edit_account:polite_wrapper",
+    "model": "distilbert",
+    "expected": "edit_account",
+    "predicted": "edit_account",
+    "score_uncalibrated": 0.9982342720031738,
+    "correct": true
+  },
+  {
+    "case_id": "get_invoice:anchor",
+    "model": "distilbert",
+    "expected": "get_invoice",
+    "predicted": "get_invoice",
+    "score_uncalibrated": 0.9938947558403015,
+    "correct": true
+  },
+  {
+    "case_id": "get_invoice:paraphrase",
+    "model": "distilbert",
+    "expected": "get_invoice",
+    "predicted": "get_invoice",
+    "score_uncalibrated": 0.9972749352455139,
+    "correct": true
+  },
+  {
+    "case_id": "get_invoice:spelling_swap",
+    "model": "distilbert",
+    "expected": "get_invoice",
+    "predicted": "get_invoice",
+    "score_uncalibrated": 0.9911906719207764,
+    "correct": true
+  },
+  {
+    "case_id": "get_invoice:polite_wrapper",
+    "model": "distilbert",
+    "expected": "get_invoice",
+    "predicted": "get_invoice",
+    "score_uncalibrated": 0.9869890213012695,
+    "correct": true
+  },
+  {
+    "case_id": "get_refund:anchor",
+    "model": "distilbert",
+    "expected": "get_refund",
+    "predicted": "get_refund",
+    "score_uncalibrated": 0.9988532066345215,
+    "correct": true
+  },
+  {
+    "case_id": "get_refund:paraphrase",
+    "model": "distilbert",
+    "expected": "get_refund",
+    "predicted": "get_refund",
+    "score_uncalibrated": 0.9955074787139893,
+    "correct": true
+  },
+  {
+    "case_id": "get_refund:spelling_swap",
+    "model": "distilbert",
+    "expected": "get_refund",
+    "predicted": "get_refund",
+    "score_uncalibrated": 0.998818576335907,
+    "correct": true
+  },
+  {
+    "case_id": "get_refund:polite_wrapper",
+    "model": "distilbert",
+    "expected": "get_refund",
+    "predicted": "get_refund",
+    "score_uncalibrated": 0.9988522529602051,
+    "correct": true
+  },
+  {
+    "case_id": "newsletter_subscription:anchor",
+    "model": "distilbert",
+    "expected": "newsletter_subscription",
+    "predicted": "newsletter_subscription",
+    "score_uncalibrated": 0.9988207221031189,
+    "correct": true
+  },
+  {
+    "case_id": "newsletter_subscription:paraphrase",
+    "model": "distilbert",
+    "expected": "newsletter_subscription",
+    "predicted": "newsletter_subscription",
+    "score_uncalibrated": 0.9987924098968506,
+    "correct": true
+  },
+  {
+    "case_id": "newsletter_subscription:spelling_swap",
+    "model": "distilbert",
+    "expected": "newsletter_subscription",
+    "predicted": "newsletter_subscription",
+    "score_uncalibrated": 0.9987913966178894,
+    "correct": true
+  },
+  {
+    "case_id": "newsletter_subscription:polite_wrapper",
+    "model": "distilbert",
+    "expected": "newsletter_subscription",
+    "predicted": "newsletter_subscription",
+    "score_uncalibrated": 0.9988183379173279,
+    "correct": true
+  },
+  {
+    "case_id": "payment_issue:anchor",
+    "model": "distilbert",
+    "expected": "payment_issue",
+    "predicted": "payment_issue",
+    "score_uncalibrated": 0.9790590405464172,
+    "correct": true
+  },
+  {
+    "case_id": "payment_issue:paraphrase",
+    "model": "distilbert",
+    "expected": "payment_issue",
+    "predicted": "payment_issue",
+    "score_uncalibrated": 0.8808813691139221,
+    "correct": true
+  },
+  {
+    "case_id": "payment_issue:spelling_swap",
+    "model": "distilbert",
+    "expected": "payment_issue",
+    "predicted": "payment_issue",
+    "score_uncalibrated": 0.5614528059959412,
+    "correct": true
+  },
+  {
+    "case_id": "payment_issue:polite_wrapper",
+    "model": "distilbert",
+    "expected": "payment_issue",
+    "predicted": "payment_issue",
+    "score_uncalibrated": 0.9869642853736877,
+    "correct": true
+  },
+  {
+    "case_id": "place_order:anchor",
+    "model": "distilbert",
+    "expected": "place_order",
+    "predicted": "place_order",
+    "score_uncalibrated": 0.9929062128067017,
+    "correct": true
+  },
+  {
+    "case_id": "place_order:paraphrase",
+    "model": "distilbert",
+    "expected": "place_order",
+    "predicted": "place_order",
+    "score_uncalibrated": 0.9875890612602234,
+    "correct": true
+  },
+  {
+    "case_id": "place_order:spelling_swap",
+    "model": "distilbert",
+    "expected": "place_order",
+    "predicted": "place_order",
+    "score_uncalibrated": 0.9917131662368774,
+    "correct": true
+  },
+  {
+    "case_id": "place_order:polite_wrapper",
+    "model": "distilbert",
+    "expected": "place_order",
+    "predicted": "place_order",
+    "score_uncalibrated": 0.993633508682251,
+    "correct": true
+  },
+  {
+    "case_id": "recover_password:anchor",
+    "model": "distilbert",
+    "expected": "recover_password",
+    "predicted": "recover_password",
+    "score_uncalibrated": 0.9986175298690796,
+    "correct": true
+  },
+  {
+    "case_id": "recover_password:paraphrase",
+    "model": "distilbert",
+    "expected": "recover_password",
+    "predicted": "recover_password",
+    "score_uncalibrated": 0.9984747767448425,
+    "correct": true
+  },
+  {
+    "case_id": "recover_password:spelling_swap",
+    "model": "distilbert",
+    "expected": "recover_password",
+    "predicted": "recover_password",
+    "score_uncalibrated": 0.9986080527305603,
+    "correct": true
+  },
+  {
+    "case_id": "recover_password:polite_wrapper",
+    "model": "distilbert",
+    "expected": "recover_password",
+    "predicted": "recover_password",
+    "score_uncalibrated": 0.9985972046852112,
+    "correct": true
+  },
+  {
+    "case_id": "registration_problems:anchor",
+    "model": "distilbert",
+    "expected": "registration_problems",
+    "predicted": "registration_problems",
+    "score_uncalibrated": 0.9220362305641174,
+    "correct": true
+  },
+  {
+    "case_id": "registration_problems:paraphrase",
+    "model": "distilbert",
+    "expected": "registration_problems",
+    "predicted": "create_account",
+    "score_uncalibrated": 0.9893607497215271,
+    "correct": false
+  },
+  {
+    "case_id": "registration_problems:spelling_swap",
+    "model": "distilbert",
+    "expected": "registration_problems",
+    "predicted": "payment_issue",
+    "score_uncalibrated": 0.919005811214447,
+    "correct": false
+  },
+  {
+    "case_id": "registration_problems:polite_wrapper",
+    "model": "distilbert",
+    "expected": "registration_problems",
+    "predicted": "registration_problems",
+    "score_uncalibrated": 0.6915299892425537,
+    "correct": true
+  },
+  {
+    "case_id": "review:anchor",
+    "model": "distilbert",
+    "expected": "review",
+    "predicted": "review",
+    "score_uncalibrated": 0.9987308382987976,
+    "correct": true
+  },
+  {
+    "case_id": "review:paraphrase",
+    "model": "distilbert",
+    "expected": "review",
+    "predicted": "review",
+    "score_uncalibrated": 0.9963494539260864,
+    "correct": true
+  },
+  {
+    "case_id": "review:spelling_swap",
+    "model": "distilbert",
+    "expected": "review",
+    "predicted": "review",
+    "score_uncalibrated": 0.9987074136734009,
+    "correct": true
+  },
+  {
+    "case_id": "review:polite_wrapper",
+    "model": "distilbert",
+    "expected": "review",
+    "predicted": "review",
+    "score_uncalibrated": 0.9986911416053772,
+    "correct": true
+  },
+  {
+    "case_id": "set_up_shipping_address:anchor",
+    "model": "distilbert",
+    "expected": "set_up_shipping_address",
+    "predicted": "change_shipping_address",
+    "score_uncalibrated": 0.7702538371086121,
+    "correct": false
+  },
+  {
+    "case_id": "set_up_shipping_address:paraphrase",
+    "model": "distilbert",
+    "expected": "set_up_shipping_address",
+    "predicted": "change_shipping_address",
+    "score_uncalibrated": 0.7585631012916565,
+    "correct": false
+  },
+  {
+    "case_id": "set_up_shipping_address:spelling_swap",
+    "model": "distilbert",
+    "expected": "set_up_shipping_address",
+    "predicted": "change_shipping_address",
+    "score_uncalibrated": 0.9710608124732971,
+    "correct": false
+  },
+  {
+    "case_id": "set_up_shipping_address:polite_wrapper",
+    "model": "distilbert",
+    "expected": "set_up_shipping_address",
+    "predicted": "change_shipping_address",
+    "score_uncalibrated": 0.5304340720176697,
+    "correct": false
+  },
+  {
+    "case_id": "switch_account:anchor",
+    "model": "distilbert",
+    "expected": "switch_account",
+    "predicted": "switch_account",
+    "score_uncalibrated": 0.9982764720916748,
+    "correct": true
+  },
+  {
+    "case_id": "switch_account:paraphrase",
+    "model": "distilbert",
+    "expected": "switch_account",
+    "predicted": "switch_account",
+    "score_uncalibrated": 0.7925877571105957,
+    "correct": true
+  },
+  {
+    "case_id": "switch_account:spelling_swap",
+    "model": "distilbert",
+    "expected": "switch_account",
+    "predicted": "switch_account",
+    "score_uncalibrated": 0.9951074123382568,
+    "correct": true
+  },
+  {
+    "case_id": "switch_account:polite_wrapper",
+    "model": "distilbert",
+    "expected": "switch_account",
+    "predicted": "switch_account",
+    "score_uncalibrated": 0.9981537461280823,
+    "correct": true
+  },
+  {
+    "case_id": "track_order:anchor",
+    "model": "distilbert",
+    "expected": "track_order",
+    "predicted": "place_order",
+    "score_uncalibrated": 0.3337426781654358,
+    "correct": false
+  },
+  {
+    "case_id": "track_order:paraphrase",
+    "model": "distilbert",
+    "expected": "track_order",
+    "predicted": "track_order",
+    "score_uncalibrated": 0.8244546055793762,
+    "correct": true
+  },
+  {
+    "case_id": "track_order:spelling_swap",
+    "model": "distilbert",
+    "expected": "track_order",
+    "predicted": "track_order",
+    "score_uncalibrated": 0.36107125878334045,
+    "correct": true
+  },
+  {
+    "case_id": "track_order:polite_wrapper",
+    "model": "distilbert",
+    "expected": "track_order",
+    "predicted": "place_order",
+    "score_uncalibrated": 0.7828929424285889,
+    "correct": false
+  },
+  {
+    "case_id": "track_refund:anchor",
+    "model": "distilbert",
+    "expected": "track_refund",
+    "predicted": "track_refund",
+    "score_uncalibrated": 0.9981175661087036,
+    "correct": true
+  },
+  {
+    "case_id": "track_refund:paraphrase",
+    "model": "distilbert",
+    "expected": "track_refund",
+    "predicted": "get_refund",
+    "score_uncalibrated": 0.9089675545692444,
+    "correct": false
+  },
+  {
+    "case_id": "track_refund:spelling_swap",
+    "model": "distilbert",
+    "expected": "track_refund",
+    "predicted": "track_refund",
+    "score_uncalibrated": 0.989234983921051,
+    "correct": true
+  },
+  {
+    "case_id": "track_refund:polite_wrapper",
+    "model": "distilbert",
+    "expected": "track_refund",
+    "predicted": "track_refund",
+    "score_uncalibrated": 0.9981949925422668,
+    "correct": true
+  }
+]

@@ -1,0 +1,170 @@
+{
+  "scope": "Raw test-split diagnostics; no calibration fitting or threshold tuning",
+  "test_sha256": "adf667a3ebf1cf97f80c881d15ae8c6d29b5f6bb8d2ec2266c566af1a7a882f7",
+  "models": {
+    "logistic_regression": {
+      "samples": 3642,
+      "accuracy": 0.9895661724327293,
+      "mean_top_score": 0.8658263497005698,
+      "ece_10_bins": 0.12377286042945275,
+      "multiclass_brier_sum": 0.04663820490935358,
+      "log_loss": 0.1709722710944977,
+      "score_below_0_8_rate": 0.20538165842943437,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 1,
+          "accuracy": 0.0,
+          "mean_score": 0.06016164677095681
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 9,
+          "accuracy": 0.4444444444444444,
+          "mean_score": 0.17086781481389013
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.3,
+          "count": 16,
+          "accuracy": 0.8125,
+          "mean_score": 0.2587323382858068
+        },
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "count": 48,
+          "accuracy": 0.8541666666666666,
+          "mean_score": 0.3528349037776464
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 49,
+          "accuracy": 0.8163265306122449,
+          "mean_score": 0.4480488577373959
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 90,
+          "accuracy": 0.9444444444444444,
+          "mean_score": 0.5567355389635237
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "count": 188,
+          "accuracy": 0.9680851063829787,
+          "mean_score": 0.6515072022286327
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "count": 347,
+          "accuracy": 0.9971181556195965,
+          "mean_score": 0.7556773209723343
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 824,
+          "accuracy": 0.9987864077669902,
+          "mean_score": 0.8591855892658503
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 2070,
+          "accuracy": 1.0,
+          "mean_score": 0.9497260378493652
+        }
+      ],
+      "model_version": "logistic_regression:e18338db2423"
+    },
+    "distilbert": {
+      "samples": 3642,
+      "accuracy": 0.9986271279516749,
+      "mean_top_score": 0.9977212392982283,
+      "ece_10_bins": 0.0012014731762422263,
+      "multiclass_brier_sum": 0.0021835654702830596,
+      "log_loss": 0.0071537825362848785,
+      "score_below_0_8_rate": 0.0013728720483250961,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 0,
+          "accuracy": null,
+          "mean_score": null
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 0,
+          "accuracy": null,
+          "mean_score": null
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.3,
+          "count": 0,
+          "accuracy": null,
+          "mean_score": null
+        },
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "count": 0,
+          "accuracy": null,
+          "mean_score": null
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 1,
+          "accuracy": 0.0,
+          "mean_score": 0.46306212756271115
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 2,
+          "accuracy": 0.5,
+          "mean_score": 0.5375986442241065
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "count": 2,
+          "accuracy": 1.0,
+          "mean_score": 0.6778806226759257
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "count": 0,
+          "accuracy": null,
+          "mean_score": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 3,
+          "accuracy": 1.0,
+          "mean_score": 0.8646891899396824
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 3634,
+          "accuracy": 0.9991744634012107,
+          "mean_score": 0.9984074477966334
+        }
+      ],
+      "model_version": "distilbert:130e8686af8b"
+    }
+  }
+}

@@ -1,0 +1,244 @@
+[
+  {
+    "example": "refund_tracking",
+    "model": "logistic_regression",
+    "prediction": {
+      "intent": "track_refund",
+      "category": "REFUND",
+      "score": 0.8619376525421034,
+      "margin": 0.8431765146413958,
+      "model_version": "logistic_regression:e18338db2423",
+      "truncated": false
+    },
+    "department": "Finance",
+    "priority": "Medium",
+    "priority_source": "business_rules",
+    "priority_reason": "default_medium",
+    "routing_reason": "intent_mapping",
+    "requires_review": false,
+    "review_reasons": [],
+    "policy_version": "routing-v1",
+    "score_calibrated": false,
+    "latency_ms": 1.527
+  },
+  {
+    "example": "urgent_payment",
+    "model": "logistic_regression",
+    "prediction": {
+      "intent": "payment_issue",
+      "category": "PAYMENT",
+      "score": 0.31309211327143294,
+      "margin": 0.1803884044899351,
+      "model_version": "logistic_regression:e18338db2423",
+      "truncated": false
+    },
+    "department": "Manual Triage",
+    "priority": "High",
+    "priority_source": "business_rules",
+    "priority_reason": "explicit_urgency",
+    "routing_reason": "human_review_required",
+    "requires_review": true,
+    "review_reasons": [
+      "low_model_score"
+    ],
+    "policy_version": "routing-v1",
+    "score_calibrated": false,
+    "latency_ms": 1.87
+  },
+  {
+    "example": "account_compromise",
+    "model": "logistic_regression",
+    "prediction": {
+      "intent": "delete_account",
+      "category": "ACCOUNT",
+      "score": 0.218524948824503,
+      "margin": 0.058684036856962746,
+      "model_version": "logistic_regression:e18338db2423",
+      "truncated": false
+    },
+    "department": "Account Security",
+    "priority": "High",
+    "priority_source": "business_rules",
+    "priority_reason": "reported_account_compromise",
+    "routing_reason": "priority_rule_escalation",
+    "requires_review": true,
+    "review_reasons": [
+      "low_model_score",
+      "ambiguous_top_predictions",
+      "reported_account_compromise"
+    ],
+    "policy_version": "routing-v1",
+    "score_calibrated": false,
+    "latency_ms": 1.708
+  },
+  {
+    "example": "outage",
+    "model": "logistic_regression",
+    "prediction": {
+      "intent": "review",
+      "category": "FEEDBACK",
+      "score": 0.20455044589125848,
+      "margin": 0.08332823854232872,
+      "model_version": "logistic_regression:e18338db2423",
+      "truncated": false
+    },
+    "department": "Incident Response",
+    "priority": "Critical",
+    "priority_source": "business_rules",
+    "priority_reason": "reported_service_outage",
+    "routing_reason": "priority_rule_escalation",
+    "requires_review": true,
+    "review_reasons": [
+      "low_model_score",
+      "ambiguous_top_predictions",
+      "reported_service_outage"
+    ],
+    "policy_version": "routing-v1",
+    "score_calibrated": false,
+    "latency_ms": 1.161
+  },
+  {
+    "example": "vague_request",
+    "model": "logistic_regression",
+    "prediction": {
+      "intent": "place_order",
+      "category": "ORDER",
+      "score": 0.13405233450598228,
+      "margin": 0.02857847850398236,
+      "model_version": "logistic_regression:e18338db2423",
+      "truncated": false
+    },
+    "department": "Manual Triage",
+    "priority": "Medium",
+    "priority_source": "business_rules",
+    "priority_reason": "default_medium",
+    "routing_reason": "human_review_required",
+    "requires_review": true,
+    "review_reasons": [
+      "low_model_score",
+      "ambiguous_top_predictions",
+      "insufficient_context"
+    ],
+    "policy_version": "routing-v1",
+    "score_calibrated": false,
+    "latency_ms": 1.002
+  },
+  {
+    "example": "refund_tracking",
+    "model": "distilbert",
+    "prediction": {
+      "intent": "track_refund",
+      "category": "REFUND",
+      "score": 0.9979737401008606,
+      "margin": 0.9975906010076869,
+      "model_version": "distilbert:130e8686af8b",
+      "truncated": false
+    },
+    "department": "Finance",
+    "priority": "Medium",
+    "priority_source": "business_rules",
+    "priority_reason": "default_medium",
+    "routing_reason": "intent_mapping",
+    "requires_review": false,
+    "review_reasons": [],
+    "policy_version": "routing-v1",
+    "score_calibrated": false,
+    "latency_ms": 54.672
+  },
+  {
+    "example": "urgent_payment",
+    "model": "distilbert",
+    "prediction": {
+      "intent": "payment_issue",
+      "category": "PAYMENT",
+      "score": 0.9958093166351318,
+      "margin": 0.9945326005108654,
+      "model_version": "distilbert:130e8686af8b",
+      "truncated": false
+    },
+    "department": "Finance",
+    "priority": "High",
+    "priority_source": "business_rules",
+    "priority_reason": "explicit_urgency",
+    "routing_reason": "intent_mapping",
+    "requires_review": false,
+    "review_reasons": [],
+    "policy_version": "routing-v1",
+    "score_calibrated": false,
+    "latency_ms": 20.451
+  },
+  {
+    "example": "account_compromise",
+    "model": "distilbert",
+    "prediction": {
+      "intent": "delete_account",
+      "category": "ACCOUNT",
+      "score": 0.9347323775291443,
+      "margin": 0.9077427051961422,
+      "model_version": "distilbert:130e8686af8b",
+      "truncated": false
+    },
+    "department": "Account Security",
+    "priority": "High",
+    "priority_source": "business_rules",
+    "priority_reason": "reported_account_compromise",
+    "routing_reason": "priority_rule_escalation",
+    "requires_review": true,
+    "review_reasons": [
+      "reported_account_compromise"
+    ],
+    "policy_version": "routing-v1",
+    "score_calibrated": false,
+    "latency_ms": 21.168
+  },
+  {
+    "example": "outage",
+    "model": "distilbert",
+    "prediction": {
+      "intent": "delete_account",
+      "category": "ACCOUNT",
+      "score": 0.3896682560443878,
+      "margin": 0.07634040713310242,
+      "model_version": "distilbert:130e8686af8b",
+      "truncated": false
+    },
+    "department": "Incident Response",
+    "priority": "Critical",
+    "priority_source": "business_rules",
+    "priority_reason": "reported_service_outage",
+    "routing_reason": "priority_rule_escalation",
+    "requires_review": true,
+    "review_reasons": [
+      "low_model_score",
+      "ambiguous_top_predictions",
+      "reported_service_outage"
+    ],
+    "policy_version": "routing-v1",
+    "score_calibrated": false,
+    "latency_ms": 13.973
+  },
+  {
+    "example": "vague_request",
+    "model": "distilbert",
+    "prediction": {
+      "intent": "contact_human_agent",
+      "category": "CONTACT",
+      "score": 0.9253255128860474,
+      "margin": 0.8934106193482876,
+      "model_version": "distilbert:130e8686af8b",
+      "truncated": false
+    },
+    "department": "Manual Triage",
+    "priority": "Medium",
+    "priority_source": "business_rules",
+    "priority_reason": "default_medium",
+    "routing_reason": "human_review_required",
+    "requires_review": true,
+    "review_reasons": [
+      "insufficient_context"
+    ],
+    "policy_version": "routing-v1",
+    "score_calibrated": false,
+    "latency_ms": 14.907
+  }
+]

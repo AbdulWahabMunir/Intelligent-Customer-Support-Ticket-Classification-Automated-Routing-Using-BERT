@@ -1,0 +1,14 @@
+﻿{
+    "compose":  "5.6.1",
+    "docker_desktop":  "4.98.0",
+    "installation":  "succeeded",
+    "engine_verified":  false,
+    "windows_features_enabled":  [
+                                     "Microsoft-Windows-Subsystem-Linux",
+                                     "VirtualMachinePlatform"
+                                 ],
+    "windows_build":  "21996",
+    "docker_cli":  "29.9.2",
+    "restart_required":  true,
+    "documented_windows_11_minimum":  "22631"
+}

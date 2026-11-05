@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: intelligent-support-demo
+    runtime: python
+    plan: 1c-2g
+    region: oregon
+    buildCommand: python -m pip install --index-url https://download.pytorch.org/whl/cpu torch==2.15.0 && python -m pip install -r requirements-dashboard.txt
+    startCommand: python -m app.run_hosted
+    healthCheckPath: /_stcore/health
+    numInstances: 1
+    autoDeployTrigger: "off"
+    disk:
+      name: support-data
+      mountPath: /var/data
+      sizeGB: 2
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.14.0
+      - key: SUPPORT_MODELS_PATH
+        value: /var/data/models
+      - key: SUPPORT_DB_PATH
+        value: /var/data/support.sqlite3
+      - key: SUPPORT_DASHBOARD_PASSWORD
+        generateValue: true
+      - key: MODEL_BUNDLE_URL
+        sync: false
+      - key: MODEL_BUNDLE_SHA256
+        sync: false

@@ -1,0 +1,19 @@
+name: Python tests
+on: [push, pull_request]
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+          cache: pip
+      - run: python -m pip install scikit-learn==1.8.0 fastapi==0.162.0 httpx==0.28.1 streamlit==1.66.1
+      - run: python -m unittest discover -s tests -v
+  container-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build --target api -t support-api:ci .
+      - run: docker build --target dashboard -t support-dashboard:ci .
