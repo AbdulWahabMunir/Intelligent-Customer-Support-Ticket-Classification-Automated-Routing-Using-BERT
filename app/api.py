@@ -3,6 +3,7 @@
 from contextlib import asynccontextmanager
 import os
 import hmac
+import logging
 from pathlib import Path
 from threading import Lock
 from uuid import UUID
@@ -11,7 +12,7 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
-from app.schemas import (AnalyticsOut, FeedbackCreate, FeedbackOut, ResultOut, TicketCreate, TicketOut, TicketPage)
+from app.schemas import (AnalyticsOut, FeedbackCreate, FeedbackOut, FeedbackSubmission, Priority, ResultOut, TicketCreate, TicketOut, TicketPage)
 from app.storage import TicketStore
 from src.data.inspect import ROOT
 from src.inference import TicketClassifier
@@ -52,7 +53,7 @@ def create_app(db_path=None, service=None):
     def health():
         with application.state.store.connection() as connection:
             connection.execute("SELECT 1")
-        return {"status": "ok", "model_version": application.state.service.classifier.version,
+        return {"status": "ok", "application_version": "1.1.0", "model_version": application.state.service.classifier.version,
                 "policy_version": application.state.service.policy.config["version"]}
 
     @application.get("/taxonomy")
@@ -67,7 +68,10 @@ def create_app(db_path=None, service=None):
     def predict(body):
         # Serialize CPU inference to avoid competing Torch thread pools.
         with application.state.inference_lock:
-            return application.state.service.classify_and_route(body.text)
+            result = application.state.service.classify_and_route(body.text)
+        logging.getLogger('support.inference').info('prediction model=%s latency_ms=%.2f review=%s',
+            result['prediction']['model_version'], result['latency_ms'], result['requires_review'])
+        return result
 
     @application.post("/predict", response_model=ResultOut)
     def prediction(body: TicketCreate):
@@ -78,8 +82,13 @@ def create_app(db_path=None, service=None):
         return application.state.store.create_ticket(body.text, predict(body))
 
     @application.get("/tickets", response_model=TicketPage)
-    def list_tickets(limit: int = Query(20, ge=1, le=100), offset: int = Query(0, ge=0), needs_review: bool | None = None):
-        return application.state.store.list_tickets(limit, offset, needs_review)
+    def list_tickets(limit: int = Query(20, ge=1, le=100), offset: int = Query(0, ge=0), needs_review: bool | None = None,
+                     category: str | None = Query(None, max_length=100), priority: Priority | None = None,
+                     search: str | None = Query(None, max_length=200)):
+        categories = {value['category'] for value in taxonomy()['intents'].values()}
+        if category is not None and category not in categories:
+            raise HTTPException(status_code=422, detail='Unknown category')
+        return application.state.store.list_tickets(limit, offset, needs_review, category, priority, search)
 
     def require_ticket(ticket_id):
         ticket = application.state.store.get_ticket(ticket_id)
@@ -107,6 +116,10 @@ def create_app(db_path=None, service=None):
     def get_feedback(ticket_id: UUID):
         require_ticket(ticket_id)
         return application.state.store.list_feedback(ticket_id)
+
+    @application.post('/feedback', response_model=FeedbackOut, status_code=201)
+    def submit_feedback(body: FeedbackSubmission):
+        return add_feedback(body.ticket_id, FeedbackCreate(**body.model_dump(exclude={'ticket_id'})))
 
     @application.get("/analytics", response_model=AnalyticsOut)
     def analytics():

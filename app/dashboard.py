@@ -45,6 +45,9 @@ def navigate_to_review(ticket_id):
     st.session_state["requested_ticket"] = ticket_id
     st.session_state["review_filter"] = "All tickets"
     st.session_state["ticket_page"] = 1
+    st.session_state['category_filter'] = 'All categories'
+    st.session_state['priority_filter'] = 'All priorities'
+    st.session_state['ticket_search'] = ''
 
 
 def navigate_to_new():
@@ -101,6 +104,13 @@ def show_overview(api):
             counts = {priority: metrics["original_priorities"].get(priority, 0) for priority in ["Critical", "High", "Medium", "Low"]}
             st.bar_chart(pd.DataFrame.from_dict(counts, orient="index", columns=["Tickets"]), color="#315b87")
     st.caption("Charts show original routing decisions. Corrections are retained in each ticket’s review history.")
+    with st.expander('Human feedback analytics'):
+        st.metric('Human correction rate', f"{metrics['correction_rate']:.1%}")
+        st.caption('Latest review per ticket; confirmations are not corrections. This is review activity, not unbiased test accuracy.')
+        if metrics['corrected_intents']:
+            st.bar_chart(pd.DataFrame.from_dict(metrics['corrected_intents'], orient='index', columns=['Corrected tickets']))
+        if metrics['review_activity_by_day']:
+            st.dataframe(pd.DataFrame.from_dict(metrics['review_activity_by_day'], orient='index').rename_axis('Review date'), width='stretch')
     st.subheader("Recent tickets")
     show_ticket_table(api.tickets(limit=5)["items"])
 
@@ -125,7 +135,7 @@ def show_new_ticket(api):
         with st.container(border=True):
             st.subheader("What happens next")
             st.write("1. The model predicts the customer’s intent.\n2. Business rules choose priority and department.\n3. Uncertain or escalated cases enter human review.")
-            st.caption("Messages and feedback are saved locally. Avoid adding unnecessary personal information.")
+            st.caption("Messages and feedback are saved in the workspace database. Avoid adding unnecessary personal information.")
     ticket = st.session_state.get("latest_ticket")
     if ticket:
         ticket = api.ticket(ticket["id"])
@@ -148,9 +158,16 @@ def show_review(api):
     st.title("Ticket review")
     st.caption("Inspect the original prediction, record a correction or confirm the existing intent.")
     choice = st.selectbox("Show", ["Awaiting review", "All tickets", "No outstanding review"], key="review_filter", on_change=reset_review_page)
+    taxonomy = api.taxonomy()
+    a, b = st.columns(2)
+    category = a.selectbox('Category', ['All categories'] + sorted({item['category'] for item in taxonomy['intents'].values()}), key='category_filter', on_change=reset_review_page)
+    priority = b.selectbox('Priority', ['All priorities'] + taxonomy['priorities'], key='priority_filter', on_change=reset_review_page)
+    search = st.text_input('Search messages', max_chars=200, key='ticket_search', on_change=reset_review_page)
     page = int(st.number_input("Page", min_value=1, step=1, key="ticket_page"))
     needs_review = {"Awaiting review": True, "All tickets": None, "No outstanding review": False}[choice]
-    result = api.tickets(limit=20, offset=(page - 1) * 20, needs_review=needs_review)
+    result = api.tickets(limit=20, offset=(page - 1) * 20, needs_review=needs_review,
+                         category=None if category == 'All categories' else category,
+                         priority=None if priority == 'All priorities' else priority, search=search)
     st.caption(f"{result['total']} matching tickets · 20 per page")
     tickets = result["items"]
     if not tickets:
@@ -219,7 +236,7 @@ def main():
         page = st.radio("Workspace", ["Overview", "New ticket", "Ticket review"], key="navigation", label_visibility="collapsed")
         st.divider()
         refresh = st.button("Refresh workspace", width="stretch")
-        st.caption("Local workspace · human review enabled")
+        st.caption("Reviewer workspace · human review enabled")
     if refresh:
         st.rerun()
     try:
@@ -229,6 +246,7 @@ def main():
             with st.expander("Workspace details"):
                 st.caption(f"Model: {health['model_version']}")
                 st.caption(f"Policy: {health['policy_version']}")
+                st.caption(f"Application: {health.get('application_version', '1.0.0')}")
         if st.session_state.pop("review_saved", None):
             st.success("Review saved. The original prediction is preserved and the review queue is updated.")
         {"Overview": show_overview, "New ticket": show_new_ticket, "Ticket review": show_review}[page](api)

@@ -79,6 +79,10 @@ class FeedbackOut(FeedbackCreate):
     training_status: Literal["pending"]
 
 
+class FeedbackSubmission(FeedbackCreate):
+    ticket_id: UUID
+
+
 class AnalyticsOut(StrictModel):
     tickets: int
     reviewed_tickets: int
@@ -86,3 +90,7 @@ class AnalyticsOut(StrictModel):
     feedback_entries: int
     original_departments: dict[str, int]
     original_priorities: dict[str, int]
+    corrected_tickets: int = 0
+    correction_rate: float = 0
+    corrected_intents: dict[str, int] = Field(default_factory=dict)
+    review_activity_by_day: dict[str, dict[str, int]] = Field(default_factory=dict)

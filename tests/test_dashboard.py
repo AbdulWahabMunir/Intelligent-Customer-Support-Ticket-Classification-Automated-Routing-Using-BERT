@@ -89,6 +89,18 @@ class DashboardTests(unittest.TestCase):
         self.assertTrue(any("Enter a customer message" in item.value for item in app.error))
         self.assertEqual(self.client.get("/tickets").json()["total"], 0)
 
+    def test_category_priority_and_search_widgets(self):
+        self.client.post('/tickets', json={'text': 'Track my refund please'})
+        self.client.post('/tickets', json={'text': 'URGENT track my refund please'})
+        app = self.app.run()
+        app.radio(key='navigation').set_value('Ticket review').run()
+        app.selectbox(key='review_filter').set_value('All tickets').run()
+        app.selectbox(key='category_filter').set_value('REFUND').run()
+        app.selectbox(key='priority_filter').set_value('High').run()
+        app.text_input(key='ticket_search').set_value('URGENT').run()
+        self.assertFalse(app.exception)
+        self.assertTrue(any('1 matching tickets' in item.value for item in app.caption))
+
     def test_overview_charts_show_persisted_data(self):
         self.client.post("/tickets", json={"text": "Where is my refund?"})
         app = self.app.run()

@@ -81,15 +81,26 @@ class TicketStore:
             row = connection.execute(self.ticket_query() + " WHERE t.id=?", (str(ticket_id),)).fetchone()
         return self.decode_ticket(row) if row else None
 
-    def list_tickets(self, limit=20, offset=0, needs_review=None):
-        where = ""
+    def list_tickets(self, limit=20, offset=0, needs_review=None, category=None, priority=None, search=None):
+        clauses, parameters = [], []
         if needs_review is True:
-            where = " WHERE t.requires_review=1 AND NOT EXISTS (SELECT 1 FROM feedback f WHERE f.ticket_id=t.id)"
+            clauses.append("t.requires_review=1 AND NOT EXISTS (SELECT 1 FROM feedback f WHERE f.ticket_id=t.id)")
         elif needs_review is False:
-            where = " WHERE t.requires_review=0 OR EXISTS (SELECT 1 FROM feedback f WHERE f.ticket_id=t.id)"
+            clauses.append("(t.requires_review=0 OR EXISTS (SELECT 1 FROM feedback f WHERE f.ticket_id=t.id))")
+        if category:
+            # Category is a deterministic mapping from the stored original intent.
+            clauses.append("t.result_json LIKE ?")
+            parameters.append('%"category": "' + category + '"%')
+        if priority:
+            clauses.append("t.priority=?")
+            parameters.append(priority)
+        if search:
+            clauses.append("LOWER(t.text) LIKE ? ESCAPE '!' ")
+            parameters.append('%' + search.lower().replace('!', '!!').replace('%', '!%').replace('_', '!_') + '%')
+        where = ' WHERE ' + ' AND '.join(clauses) if clauses else ''
         with self.connection() as connection:
-            total = connection.execute("SELECT COUNT(*) FROM tickets t" + where).fetchone()[0]
-            rows = connection.execute(self.ticket_query() + where + " ORDER BY t.created_at DESC, t.id DESC LIMIT ? OFFSET ?", (limit, offset)).fetchall()
+            total = connection.execute("SELECT COUNT(*) FROM tickets t" + where, tuple(parameters)).fetchone()[0]
+            rows = connection.execute(self.ticket_query() + where + " ORDER BY t.created_at DESC, t.id DESC LIMIT ? OFFSET ?", tuple(parameters) + (limit, offset)).fetchall()
         return {"items": [self.decode_ticket(row) for row in rows], "total": total, "limit": limit, "offset": offset}
 
     def add_feedback(self, ticket_id, values):
@@ -118,5 +129,19 @@ class TicketStore:
             feedback = connection.execute("SELECT COUNT(*) FROM feedback").fetchone()[0]
             departments = {row[0]: row[1] for row in connection.execute("SELECT department, COUNT(*) FROM tickets GROUP BY department")}
             priorities = {row[0]: row[1] for row in connection.execute("SELECT priority, COUNT(*) FROM tickets GROUP BY priority")}
+            examples = connection.execute("SELECT t.result_json, t.priority, t.department, f.corrected_intent, f.corrected_priority, f.corrected_department, f.created_at FROM tickets t JOIN feedback f ON f.ticket_id=t.id WHERE f.sequence=(SELECT MAX(f2.sequence) FROM feedback f2 WHERE f2.ticket_id=t.id)").fetchall()
+        corrected, intents, days = 0, {}, {}
+        for row in examples:
+            original = json.loads(row['result_json'])['prediction']['intent']
+            changed = original != row['corrected_intent'] or (row['corrected_priority'] is not None and row['priority'] != row['corrected_priority']) or (row['corrected_department'] is not None and row['department'] != row['corrected_department'])
+            corrected += int(changed)
+            if original != row['corrected_intent']:
+                intents[original] = intents.get(original, 0) + 1
+            day = row['created_at'][:10]
+            days.setdefault(day, {'reviewed': 0, 'corrected': 0})
+            days[day]['reviewed'] += 1
+            days[day]['corrected'] += int(changed)
         return {"tickets": total, "reviewed_tickets": reviewed, "pending_review": pending,
-                "feedback_entries": feedback, "original_departments": departments, "original_priorities": priorities}
+                "feedback_entries": feedback, "original_departments": departments, "original_priorities": priorities,
+                "corrected_tickets": corrected, "correction_rate": corrected / reviewed if reviewed else 0,
+                "corrected_intents": intents, "review_activity_by_day": days}

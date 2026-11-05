@@ -41,10 +41,13 @@ class SupportAPI:
     def create_ticket(self, text):
         return self.request("POST", "/tickets", json={"text": text})
 
-    def tickets(self, limit=20, offset=0, needs_review=None):
+    def tickets(self, limit=20, offset=0, needs_review=None, category=None, priority=None, search=None):
         params = {"limit": limit, "offset": offset}
         if needs_review is not None:
             params["needs_review"] = needs_review
+        for key, value in {'category': category, 'priority': priority, 'search': search}.items():
+            if value:
+                params[key] = value
         return self.request("GET", "/tickets", params=params)
 
     def ticket(self, ticket_id):

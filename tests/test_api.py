@@ -22,6 +22,33 @@ class TestClassifier:
 
 
 class ApiTests(unittest.TestCase):
+    def test_search_category_priority_and_review_filters_combine(self):
+        self.create_ticket('Track my refund please')
+        self.create_ticket('URGENT: track my refund please')
+        self.create_ticket('100% refund_query please')
+        response = self.client.get('/tickets', params={'category': 'REFUND', 'priority': 'High', 'search': 'TRACK'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()['total'], 1)
+        self.assertEqual(self.client.get('/tickets', params={'search': '100% refund_'}).json()['total'], 1)
+        self.assertEqual(self.client.get('/tickets', params={'category': 'invalid'}).status_code, 422)
+        self.assertEqual(self.client.get('/tickets', params={'priority': 'invalid'}).status_code, 422)
+        self.assertEqual(self.client.get('/tickets', params={'search': "' OR 1=1 --"}).json()['total'], 0)
+
+    def test_feedback_alias_and_latest_review_correction_rate(self):
+        ticket = self.create_ticket()
+        response = self.client.post('/feedback', json={'ticket_id': ticket['id'], 'corrected_intent': 'get_refund'})
+        self.assertEqual(response.status_code, 201)
+        analytics = self.client.get('/analytics').json()
+        self.assertEqual(analytics['corrected_tickets'], 1)
+        self.assertEqual(analytics['correction_rate'], 1)
+        self.assertEqual(analytics['corrected_intents'], {'track_refund': 1})
+        self.client.post('/feedback', json={'ticket_id': ticket['id'], 'corrected_intent': 'track_refund'})
+        analytics = self.client.get('/analytics').json()
+        self.assertEqual(analytics['feedback_entries'], 2)
+        self.assertEqual(analytics['corrected_tickets'], 0)
+        self.assertEqual(analytics['correction_rate'], 0)
+        self.assertEqual(len(analytics['review_activity_by_day']), 1)
+
     def test_api_key_protects_private_routes_and_keeps_health_public(self):
         with patch.dict('os.environ', {'SUPPORT_API_KEY': 'verification-key'}):
             self.assertEqual(self.client.get('/health').status_code, 200)

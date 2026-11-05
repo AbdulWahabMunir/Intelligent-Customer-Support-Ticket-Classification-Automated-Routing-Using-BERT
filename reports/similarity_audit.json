@@ -1,0 +1,11 @@
+{
+  "seed": 42,
+  "test_sample": 1000,
+  "training_rows": 16991,
+  "method": "Training-only TF-IDF char_wb 3-5 grams; nearest training cosine for seeded test sample",
+  "mean_nearest_cosine": 0.8834399067163468,
+  "at_least_0_90": 493,
+  "at_least_0_95": 228,
+  "at_least_0_99": 30,
+  "limitation": "Similarity audit, not proof of independent templates. Original random-split scores can be optimistic. No threshold was selected to improve model scores, and no retraining was done."
+}

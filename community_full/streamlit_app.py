@@ -33,13 +33,13 @@ if not require_access():
 
 
 @st.cache_resource(validate=lambda process: process.poll() is None, show_spinner=False)
-def backend():
+def backend(release):
     return start_backend()
 
 
 try:
     with st.spinner('Starting the support API and DistilBERT. The first launch downloads model weights.'):
-        backend()
+        backend('1.1.0')
 except RuntimeError as error:
     st.error(str(error))
     st.stop()

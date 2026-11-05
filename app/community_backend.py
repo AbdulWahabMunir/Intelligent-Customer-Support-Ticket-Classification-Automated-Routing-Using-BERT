@@ -7,6 +7,7 @@ import sys
 import time
 
 import httpx
+import psutil
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -28,6 +29,21 @@ def start_backend():
     url = f'http://127.0.0.1:{port}'
     child_env = dict(os.environ)
     child_env.update(PORT=str(port), SUPPORT_API_HOST='127.0.0.1', HF_HUB_OFFLINE='1', TOKENIZERS_PARALLELISM='false')
+    # A source update can rerun Streamlit without stopping its previous child.
+    # Retire only this parent process's API on the same internal port.
+    for previous in psutil.Process().children(recursive=False):
+        try:
+            command = previous.cmdline()
+            environment = previous.environ()
+            if 'app.run_api' in command and environment.get('PORT') == str(port) and environment.get('SUPPORT_API_HOST') == '127.0.0.1':
+                previous.terminate()
+                try:
+                    previous.wait(timeout=15)
+                except psutil.TimeoutExpired:
+                    previous.kill()
+                    previous.wait(timeout=5)
+        except (psutil.NoSuchProcess, psutil.AccessDenied):
+            continue
     logs = ROOT / 'data/runtime'
     logs.mkdir(parents=True, exist_ok=True)
     with (logs / 'community-api.log').open('ab') as output:
