@@ -9,3 +9,5 @@ Set five Streamlit secrets: `DATABASE_URL`, `SUPPORT_API_KEY`, `SUPPORT_DASHBOAR
 No separate public API URL or Render account is required. Render Free remains an optional alternative, but this account's service-creation attempt required payment information and no service was created. No paid resources are authorized by this setup.
 
 Initial model download/startup can take a few minutes. Cloud resource limits still apply; local verification does not establish that a cloud deploy is live. Use synthetic examples in this shared-password portfolio demo.
+
+The project's deployment is live at https://aw-intelligent-customer-support.streamlit.app . Version 1.1.1 and pre-update reviewed-ticket persistence were observed in isolated Edge; see `reports/deployment/live-updated-verification.json`.

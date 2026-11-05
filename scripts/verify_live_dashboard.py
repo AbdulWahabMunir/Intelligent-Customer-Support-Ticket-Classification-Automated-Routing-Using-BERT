@@ -86,10 +86,10 @@ def main():
             # Awaiting-review is initially empty; select All tickets with keyboard.
             comboboxes = evaluate("document.querySelectorAll('input[role=combobox]').length")
             if comboboxes:
-                evaluate("document.querySelector('input[role=combobox]').focus()")
+                evaluate("(document.querySelector('input[role=combobox]').focus(), document.querySelector('input[role=combobox]').select())")
                 command('Input.insertText', {'text': 'All tickets'})
-                command('Input.dispatchKeyEvent', {'type': 'keyDown', 'key': 'Enter', 'code': 'Enter'})
-                command('Input.dispatchKeyEvent', {'type': 'keyUp', 'key': 'Enter', 'code': 'Enter'})
+                time.sleep(1)
+                evaluate("Array.from(document.querySelectorAll('[role=option]')).find(e=>e.innerText.trim()==='All tickets')?.click()")
             body = wait_text('a623e207')
             assert 'Reviewed' in body and 'Track Refund' in body
             time.sleep(2)

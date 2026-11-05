@@ -1,13 +1,13 @@
-# Project status
+# Project status ? verified portfolio release 1.1.1
 
-The local application is implemented: dataset/EDA pipeline, deduplicated splits, both traditional baselines, fully fine-tuned DistilBERT, evaluation/error/calibration diagnostics, routing/priority policy, FastAPI, SQLite, append-only feedback, Streamlit and a robustness pilot. The source also includes CI configuration, release packaging, a hosted process supervisor and optional shared-password access.
+Live application: https://aw-intelligent-customer-support.streamlit.app
 
-Windows was upgraded from build 21996 to 26300. Docker Desktop 4.98.0, CLI/engine 29.9.2 and Compose 5.6.1 are working with WSL 3.0.3. The Linux VM starts successfully. Both Docker images build successfully. Container prediction, ticket/feedback storage, API restart persistence and dashboard health passed; see `reports/containers/runtime.json`. All 41 local tests also passed after the Windows upgrade.
+Streamlit ? internal HTTP ? FastAPI ? fine-tuned DistilBERT and separate business rules ? Neon PostgreSQL. Login, prediction, feedback, analytics and ticket management work in the deployed app. An isolated Edge browser confirmed version 1.1.1, new category/priority/search controls and the pre-update ticket a623e207 still Reviewed after the API child was replaced. Evidence: reports/deployment/live-updated-verification.json and inspected live screenshots.
 
-## Remaining publication work
+The final audit added missing filters/search, correction analytics and the POST /feedback compatibility route; executed EDA/comparison notebooks; completed the BANKING77 baseline experiment and near-template audit; and measured API latency/error handling. All 50 tests passed. PostgreSQL and actual-model Docker restart checks passed, including the 512 MiB memory constraint. Source is synchronized to main and free-hosting; the approved model is in GitHub Release v1.0.0.
 
-Source and the approved model bundle (`v1.0.0` Release) are published at https://github.com/AbdulWahabMunir/Intelligent-Customer-Support-Ticket-Classification-Automated-Routing-Using-BERT. The selected free path is Render Free FastAPI + DistilBERT, Streamlit Community Cloud, and Neon Free PostgreSQL. `render-free.yaml` passes schema validation. All 45 tests pass; actual DistilBERT, API-key access, long inputs, PostgreSQL feedback and restart persistence passed in a 512 MiB container with no extra swap. The Neon connection and Streamlit account configuration are still required before live cloud verification.
+See [requirement audit](requirements_audit.md) and [final report](final_report.md).
 
-The Render Free create request returned HTTP 402 requiring payment information; no service or paid resource was created. The chosen no-card path is now `community_full/streamlit_app.py` on Streamlit Community Cloud: frontend plus internal FastAPI/DistilBERT, with live Neon PostgreSQL. This layout passed login, actual model prediction, feedback and restart persistence locally. All 47 tests pass. Streamlit account authorization and live publishing are still required. The original `render.yaml` remains a separate paid proposal and must not be applied for this free deployment.
+The completed linguistic robustness deliverable is a qualified 108-case draft diagnostic. An independently human-reviewed 300?500-case research benchmark, feedback approval/retraining and enterprise identity remain future extensions; they are not represented as completed research or production readiness. Free hosting may sleep and impose limits.
 
-Human review of challenge labels, production identity and cloud verification are not implied by software test success. See the model card and deployment guide for exact limits.
+No paid resources were created. Render Free required payment information, so the live app uses Streamlit Community Cloud and Neon. The Render configurations remain unused alternatives.

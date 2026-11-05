@@ -1,0 +1,16 @@
+{
+  "url": "https://aw-intelligent-customer-support.streamlit.app",
+  "verified_at": "2026-11-05T17:42:12.018499+00:00",
+  "status": "passed",
+  "application_version": "1.1.1",
+  "checks": [
+    "public Streamlit login",
+    "API connected",
+    "overview renders",
+    "previous cloud ticket a623e207 retained",
+    "reviewed status retained",
+    "new filter UI visible",
+    "updated FastAPI version confirmed after child replacement"
+  ],
+  "method": "isolated headless Edge DOM observations and screenshots"
+}

@@ -2,7 +2,7 @@
 
 ## Selected no-card setup
 
-The Render Free creation attempt returned HTTP 402 requiring payment information; no Render service was created. The selected deployment now runs Streamlit and one internal FastAPI/DistilBERT subprocess together on Streamlit Community Cloud, with durable Neon PostgreSQL. See [the deployment instructions](../community_full/README.md). Entrypoint: `community_full/streamlit_app.py`, branch `free-hosting`, Python 3.14. All 47 tests pass. Local combined-process verification with live Neon storage passed login, inference, feedback and API restart persistence; see `reports/deployment/community-full-verification.json`. This is not yet a live cloud deployment.
+The Render Free creation attempt required payment information; no Render service was created. The live deployment runs Streamlit and one internal FastAPI/DistilBERT subprocess together on Community Cloud with Neon PostgreSQL: https://aw-intelligent-customer-support.streamlit.app . Entrypoint: `community_full/streamlit_app.py`, branch `free-hosting`, Python 3.14. All 50 tests passed. Local and live browser checks passed, including pre-update reviewed-ticket retention after API replacement. See `reports/deployment/live-updated-verification.json` and [setup instructions](../community_full/README.md).
 
 The separate Render backend setup below remains an alternative if the account meets Render's verification requirements.
 

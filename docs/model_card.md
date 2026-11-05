@@ -28,6 +28,7 @@ Raw top-score ECE on the synthetic test split was approximately 0.0012 for Disti
 - Input is truncated at 64 subword tokens and flagged for review; application text is limited to 10,000 characters.
 - Priority regexes do not understand arbitrary negation or confirm incidents.
 - Feedback remains pending; no automatic retraining or approval workflow exists.
-- Public deployment, broader access control and a larger human-reviewed challenge set remain outstanding.
+- Public deployment is live at https://aw-intelligent-customer-support.streamlit.app with shared reviewer-password/API-key access. Enterprise identity and a larger independently human-reviewed challenge remain future extensions.
+- A seeded template audit found 228/1,000 test messages with nearest-training character-TF-IDF cosine at least 0.95; the synthetic held-out scores should be interpreted with this similarity risk.
 
 Evidence lives in the model comparison, confidence, robustness and API/dashboard verification reports.

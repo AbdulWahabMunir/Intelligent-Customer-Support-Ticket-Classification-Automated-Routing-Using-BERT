@@ -1,16 +1,18 @@
 # Intelligent Customer Support Classifier
 
-A learning-focused NLP project: classify customer support intents, map them to categories, and route tickets using separate business rules.
+A deployed NLP portfolio platform: classify support intents with fine-tuned DistilBERT, map categories, apply separate routing/priority rules, and collect human feedback.
+
+**[Live application](https://aw-intelligent-customer-support.streamlit.app)** · [Final report](docs/final_report.md) · [Original brief audit](docs/requirements_audit.md)
 
 ## Current state
 
-The local application is implemented and tested. Source and the approved model bundle are published on GitHub. The no-card hosting path uses Streamlit Community Cloud with an internal FastAPI + DistilBERT process and Neon PostgreSQL; see [deployment setup](community_full/README.md). Neon is connected and the combined flow passed locally; live Community Cloud deployment still requires account authorization and publishing. See the [project status](docs/project_status.md).
+Release **1.1.1 is live and browser-verified**. Streamlit Community Cloud runs the frontend and an internal FastAPI/DistilBERT process; Neon PostgreSQL preserves tickets and feedback. The pre-update reviewed ticket remained available after the cloud API was replaced. Source and the approved model bundle are published on GitHub. See [deployment setup](community_full/README.md) and [project status](docs/project_status.md).
 
 Implemented: reproducible Bitext download, EDA, duplicate removal, stratified train/validation/test splits, TF-IDF baselines, full three-epoch DistilBERT fine-tuning, saved models and local predictions.
 
-The FastAPI backend now serves predictions, stores tickets in SQLite, and collects append-only human corrections. Original model decisions are preserved; feedback remains pending and does not trigger retraining.
+FastAPI serves predictions, stores tickets in SQLite locally or PostgreSQL in the live app, and collects append-only corrections. Original decisions are preserved; feedback stays pending and never triggers automatic retraining.
 
-The Streamlit dashboard adds ticket submission, a human review workspace, original-versus-correction history, live counts and routing/priority charts.
+The dashboard provides submission/results, review history, category/priority filters, message search, pagination, routing/priority charts and latest-review correction analytics.
 
 The download and inspection use Python's standard library. Baselines and Transformers use the tested project virtual environment on Python 3.14.
 
@@ -91,7 +93,11 @@ With the API running in one terminal, run these in a second terminal:
 
 Open http://127.0.0.1:8501. Use New ticket to submit a message, Ticket review to inspect/correct predictions, and Overview to monitor activity. See the [dashboard guide](docs/dashboard.md). This is a local single-user application.
 
-All **47 tests** passed, including challenge integrity, confidence metrics, archive extraction protections, API authentication and hosted login behavior. Real DistilBERT + PostgreSQL also passed prediction, long-input and restart verification under a 512 MiB container limit. The combined Streamlit/internal FastAPI layout passed login, prediction, feedback and restart checks with live Neon storage. A real Edge overview capture was also inspected. See [dashboard verification](reports/dashboard/verification.md).
+All **50 tests** passed, including filters/search, correction analytics, API authentication and hosted login behavior. Actual DistilBERT + PostgreSQL passed long-input/restart checks under a 512 MiB container limit. Live Edge verification confirmed application 1.1.1, the new controls and preserved reviewed tickets. See [live verification](reports/deployment/live-updated-verification.json).
+
+![Live ticket review with filters and persisted feedback](reports/screenshots/live-updated-review.png)
+
+Additional deliverables: executed [EDA](notebooks/01_data_exploration.ipynb) and [comparison](notebooks/03_model_comparison.ipynb) notebooks, [BANKING77 experiment](reports/banking77/report.md), [template-similarity audit](reports/similarity_audit.json), and [API latency/edge-case report](reports/api/performance.json).
 
 ![Local dashboard](reports/screenshots/overview.png)
 
@@ -149,6 +155,6 @@ Source: [Bitext customer support dataset](https://huggingface.co/datasets/bitext
 3. DistilBERT fine-tuning and held-out comparison (see experiment reports).
 4. Provisional score handling, priority rules and routing (implemented).
 5. FastAPI, Streamlit, SQLite and human feedback (implemented).
-6. Robustness pilot evaluated; Docker runtime verification passed; human-reviewed challenge set and public deployment remain pending.
+6. Robustness pilot, Docker runtime and public deployment verified. Independent human review of a larger research challenge remains an optional future extension.
 
-We will document actual results as each stage is completed, including limitations and errors.
+Recorded results and limitations are collected in the final report; no production-readiness or independent human-annotation claim is made.

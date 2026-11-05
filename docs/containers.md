@@ -23,7 +23,7 @@ docker compose logs api
 - Container API docs: http://127.0.0.1:8002/docs
 - Existing local Python services remain on ports 8501 and 8000.
 
-The dashboard waits for the API healthcheck and connects over the Compose network using `http://api:8000`. The different host ports avoid collisions with the running local application. Published ports bind to localhost because application authentication remains unimplemented. Both images run as an unprivileged user.
+The dashboard waits for the API healthcheck and connects over the Compose network using `http://api:8000`. Different host ports avoid collisions with local services. Published ports bind to localhost. Hosted deployments additionally use API-key and reviewer-password access; ordinary local Compose is unauthenticated unless those variables are configured. Both images run as an unprivileged user.
 
 Required artifacts: `models/distilbert/experiment.json` and the completed `models/distilbert/final` checkpoint/tokenizer files. They already exist locally but are ignored by Git. A fresh checkout must receive these trusted model artifacts before starting Compose. The API loads local weights only; startup never trains or downloads a model.
 
