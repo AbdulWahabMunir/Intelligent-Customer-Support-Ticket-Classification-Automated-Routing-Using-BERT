@@ -5,7 +5,7 @@ services:
     runtime: python
     plan: free
     region: singapore
-    buildCommand: python -m pip install --index-url https://download.pytorch.org/whl/cpu torch==2.15.0 && python -m pip install -r requirements-hosted-api.txt && python -m app.prepare_models
+    buildCommand: python -m pip install -r requirements.txt && python -m app.prepare_models
     startCommand: python -m app.run_api
     healthCheckPath: /health
     autoDeployTrigger: "off"

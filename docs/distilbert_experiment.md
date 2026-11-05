@@ -19,7 +19,7 @@ Design follows Hugging Face's [sequence classification guide](https://huggingfac
 Hardware discovery found Intel UHD Graphics 620; no NVIDIA GPU was detected. Full training subsequently completed locally on CPU; Colab remains an optional alternative. Windows Python 3.14 wheels resolved for the dependencies listed below.
 
 ```powershell
-.venv\Scripts\python.exe -m pip install -r requirements-transformers.txt
+.venv\Scripts\python.exe -m pip install -r requirements.txt
 .venv\Scripts\python.exe -m src.analyze_errors
 .venv\Scripts\python.exe -m src.train_distilbert --smoke --cpu
 ```

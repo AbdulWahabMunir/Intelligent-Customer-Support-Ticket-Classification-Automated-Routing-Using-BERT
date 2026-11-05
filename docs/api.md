@@ -7,7 +7,7 @@ The API loads the completed DistilBERT checkpoint once during FastAPI lifespan s
 From the project root in PowerShell:
 
 ```powershell
-.venv\Scripts\python.exe -m pip install -r requirements-api.txt
+.venv\Scripts\python.exe -m pip install -r requirements.txt
 .venv\Scripts\python.exe -m uvicorn app.api:app --host 127.0.0.1 --port 8000
 ```
 
@@ -20,7 +20,7 @@ Optional process environment variables:
 | `SUPPORT_MODEL` | `distilbert` | Select `distilbert` or `logistic_regression` at startup |
 | `SUPPORT_DB_PATH` | `data/runtime/support.sqlite3` under the project root | SQLite database file; parent directories are created |
 
-The runtime directory is excluded from version control. `requirements-api-lock.txt` records all installed packages for the tested Windows environment.
+The runtime directory is excluded from version control. `requirements.txt` declares the shared application dependencies; `requirements-dev.txt` adds development tools.
 
 ## Endpoints
 

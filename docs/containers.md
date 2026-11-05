@@ -1,6 +1,6 @@
 # Container setup
 
-Two Docker build targets serve the existing application: a CPU model API and a smaller Streamlit dashboard without Torch. Model artifacts are mounted read-only from the existing `models` directory; model weights and runtime databases are excluded from build context. A named Docker volume stores SQLite data separately from local development databases.
+Two Docker targets serve the API and Streamlit dashboard. Both share the complete application dependencies from the root `requirements.txt`; the dashboard does not load model weights. This simplifies maintenance at the cost of a larger dashboard image. Models are mounted read-only and excluded from the build context. A named Docker volume stores SQLite separately from local development databases.
 
 ## Current verification status
 

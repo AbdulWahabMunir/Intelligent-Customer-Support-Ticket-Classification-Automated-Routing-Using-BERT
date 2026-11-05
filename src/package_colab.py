@@ -11,7 +11,7 @@ def main():
     verified_splits(["train", "validation", "test"])
     destination = ROOT / "artifacts/distilbert-colab.zip"
     destination.parent.mkdir(exist_ok=True)
-    paths = [ROOT / name for name in ["requirements.txt", "requirements-transformers.txt", "README.md", "docs/distilbert_experiment.md",
+    paths = [ROOT / name for name in ["requirements.txt", "README.md", "docs/distilbert_experiment.md",
              "data/processed/manifest.json", "reports/baselines/metrics.json", "models/logistic_regression.joblib"]]
     paths += [ROOT / f"data/processed/{name}.csv" for name in ["train", "validation", "test"]]
     paths += sorted((ROOT / "src").rglob("*.py"))

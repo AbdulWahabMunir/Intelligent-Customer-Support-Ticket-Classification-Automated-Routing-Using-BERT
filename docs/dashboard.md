@@ -7,7 +7,7 @@ The dashboard talks only to the FastAPI service over HTTP. It does not load mode
 Install the tested dependencies:
 
 ```powershell
-.venv\Scripts\python.exe -m pip install -r requirements-dashboard.txt
+.venv\Scripts\python.exe -m pip install -r requirements.txt
 ```
 
 Start the API in one terminal:
@@ -24,7 +24,7 @@ Start the dashboard in another:
 
 Open http://127.0.0.1:8501. The project configuration binds Streamlit to localhost, uses a light teal theme and disables usage statistics. The backend model is selected when the API starts, rather than from a browser widget.
 
-Set `SUPPORT_API_URL` in the dashboard process environment to use another API address. It defaults to `http://127.0.0.1:8000`. The tested environment is recorded in `requirements-dashboard-lock.txt`.
+Set `SUPPORT_API_URL` in the dashboard process environment to use another API address. It defaults to `http://127.0.0.1:8000`. Install the shared root `requirements.txt`; development/notebook tools use `requirements-dev.txt`.
 
 ## Screens
 

@@ -8,6 +8,8 @@ A deployed NLP portfolio platform: classify support intents with fine-tuned Dist
 
 ## Current state
 
+Dependency files are deliberately limited to two: **`requirements.txt`** runs the complete application (including CPU DistilBERT on Linux), while **`requirements-dev.txt`** includes it and adds notebook/validation/browser tools. Docker and Streamlit Community Cloud use the shared root file. Old component-specific manifests and Windows lock snapshots have been removed; transitive dependencies are not fully locked.
+
 Release **1.1.1 is live and browser-verified**. Streamlit Community Cloud runs the frontend and an internal FastAPI/DistilBERT process; Neon PostgreSQL preserves tickets and feedback. The pre-update reviewed ticket remained available after the cloud API was replaced. Source and the approved model bundle are published on GitHub. See [deployment setup](community_full/README.md) and [project status](docs/project_status.md).
 
 Implemented: reproducible Bitext download, EDA, duplicate removal, stratified train/validation/test splits, TF-IDF baselines, full three-epoch DistilBERT fine-tuning, saved models and local predictions.
@@ -38,7 +40,7 @@ python -m venv .venv
 .venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
 
-Use `requirements-lock.txt` in place of `requirements.txt` to reproduce the tested dependency versions. See `reports/baselines/comparison.md` for measured results and `reports/baselines/metrics.json` for per-class metrics. Processed splits, model files and error messages stay in ignored local directories. Only load joblib model files you trust.
+Install `requirements.txt` for the complete application or `requirements-dev.txt` for notebook/development tools. Direct dependencies are pinned; this is not a full transitive lockfile. See `reports/baselines/comparison.md` for measured results and `reports/baselines/metrics.json` for per-class metrics. Processed splits, model files and error messages stay in ignored local directories. Only load joblib model files you trust.
 
 The selected model is chosen by validation macro F1. Test scores are calculated after selection, and must not guide tuning. Probabilities printed by the prediction command are uncalibrated scores, not established reliability estimates.
 
@@ -49,7 +51,7 @@ See [baseline error analysis](reports/baselines/error_analysis.md) and the [Dist
 Held-out results: **99.86% accuracy, 0.9983 macro F1**, with 5 errors among 3,642 test tickets. Logistic Regression scored 98.96% accuracy and 0.9885 macro F1. DistilBERT averaged 35.62 ms per message versus 1.53 ms for Logistic Regression in the same CPU evaluation process. See the [full comparison](reports/distilbert/comparison.md). These results describe synthetic Bitext data; real-ticket robustness and confidence calibration remain untested.
 
 ```powershell
-.venv\Scripts\python.exe -m pip install -r requirements-transformers.txt
+.venv\Scripts\python.exe -m pip install -r requirements.txt
 .venv\Scripts\python.exe -m src.analyze_errors
 .venv\Scripts\python.exe -m src.train_distilbert --smoke --cpu
 .venv\Scripts\python.exe -m src.package_colab
@@ -76,7 +78,7 @@ The default model is the completed DistilBERT checkpoint; add `--model logistic_
 ## Run the API
 
 ```powershell
-.venv\Scripts\python.exe -m pip install -r requirements-api.txt
+.venv\Scripts\python.exe -m pip install -r requirements.txt
 .venv\Scripts\python.exe -m uvicorn app.api:app --host 127.0.0.1 --port 8000
 ```
 
@@ -89,7 +91,7 @@ The backend's real HTTP flow with DistilBERT confirmed ticket persistence, revie
 With the API running in one terminal, run these in a second terminal:
 
 ```powershell
-.venv\Scripts\python.exe -m pip install -r requirements-dashboard.txt
+.venv\Scripts\python.exe -m pip install -r requirements.txt
 .venv\Scripts\python.exe -m streamlit run app/dashboard.py
 ```
 
@@ -117,7 +119,7 @@ A fixed **108-case robustness pilot** covers all 27 intents under paraphrasing, 
 .venv\Scripts\python.exe scripts/verify_containers.py
 ```
 
-The container dashboard uses http://127.0.0.1:8502 and API docs use http://127.0.0.1:8002/docs, preserving the local Python ports. See the [container guide](docs/containers.md) for requirements and verification limits. Public deployment remains incomplete.
+The container dashboard uses http://127.0.0.1:8502 and API docs use http://127.0.0.1:8002/docs, preserving the local Python ports. See the [container guide](docs/containers.md) for requirements and verification limits. The live deployment is verified; see the final report.
 
 ## Release and deployment
 

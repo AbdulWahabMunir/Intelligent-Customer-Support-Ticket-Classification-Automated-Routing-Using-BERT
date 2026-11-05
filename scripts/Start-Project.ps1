@@ -1,7 +1,7 @@
 $ErrorActionPreference = 'Stop'
 $projectPath = Split-Path -Parent $PSScriptRoot
 $pythonPath = Join-Path $projectPath '.venv\Scripts\python.exe'
-if (-not (Test-Path -LiteralPath $pythonPath)) { throw 'Create .venv and install requirements-dashboard.txt first; see README.md.' }
+if (-not (Test-Path -LiteralPath $pythonPath)) { throw 'Create .venv and install requirements.txt first; see README.md.' }
 function Test-ProjectEndpoint([string]$Address) {
     try { return (Invoke-WebRequest -Uri $Address -UseBasicParsing -TimeoutSec 2).StatusCode -eq 200 } catch { return $false }
 }
