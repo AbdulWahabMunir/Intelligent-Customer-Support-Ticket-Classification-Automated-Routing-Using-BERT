@@ -1,5 +1,7 @@
 # Intelligent Customer Support Classifier
 
+**Creator and project owner: [Abdul Wahab Munir](https://github.com/AbdulWahabMunir)**
+
 A deployed NLP portfolio platform: classify support intents with fine-tuned DistilBERT, map categories, apply separate routing/priority rules, and collect human feedback.
 
 **[Live application](https://aw-intelligent-customer-support.streamlit.app)** · [Final report](docs/final_report.md) · [Original brief audit](docs/requirements_audit.md)
