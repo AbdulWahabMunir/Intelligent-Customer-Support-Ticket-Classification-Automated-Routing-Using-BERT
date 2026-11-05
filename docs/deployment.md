@@ -1,6 +1,6 @@
 # Deployment handoff
 
-The selected zero-cost deployment path is documented in [free deployment](free_deployment.md): Render Free API + Streamlit Community Cloud + Neon Free PostgreSQL. The configuration below is the separate paid alternative; do not apply it for the free deployment.
+The selected zero-cost, no-card deployment path is documented in [Community Cloud setup](../community_full/README.md): Streamlit UI plus an internal FastAPI/DistilBERT process, backed by Neon Free PostgreSQL. The Render Free create request required payment information, so that service was not created. The configuration below is the separate paid alternative; do not apply it for the free deployment.
 
 `render.yaml` is a schema-validated proposal for one Render web service, not an applied deployment. It selects the documented `1c-2g` compute plan and a 2 GB persistent disk. Confirm current hosting charges and the intended workspace before provisioning it.
 

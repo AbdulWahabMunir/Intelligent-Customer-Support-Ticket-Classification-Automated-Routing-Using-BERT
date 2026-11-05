@@ -1,0 +1,5 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.15.0+cpu
+-r ../requirements-hosted-api.txt
+streamlit==1.66.1
+pandas==3.1.1

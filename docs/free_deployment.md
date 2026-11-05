@@ -1,5 +1,11 @@
 # Free deployment: FastAPI + DistilBERT + Streamlit + PostgreSQL
 
+## Selected no-card setup
+
+The Render Free creation attempt returned HTTP 402 requiring payment information; no Render service was created. The selected deployment now runs Streamlit and one internal FastAPI/DistilBERT subprocess together on Streamlit Community Cloud, with durable Neon PostgreSQL. See [the deployment instructions](../community_full/README.md). Entrypoint: `community_full/streamlit_app.py`, branch `free-hosting`, Python 3.14. All 47 tests pass. Local combined-process verification with live Neon storage passed login, inference, feedback and API restart persistence; see `reports/deployment/community-full-verification.json`. This is not yet a live cloud deployment.
+
+The separate Render backend setup below remains an alternative if the account meets Render's verification requirements.
+
 Use Render Free for the FastAPI backend, Streamlit Community Cloud for the dashboard, and Neon Free for durable PostgreSQL tickets and feedback. No paid resources are required by this configuration. Render's free web service has no fixed trial expiry, but sleeps on inactivity and has monthly usage limits. Do not use Render Free Postgres: it expires after 30 days. Cloud providers may change their free plans; this is a portfolio deployment without an uptime guarantee.
 
 The existing fine-tuned DistilBERT model is retained. Locally, its API passed prediction, feedback and restart tests with a hard 512 MiB Docker memory limit and no additional swap. This establishes local feasibility, not an equivalent cloud runtime guarantee. The frontend does not load PyTorch or model weights. Inference is serialized in the API.

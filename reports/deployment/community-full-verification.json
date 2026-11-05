@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "model_version": "distilbert:130e8686af8b",
+  "database": "live Neon PostgreSQL",
+  "runtime": "local Streamlit plus internal FastAPI process",
+  "cloud_deployment": "not yet performed",
+  "checks": [
+    "API authentication",
+    "actual DistilBERT prediction",
+    "Neon feedback persistence",
+    "Streamlit login and dashboard widgets",
+    "API restart persistence"
+  ]
+}

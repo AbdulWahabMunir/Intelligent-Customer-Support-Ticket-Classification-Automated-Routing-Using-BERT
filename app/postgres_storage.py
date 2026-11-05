@@ -1,5 +1,6 @@
 """Durable PostgreSQL storage with the same ticket/feedback contract as SQLite."""
 from contextlib import contextmanager
+import time
 
 from app.storage import TicketStore
 
@@ -32,7 +33,16 @@ class PostgresTicketStore(TicketStore):
     @contextmanager
     def connection(self):
         import psycopg
-        with psycopg.connect(self.url, row_factory=record_factory, connect_timeout=15) as connection:
+        for attempt in range(3):
+            try:
+                connection = psycopg.connect(self.url, row_factory=record_factory, connect_timeout=15)
+                break
+            except psycopg.OperationalError:
+                if attempt == 2:
+                    raise
+                time.sleep(0.25 * 2**attempt)
+        # Retry only before a connection exists. Transactions are never replayed.
+        with connection:
             yield Connection(connection)
 
     def initialize(self):

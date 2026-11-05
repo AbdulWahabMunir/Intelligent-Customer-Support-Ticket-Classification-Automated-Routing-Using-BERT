@@ -12,7 +12,7 @@ def main():
         raise ValueError("Public API requires an external PostgreSQL DATABASE_URL")
     ensure_models(Path(os.environ.get("SUPPORT_MODELS_PATH", "models")))
     import uvicorn
-    uvicorn.run("app.api:app", host="0.0.0.0", port=int(os.environ.get("PORT", "10000")), workers=1)
+    uvicorn.run("app.api:app", host=os.environ.get("SUPPORT_API_HOST", "0.0.0.0"), port=int(os.environ.get("PORT", "10000")), workers=1)
 
 
 if __name__ == "__main__":

@@ -4,7 +4,7 @@ A learning-focused NLP project: classify customer support intents, map them to c
 
 ## Current state
 
-The local application is implemented and tested. Source and the approved model bundle are published on GitHub. The free hosting path uses FastAPI + DistilBERT on Render Free, Streamlit Community Cloud, and external PostgreSQL; see [free deployment](docs/free_deployment.md). Live cloud deployment is pending database/account configuration. See the [project status](docs/project_status.md).
+The local application is implemented and tested. Source and the approved model bundle are published on GitHub. The no-card hosting path uses Streamlit Community Cloud with an internal FastAPI + DistilBERT process and Neon PostgreSQL; see [deployment setup](community_full/README.md). Neon is connected and the combined flow passed locally; live Community Cloud deployment still requires account authorization and publishing. See the [project status](docs/project_status.md).
 
 Implemented: reproducible Bitext download, EDA, duplicate removal, stratified train/validation/test splits, TF-IDF baselines, full three-epoch DistilBERT fine-tuning, saved models and local predictions.
 
@@ -91,7 +91,7 @@ With the API running in one terminal, run these in a second terminal:
 
 Open http://127.0.0.1:8501. Use New ticket to submit a message, Ticket review to inspect/correct predictions, and Overview to monitor activity. See the [dashboard guide](docs/dashboard.md). This is a local single-user application.
 
-All **45 tests** passed, including challenge integrity, confidence metrics, archive extraction protections, API authentication and hosted login behavior. Real DistilBERT + PostgreSQL also passed prediction, long-input and restart verification under a 512 MiB container limit. The Streamlit widget flow was verified against the real DistilBERT API over HTTP. A real Edge overview capture was also inspected. See [dashboard verification](reports/dashboard/verification.md).
+All **47 tests** passed, including challenge integrity, confidence metrics, archive extraction protections, API authentication and hosted login behavior. Real DistilBERT + PostgreSQL also passed prediction, long-input and restart verification under a 512 MiB container limit. The combined Streamlit/internal FastAPI layout passed login, prediction, feedback and restart checks with live Neon storage. A real Edge overview capture was also inspected. See [dashboard verification](reports/dashboard/verification.md).
 
 ![Local dashboard](reports/screenshots/overview.png)
 
