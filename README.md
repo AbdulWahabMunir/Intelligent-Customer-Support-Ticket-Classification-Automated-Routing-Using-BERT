@@ -99,11 +99,16 @@ Open http://127.0.0.1:8501. Use New ticket to submit a message, Ticket review to
 
 All **50 tests** passed, including filters/search, correction analytics, API authentication and hosted login behavior. Actual DistilBERT + PostgreSQL passed long-input/restart checks under a 512 MiB container limit. Live Edge verification confirmed application 1.1.1, the new controls and preserved reviewed tickets. See [live verification](reports/deployment/live-updated-verification.json).
 
-![Live ticket review with filters and persisted feedback](reports/screenshots/live-updated-review.png)
+### Dashboard previews
+
+The current design, captured locally with synthetic demo tickets.
+
+![Support overview with department routing, priority distribution and ticket badges](reports/screenshots/overview.png)
+
+![Ticket review with filters and feedback controls](reports/screenshots/review.png)
 
 Additional deliverables: executed [EDA](notebooks/01_data_exploration.ipynb) and [comparison](notebooks/03_model_comparison.ipynb) notebooks, [BANKING77 experiment](reports/banking77/report.md), [template-similarity audit](reports/similarity_audit.json), and [API latency/edge-case report](reports/api/performance.json).
 
-![Local dashboard](reports/screenshots/overview.png)
 
 ## Robustness and containers
 

@@ -108,7 +108,7 @@ def show_overview(api):
         counts = {priority: metrics["original_priorities"].get(priority, 0) for priority in ["Critical", "High", "Medium", "Low"]}
         maximum = max(counts.values(), default=1) or 1
         rows = ''.join(f'<div class="priority-row"><span>{priority}</span><div class="priority-track"><div class="priority-fill {priority.lower()}" style="width:{count / maximum * 100}%"></div></div><strong>{count}</strong></div>' for priority, count in counts.items())
-        render_html(f'<section class="chart-card"><h3>Priority distribution</h3><div class="priority-chart">{rows}</div><p class="chart-note">Charts show original routing decisions. Corrections are retained in each ticket&#9633;s review history.</p></section>')
+        render_html(f'<section class="chart-card"><h3>Priority distribution</h3><div class="priority-chart">{rows}</div><p class="chart-note">Charts show original routing decisions. Corrections are retained in each ticket review history.</p></section>')
     search = st.session_state.get('overview_search', '').strip().casefold()
     result = api.tickets(limit=100 if search else 5)
     tickets = result['items']
