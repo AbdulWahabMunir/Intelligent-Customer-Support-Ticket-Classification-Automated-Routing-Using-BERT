@@ -1,6 +1,7 @@
 """Streamlit customer support dashboard, backed exclusively by the HTTP API."""
 
 from pathlib import Path
+from html import escape
 import hmac
 import os
 import sys
@@ -34,6 +35,10 @@ def require_access():
     if st.session_state.get("access_failed"):
         st.error("Password not recognized.")
     return False
+
+
+def render_html(markup):
+    st.markdown(markup, unsafe_allow_html=True)
 
 
 def readable(value):
@@ -95,15 +100,26 @@ def show_overview(api):
         return
     left, right = st.columns(2)
     with left:
-        with st.container(border=True):
-            st.subheader("Routing by department")
-            st.bar_chart(pd.DataFrame.from_dict(metrics["original_departments"], orient="index", columns=["Tickets"]), color="#12685d")
+        departments = metrics["original_departments"]
+        maximum = max(departments.values(), default=1) or 1
+        bars = ''.join(f'<div class="department-column"><span>{count}</span><div class="department-bar" style="height:{max(2, count / maximum * 190)}px"></div><small>{escape(name)}</small></div>' for name, count in departments.items())
+        render_html(f'<section class="chart-card"><h3>Routing by department</h3><div class="department-chart">{bars}</div></section>')
     with right:
-        with st.container(border=True):
-            st.subheader("Priority distribution")
-            counts = {priority: metrics["original_priorities"].get(priority, 0) for priority in ["Critical", "High", "Medium", "Low"]}
-            st.bar_chart(pd.DataFrame.from_dict(counts, orient="index", columns=["Tickets"]), color="#315b87")
-    st.caption("Charts show original routing decisions. Corrections are retained in each ticket’s review history.")
+        counts = {priority: metrics["original_priorities"].get(priority, 0) for priority in ["Critical", "High", "Medium", "Low"]}
+        maximum = max(counts.values(), default=1) or 1
+        rows = ''.join(f'<div class="priority-row"><span>{priority}</span><div class="priority-track"><div class="priority-fill {priority.lower()}" style="width:{count / maximum * 100}%"></div></div><strong>{count}</strong></div>' for priority, count in counts.items())
+        render_html(f'<section class="chart-card"><h3>Priority distribution</h3><div class="priority-chart">{rows}</div><p class="chart-note">Charts show original routing decisions. Corrections are retained in each ticket&#9633;s review history.</p></section>')
+    search = st.session_state.get('overview_search', '').strip().casefold()
+    result = api.tickets(limit=100 if search else 5)
+    tickets = result['items']
+    if search:
+        tickets = [t for t in tickets if search in ' '.join([t['id'], t['text'], readable(t['result']['prediction']['intent']), t['result']['department']]).casefold()]
+        st.caption('Search covers the latest 100 tickets: messages, intents, departments and ticket IDs.')
+    with st.container(border=True):
+        heading, count = st.columns([5, 1])
+        heading.subheader('Recent tickets' if not search else 'Search results')
+        count.caption(f"{len(tickets)} of {result['total']}")
+        show_ticket_table(tickets)
     with st.expander('Human feedback analytics'):
         st.metric('Human correction rate', f"{metrics['correction_rate']:.1%}")
         st.caption('Latest review per ticket; confirmations are not corrections. This is review activity, not unbiased test accuracy.')
@@ -111,8 +127,6 @@ def show_overview(api):
             st.bar_chart(pd.DataFrame.from_dict(metrics['corrected_intents'], orient='index', columns=['Corrected tickets']))
         if metrics['review_activity_by_day']:
             st.dataframe(pd.DataFrame.from_dict(metrics['review_activity_by_day'], orient='index').rename_axis('Review date'), width='stretch')
-    st.subheader("Recent tickets")
-    show_ticket_table(api.tickets(limit=5)["items"])
 
 
 def show_new_ticket(api):
@@ -122,7 +136,7 @@ def show_new_ticket(api):
     with left:
         with st.form("new_ticket_form"):
             text = st.text_area("Customer message", height=190, max_chars=10000, key="ticket_text",
-                                placeholder="For example: I requested a refund last week. Can you check its status?")
+                                placeholder="For example: I requested a refund last week. Can you check its status&#9633;")
             submitted = st.form_submit_button("Classify and save ticket", type="primary")
         if submitted:
             if not text.strip():
@@ -149,9 +163,19 @@ def show_ticket_table(tickets):
     if not tickets:
         st.info("No tickets to display.")
         return
-    st.dataframe([{"Ticket": t["id"][:8], "Message": t["text"], "Intent": readable(t["result"]["prediction"]["intent"]),
-                   "Department": t["result"]["department"], "Priority": t["result"]["priority"],
-                   "Review": readable(t["review_status"])} for t in tickets], hide_index=True, width="stretch")
+    rows = []
+    for ticket in tickets:
+        result = ticket['result']
+        priority = result['priority']
+        status = ticket['review_status']
+        cells = [f'<code>{escape(ticket["id"][:8])}</code>', escape(ticket['text']),
+                 escape(readable(result['prediction']['intent'])), escape(result['department']),
+                 f'<span class="badge {escape(priority.lower())}">{escape(priority)}</span>',
+                 f'<span class="badge {escape(status)}">{escape(readable(status))}</span>']
+        rows.append('<tr>' + ''.join(f'<td>{cell}</td>' for cell in cells) + '</tr>')
+    headers = ''.join(f'<th>{name}</th>' for name in ['Ticket', 'Message', 'Intent', 'Department', 'Priority', 'Review'])
+    render_html('<div class="ticket-table-wrap"><table class="ticket-table"><thead><tr>' + headers + '</tr></thead><tbody>' + ''.join(rows) + '</tbody></table></div>')
+
 
 
 def show_review(api):
@@ -227,12 +251,12 @@ def show_review(api):
 
 def main():
     st.set_page_config(page_title="Support Desk · Ticket intelligence", page_icon="📬", layout="wide")
+    render_html((Path(__file__).parent / "dashboard.css").read_text(encoding="utf-8"))
     if not require_access():
         st.stop()
     api = SupportAPI()
     with st.sidebar:
-        st.title("Support Desk")
-        st.caption("TICKET INTELLIGENCE")
+        render_html('<div class="brand"><span class="brand-icon">&#9633;</span><div><strong>Support Desk</strong><small>TICKET INTELLIGENCE</small></div></div>')
         page = st.radio("Workspace", ["Overview", "New ticket", "Ticket review"], key="navigation", label_visibility="collapsed")
         st.divider()
         refresh = st.button("Refresh workspace", width="stretch")
@@ -247,6 +271,11 @@ def main():
                 st.caption(f"Model: {health['model_version']}")
                 st.caption(f"Policy: {health['policy_version']}")
                 st.caption(f"Application: {health.get('application_version', '1.0.0')}")
+        search_column, action_column = st.columns([4, 1])
+        with search_column:
+            st.text_input("Search tickets, intents, departments", placeholder="Search tickets, intents, departments", key="overview_search", label_visibility="collapsed", disabled=page != "Overview")
+        with action_column:
+            st.button("+ New ticket", type="primary", on_click=navigate_to_new, width="stretch")
         if st.session_state.pop("review_saved", None):
             st.success("Review saved. The original prediction is preserved and the review queue is updated.")
         {"Overview": show_overview, "New ticket": show_new_ticket, "Ticket review": show_review}[page](api)

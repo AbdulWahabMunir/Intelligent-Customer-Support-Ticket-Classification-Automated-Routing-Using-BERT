@@ -59,7 +59,7 @@ def main():
                 time.sleep(0.5)
             if "Support overview" not in text or "Total tickets" not in text:
                 raise RuntimeError("Dashboard did not render expected content: " + text[:200])
-            time.sleep(2)  # Allow the sidebar entrance animation to finish.
+            time.sleep(12)  # Allow HTML cards, styles and sidebar animation to finish.
             screenshot = command("Page.captureScreenshot", {"format": "png", "captureBeyondViewport": False})
             output.write_bytes(base64.b64decode(screenshot["data"]))
             print(f"Verified browser content and saved {output}")

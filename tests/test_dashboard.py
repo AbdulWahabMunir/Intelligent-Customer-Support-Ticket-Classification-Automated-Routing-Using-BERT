@@ -106,7 +106,13 @@ class DashboardTests(unittest.TestCase):
         app = self.app.run()
         self.assertFalse(app.exception)
         self.assertEqual(app.metric[0].value, "1")
-        self.assertTrue(app.dataframe)
+        self.assertTrue(any(item.value == "Recent tickets" for item in app.subheader))
+        app.text_input(key="overview_search").set_value("Finance").run()
+        self.assertFalse(app.exception)
+        self.assertTrue(any("1 of 1" in item.value for item in app.caption))
+        app.text_input(key="overview_search").set_value("no-such-ticket").run()
+        self.assertFalse(app.exception)
+        self.assertTrue(any("No tickets to display" in item.value for item in app.info))
 
     def test_api_failure_renders_actionable_error(self):
         with patch("app.client.SupportAPI.health", side_effect=APIError("Cannot reach the support API")):
