@@ -22,6 +22,7 @@ from src.routing import TicketService
 def create_app(db_path=None, service=None):
     @asynccontextmanager
     async def lifespan(application):
+        logging.getLogger("uvicorn.error").info("[support-startup] Loading classifier")
         application.state.service = service if service is not None else TicketService(TicketClassifier(os.environ.get("SUPPORT_MODEL", "distilbert")))
         application.state.inference_lock = Lock()
         if db_path is None and os.environ.get("DATABASE_URL"):
@@ -29,7 +30,9 @@ def create_app(db_path=None, service=None):
             application.state.store = PostgresTicketStore(os.environ["DATABASE_URL"])
         else:
             application.state.store = TicketStore(db_path or Path(os.environ.get("SUPPORT_DB_PATH", str(ROOT / "data/runtime/support.sqlite3"))))
+        logging.getLogger("uvicorn.error").info("[support-startup] Initializing ticket database")
         application.state.store.initialize()
+        logging.getLogger("uvicorn.error").info("[support-startup] API ready")
         yield
 
     application = FastAPI(title="Intelligent Customer Support API", version="0.1.0", lifespan=lifespan,
@@ -53,7 +56,7 @@ def create_app(db_path=None, service=None):
     def health():
         with application.state.store.connection() as connection:
             connection.execute("SELECT 1")
-        return {"status": "ok", "application_version": "1.1.1", "model_version": application.state.service.classifier.version,
+        return {"status": "ok", "application_version": "1.1.2", "model_version": application.state.service.classifier.version,
                 "policy_version": application.state.service.policy.config["version"]}
 
     @application.get("/taxonomy")

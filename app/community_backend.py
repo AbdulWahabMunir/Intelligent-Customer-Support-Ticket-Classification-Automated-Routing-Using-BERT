@@ -10,7 +10,7 @@ import httpx
 import psutil
 
 ROOT = Path(__file__).resolve().parents[1]
-APPLICATION_RELEASE = '1.1.1'
+APPLICATION_RELEASE = '1.1.2'
 
 
 def stop_backend(process):
@@ -45,11 +45,10 @@ def start_backend():
                     previous.wait(timeout=5)
         except (psutil.NoSuchProcess, psutil.AccessDenied):
             continue
-    logs = ROOT / 'data/runtime'
-    logs.mkdir(parents=True, exist_ok=True)
-    with (logs / 'community-api.log').open('ab') as output:
-        process = subprocess.Popen([sys.executable, '-m', 'app.run_api'], cwd=ROOT, env=child_env,
-                                   stdout=output, stderr=output, creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0))
+    # Inherit Cloud stdout/stderr so startup failures reach Manage app logs.
+    child_env['PYTHONUNBUFFERED'] = '1'
+    process = subprocess.Popen([sys.executable, '-u', '-m', 'app.run_api'], cwd=ROOT, env=child_env,
+                               creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0))
     atexit.register(stop_backend, process)
     deadline = time.monotonic() + 300
     with httpx.Client(base_url=url, timeout=50, trust_env=False,

@@ -48,6 +48,7 @@ def ensure_models(root):
         raise ValueError("A HTTPS model URL and SHA-256 checksum are required")
     marker = root / ".bundle-sha256"
     if model_ready(root) and marker.exists() and marker.read_text() == expected:
+        print("[support-startup] Using cached model bundle", flush=True)
         return
     root.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(dir=root.parent) as temporary:
@@ -61,12 +62,16 @@ def ensure_models(root):
                     if downloaded > 1024**3:
                         raise ValueError("Model download exceeds 1 GiB")
                     output.write(chunk)
+                    if downloaded % (16 * 1024**2) == 0:
+                        print(f"[support-startup] Model download: {downloaded // 1024**2} MiB", flush=True)
         except OSError:
             raise RuntimeError("Model artifact download failed") from None
+        print("[support-startup] Download complete; verifying checksum", flush=True)
         with archive_path.open("rb") as source:
             if hashlib.file_digest(source, "sha256").hexdigest() != expected:
                 raise ValueError("Model bundle checksum mismatch")
         unpacked = temporary / "unpacked"
+        print("[support-startup] Extracting model bundle", flush=True)
         safe_extract(archive_path, unpacked)
         if not model_ready(unpacked):
             raise ValueError("Model bundle does not contain a completed checkpoint")
